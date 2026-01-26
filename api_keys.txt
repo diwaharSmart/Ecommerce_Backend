@@ -1,0 +1,38 @@
+Django MLM Ecommerce - API Keys
+==================================
+Base URL: http://127.0.0.1:8000/web/api/
+
+--- NEW API ---
+Get Category Products: 75a11d53-96cb-4490-9416-52578b4a4c97
+
+--- AUTHENTICATION ---
+Register User: 6ab0ccc6-240d-4940-9127-9782634a029a
+Login User: 4276502b-a9c5-4c2d-ad12-47eb44e405b0
+Change Password: d97926fe-720e-4aa8-b632-0892d95191db
+
+--- PROFILE & USER ---
+Get Profile: 9165d506-c87a-4299-abe1-de6a05952d43
+Manage Address: 7adbecd8-7b07-4abd-96d4-f5e60863e787
+Manage KYC: cadcbdcb-77d3-4caa-bca0-02dce1b704da
+
+--- MLM & WALLET ---
+Get MLM Dashboard: 91b1f76e-f709-499f-9e78-831ec42581e5
+Get Binary Tree: c98492f9-3d00-4866-b84b-173908a53fa8
+Get Level Members: 5cbe44fd-efcb-44be-8779-ac6080d102f5
+Get Wallet: 1dd91f8e-d275-4f02-9bab-519d92f73574
+Create Payin: 31940984-7a91-4966-9b51-344cb89d98e8
+
+--- ECOMMERCE ---
+Home Data: d8350bc5-6495-46c5-8f6b-3136706e5d8b
+Get Cart: a1e0954b-d729-4e00-8809-9fb4bf6e9ac8
+Add to Cart: 99a07156-f831-4a4b-84a2-9e992d95ea7f
+Remove from Cart: a488e367-e9fa-47fa-b39b-cd7894a7e914
+Checkout: 24b525f0-5716-43a0-be7f-8566ef74e92e
+
+--- SUPPORT ---
+Get Tickets: d7f280ee-fc38-4d06-af6a-5d2305aac978
+Create Ticket: 46286291-67f3-4afa-b19b-92f8e00328ab
+
+--- COUPONS ---
+Get Coupons: 684c4e19-79d4-43df-a8e1-efd3aea6a50c
+Redeem Coupon: db3f80b1-64e7-4ef8-bc11-6650031f05cf

@@ -1,0 +1,678 @@
+{
+    "info": {
+        "_postman_id": "b6a7b8c9-d0e1-4f23-a456-7890abcdef12",
+        "name": "Django MLM Ecommerce API",
+        "description": "Collection for testing dynamic APIs of the Django MLM system.",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Auth",
+            "item": [
+                {
+                    "name": "Register User",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"api_key\": \"b69050e6-73aa-427b-86ae-49b5da1a21b8\",\n    \"name\": \"Test User\",\n    \"mobile\": \"9999999999\",\n    \"password\": \"password123\",\n    \"sponsor_id\": \"1\",\n    \"position\": \"L\"\n}"
+                        },
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/web/api/",
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "web",
+                                "api",
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Login User",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"api_key\": \"1085554b-48d0-470e-b229-2b60779235dd\",\n    \"username\": \"admin\",\n    \"password\": \"admin\"\n}"
+                        },
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/web/api/",
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "web",
+                                "api",
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Change Password",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token {{auth_token}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"api_key\": \"98a3097f-d51d-4297-b0bf-6ebab042c37f\",\n    \"old_password\": \"oldpass\",\n    \"new_password\": \"newpass\"\n}"
+                        },
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/web/api/",
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "web",
+                                "api",
+                                ""
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "MLM & Wallet",
+            "item": [
+                {
+                    "name": "Get MLM Dashboard",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token {{auth_token}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"api_key\": \"b00787d3-7dc8-45d9-83eb-7e04978b3866\"\n}"
+                        },
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/web/api/",
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "web",
+                                "api",
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Binary Tree",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token {{auth_token}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"api_key\": \"eed34e0f-8ef9-453a-bbe3-f0144469e263\"\n}"
+                        },
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/web/api/",
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "web",
+                                "api",
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Level Members",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token {{auth_token}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"api_key\": \"25b26d70-0519-456a-abcd-53e45124ab09\"\n}"
+                        },
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/web/api/",
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "web",
+                                "api",
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Wallet",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token {{auth_token}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"api_key\": \"add11639-5026-4bcf-8ceb-b4c3daf91463\"\n}"
+                        },
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/web/api/",
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "web",
+                                "api",
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Create Payin",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token {{auth_token}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"api_key\": \"38d8763a-17b5-490d-bda1-dfbd7469cdaa\",\n    \"amount\": 5000,\n    \"reference_number\": \"UPI123456\"\n}"
+                        },
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/web/api/",
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "web",
+                                "api",
+                                ""
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Profile & User",
+            "item": [
+                {
+                    "name": "Get Profile",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token {{auth_token}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"api_key\": \"d22847f5-3b2b-45b4-8270-1f538b00e623\"\n}"
+                        },
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/web/api/",
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "web",
+                                "api",
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Manage Address",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token {{auth_token}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"api_key\": \"70002848-d91c-4cf5-aa9b-26e483572f60\",\n    \"action\": \"get\"\n}"
+                        },
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/web/api/",
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "web",
+                                "api",
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Manage KYC",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token {{auth_token}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"api_key\": \"35fa430a-261d-4a23-8e1b-d981e66e3388\",\n    \"action\": \"get\"\n}"
+                        },
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/web/api/",
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "web",
+                                "api",
+                                ""
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Ecommerce",
+            "item": [
+                {
+                    "name": "Home Data",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"api_key\": \"3e2fd75d-0748-41b1-babe-ba66cf09cb35\"\n}"
+                        },
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/web/api/",
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "web",
+                                "api",
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Cart",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token {{auth_token}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"api_key\": \"d60ad8b5-63c9-404f-9510-ba9d2955f397\"\n}"
+                        },
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/web/api/",
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "web",
+                                "api",
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Add to Cart",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token {{auth_token}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"api_key\": \"84a568ad-4f18-42aa-ac92-2e95f0a40a15\",\n    \"product_id\": 1,\n    \"quantity\": 1\n}"
+                        },
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/web/api/",
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "web",
+                                "api",
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Remove from Cart",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token {{auth_token}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"api_key\": \"1f25578c-174d-4a8d-b46e-5c8b3a6dfa8a\",\n    \"product_id\": 1\n}"
+                        },
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/web/api/",
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "web",
+                                "api",
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Checkout",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token {{auth_token}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"api_key\": \"e3e9928d-b176-4e53-8999-307450c239b8\"\n}"
+                        },
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/web/api/",
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "web",
+                                "api",
+                                ""
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Support",
+            "item": [
+                {
+                    "name": "Get Tickets",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token {{auth_token}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"api_key\": \"68e2ac9c-f351-465b-8a96-a3b70d9022ab\"\n}"
+                        },
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/web/api/",
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "web",
+                                "api",
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Create Ticket",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token {{auth_token}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"api_key\": \"92892dec-a24a-4c35-bde0-6f45643422e7\",\n    \"subject\": \"Help\",\n    \"message\": \"Issue description\"\n}"
+                        },
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/web/api/",
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "web",
+                                "api",
+                                ""
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "variable": [
+        {
+            "key": "auth_token",
+            "value": "REPLACE_WITH_YOUR_TOKEN",
+            "type": "string"
+        }
+    ]
+}

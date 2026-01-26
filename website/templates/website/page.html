@@ -1,0 +1,57 @@
+<!-- page.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% if page.meta_title %}
+        <title>{{ page.meta_title }}</title>
+    {% else %}
+        <title>{{ page.title }}</title>
+    {% endif %}
+    {% if page.meta_description %}
+        <meta name="description" content="{{ page.meta_description }}">
+    {% endif %}
+    {% if page.meta_keywords %}
+        <meta name="keywords" content="{{ page.meta_keywords }}">
+    {% endif %}
+    {% if page.custom_css %}
+        <style>{{ page.custom_css|safe }}</style>
+    {% endif %}
+    {% if page.website.base_header %}
+        {{ page.website.base_header|safe }}
+    {% endif %}
+    {% if page.website.fav_icon %}
+    <link href="{{ page.website.fav_icon.url }}" rel="icon">
+    {% endif %}
+    {% if page.head %}
+        {{ page.head|safe }}
+    {% endif %}
+    
+    <!-- Include additional meta tags or links as needed -->
+</head>
+<body>
+    {% if page.header %}
+        {{ page.header.content|safe }}
+    {% endif %}
+
+    {% if page.body %}
+        {{ page.body|safe }}
+    {% else %}
+        <p>No content available for this page.</p>
+    {% endif %}
+
+    {% if page.footer %}
+        {{ page.footer.content|safe }}
+    {% endif %}
+    {% if page.website.base_footer %}
+        {{ page.website.base_footer|safe }}
+    {% endif %}
+    {% if page.custom_js %}
+        <script>{{ page.custom_js|safe }}</script>
+    {% endif %}
+    
+</body>
+</html>
