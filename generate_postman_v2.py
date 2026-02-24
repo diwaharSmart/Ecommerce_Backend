@@ -64,7 +64,8 @@ SAMPLE_PAYLOADS = {
     },
     "Redeem Pin": {
         "pin_id": 1,
-        "username": "TargetUser"
+        "username": "TargetUser",
+        "product_id": 1
     },
     "Create Ticket": {
         "subject": "Payment Issue",

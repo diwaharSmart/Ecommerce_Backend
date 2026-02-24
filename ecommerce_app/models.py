@@ -9,6 +9,7 @@ class Category(models.Model):
     name = models.CharField(max_length=255)
     slug = models.SlugField(unique=True, blank=True)
     image = models.ImageField(upload_to='categories/', blank=True, null=True)
+    banner_image = models.ImageField(upload_to='categories/banner/', blank=True, null=True)
     description = models.TextField(blank=True)
 
     def save(self, *args, **kwargs):
