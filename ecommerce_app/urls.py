@@ -3,10 +3,11 @@ from rest_framework.routers import DefaultRouter
 from .api import (
     CategoryViewSet, ProductViewSet, ProfileViewSet, 
     WalletViewSet, PayinRequestViewSet, TransactionViewSet, CouponViewSet, OrderViewSet, BannerViewSet,
-    UserAddressViewSet, CartViewSet, CheckoutViewSet, KYCViewSet, SupportTicketViewSet, HomeAPIView
+    UserAddressViewSet, CartViewSet, CheckoutViewSet, KYCViewSet, SupportTicketViewSet, HomeAPIView, WithdrawalRequestViewSet
 )
 
 router = DefaultRouter()
+router.register(r'withdrawal-requests', WithdrawalRequestViewSet, basename='withdrawal-requests')
 router.register(r'categories', CategoryViewSet)
 router.register(r'products', ProductViewSet)
 router.register(r'profiles', ProfileViewSet)

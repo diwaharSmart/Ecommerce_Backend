@@ -1,11 +1,11 @@
 from rest_framework import viewsets, permissions, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from .models import Category, Product, Profile, Wallet, PayinRequest, Transaction, Coupon, Order, Banner, UserAddress, Cart, CartItem, KYC, SupportTicket
+from .models import Category, Product, Profile, Wallet, PayinRequest, Transaction, Coupon, Order, Banner, UserAddress, Cart, CartItem, KYC, SupportTicket, WithdrawalRequest
 from .serializers import (
     CategorySerializer, ProductSerializer, ProfileSerializer, 
     WalletSerializer, PayinRequestSerializer, TransactionSerializer, CouponSerializer, OrderSerializer, BannerSerializer,
-    UserAddressSerializer, CartSerializer, KYCSerializer, SupportTicketSerializer
+    UserAddressSerializer, CartSerializer, KYCSerializer, SupportTicketSerializer, WithdrawalRequestSerializer
 )
 from rest_framework.views import APIView
 from django.shortcuts import get_object_or_404
@@ -52,6 +52,50 @@ class PayinRequestViewSet(viewsets.ModelViewSet):
     
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+
+class WithdrawalRequestViewSet(viewsets.ModelViewSet):
+    queryset = WithdrawalRequest.objects.all()
+    serializer_class = WithdrawalRequestSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user
+        if user.is_staff:
+            return WithdrawalRequest.objects.all()
+        return WithdrawalRequest.objects.filter(user=user)
+    
+    @action(detail=False, methods=['post'])
+    def request(self, request):
+        amount = request.data.get('amount')
+        if not amount:
+            return Response({'error': 'Amount is required'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        try:
+            amount = float(amount)
+        except ValueError:
+            return Response({'error': 'Invalid amount'}, status=status.HTTP_400_BAD_REQUEST)
+
+        # 1. Check KYC
+        try:
+            if request.user.kyc.status != 'verified':
+                return Response({'error': 'KYC not verified'}, status=status.HTTP_400_BAD_REQUEST)
+        except KYC.DoesNotExist:
+             return Response({'error': 'KYC not submitted'}, status=status.HTTP_400_BAD_REQUEST)
+        
+        # 2. Check Balance
+        # Ensure wallet exists
+        wallet, _ = Wallet.objects.get_or_create(user=request.user)
+        if wallet.current_balance < amount:
+            return Response({'error': 'Insufficient balance'}, status=status.HTTP_400_BAD_REQUEST)
+            
+        # 3. Create Request
+        withdrawal = WithdrawalRequest.objects.create(
+            user=request.user,
+            amount=amount,
+            status='pending'
+        )
+        
+        return Response(WithdrawalRequestSerializer(withdrawal).data, status=status.HTTP_201_CREATED)
 
 class TransactionViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Transaction.objects.all()

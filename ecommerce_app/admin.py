@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Product, Profile, Wallet, PayinRequest, Transaction, Coupon, Order, OrderItem, Banner, UserAddress, Cart, CartItem, KYC, SupportTicket
+from .models import Category, Product, Profile, Wallet, PayinRequest, Transaction, Coupon, Order, OrderItem, Banner, UserAddress, Cart, CartItem, KYC, SupportTicket, Pin, PinRequest, WithdrawalRequest
 
 class ProductAdmin(admin.ModelAdmin):
     list_display = ['name', 'category', 'price', 'pv', 'stock', 'available']
@@ -49,3 +49,21 @@ admin.site.register(Cart)
 admin.site.register(CartItem)
 admin.site.register(KYC)
 admin.site.register(SupportTicket)
+
+@admin.register(PinRequest)
+class PinRequestAdmin(admin.ModelAdmin):
+    list_display = ('user', 'number_of_pins', 'status', 'created_at')
+    list_filter = ('status',)
+    search_fields = ('user__username',)
+
+@admin.register(Pin)
+class PinAdmin(admin.ModelAdmin):
+    list_display = ('code', 'owner', 'value', 'status', 'used_by', 'created_at')
+    list_filter = ('status',)
+    search_fields = ('code', 'owner__username', 'used_by__username')
+
+@admin.register(WithdrawalRequest)
+class WithdrawalRequestAdmin(admin.ModelAdmin):
+    list_display = ('user', 'amount', 'status', 'created_at')
+    list_filter = ('status',)
+    search_fields = ('user__username',)

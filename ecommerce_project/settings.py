@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 import os
 from pathlib import Path
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,25 +25,48 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-8j#gg6h!pk@ntz@s$cx*5e5q0m(4doz28c&h)9b0b6yy%lmgp@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = 'RENDER' not in os.environ
 
 ALLOWED_HOSTS = ['*', '.vercel.app']
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://*.ngrok-free.app',
+    'https://*.ngrok-free.dev',
     'https://*.ngrok.io',
     'http://127.0.0.1:8000',
     'http://localhost:8000',
     'https://*.vercel.app',
 ]
 
+from corsheaders.defaults import default_headers
+
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOW_HEADERS = list(default_headers) + [
+    "ngrok-skip-browser-warning",
+    "x-csrftoken",
+    "authorization",
+    "content-type",
+    "accept",
+    "origin",
+    "user-agent",
+    "daterange",
+    "baggage",
+    "sentry-trace",
+]
 
 # Required for ngrok https
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # CSRF_COOKIE_SECURE = True # Optional: if strictly using https, but might break localhost if not careful.
 # SESSION_COOKIE_SECURE = True
+
+# Allow Cross-Origin access for Flutter Web
+SECURE_REFERRER_POLICY = "no-referrer-when-downgrade"
+SECURE_CROSS_ORIGIN_OPENER_POLICY = None
+
 
 
 # Application definition
@@ -72,6 +96,7 @@ REST_FRAMEWORK = {
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -105,10 +130,27 @@ WSGI_APPLICATION = 'ecommerce_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'veadondb',
+        'USER': 'veadon_user',
+        'PASSWORD': 'ntontt8vtqIujxUeWDGSPH2mMJ7FcYW3',
+        'HOST': 'dpg-d6ejs5ngi27c73fcs7h0-a.oregon-postgres.render.com',
+        'PORT': '5432',
     }
 }
+
+# Override database config if DJANGO_DATABASE_URL or DATABASE_URL is set in environment (e.g., Render)
+db_url = os.environ.get('DATABASE_URL')
+if db_url:
+    DATABASES['default'] = dj_database_url.parse(db_url, conn_max_age=600)
+
+# Backup original sqlite3 database config
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 # Password validation
@@ -148,6 +190,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

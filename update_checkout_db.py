@@ -38,12 +38,12 @@ if request.user.is_authenticated:
                     description=f"Purchase of Order"
                 )
                 
-                # Create Order (Paid)
+                # Create Order (Pending)
                 order = Order.objects.create(
                     user=request.user,
                     total_amount=total_amount,
                     total_pv=total_pv,
-                    status='paid' 
+                    status='pending' 
                 )
                 
                 # Create Order Items
@@ -55,6 +55,10 @@ if request.user.is_authenticated:
                         price=item.product.price,
                         pv=item.product.pv
                     )
+                
+                # Update Status to Paid (Trigger Signal for Coupon Generation)
+                order.status = 'paid'
+                order.save()
                 
                 # Clear Cart
                 cart.items.all().delete()

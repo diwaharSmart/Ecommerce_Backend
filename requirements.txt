@@ -3,4 +3,7 @@ djangorestframework
 django-cors-headers
 Pillow
 django-ace
-white-noise
+whitenoise
+gunicorn
+psycopg2-binary
+dj-database-url

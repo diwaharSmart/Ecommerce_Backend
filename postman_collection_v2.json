@@ -1,0 +1,2898 @@
+{
+    "info": {
+        "name": "Django MLM Ecommerce V2",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Add to Cart",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    },
+                    {
+                        "key": "x-api-key",
+                        "value": "45328cb6-6880-4256-8ad8-1e8d8c4a1ac5",
+                        "type": "text",
+                        "description": "Dynamic API Key"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Token <YOUR_AUTH_TOKEN>",
+                        "type": "text",
+                        "description": "Replace with login token"
+                    }
+                ],
+                "url": {
+                    "raw": "http://127.0.0.1:8000/web/api/",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "web",
+                        "api",
+                        ""
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"product_id\": 1,\n    \"quantity\": 2\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            },
+            "response": [
+                {
+                    "name": "Success Example",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "45328cb6-6880-4256-8ad8-1e8d8c4a1ac5",
+                                "type": "text",
+                                "description": "Dynamic API Key"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token <YOUR_AUTH_TOKEN>",
+                                "type": "text",
+                                "description": "Replace with login token"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/web/api/",
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "web",
+                                "api",
+                                ""
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"product_id\": 1,\n    \"quantity\": 2\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [],
+                    "cookie": [],
+                    "body": "{\n    \"status_code\": 200,\n    \"message\": \"Success\",\n    \"data\": {}\n}"
+                }
+            ]
+        },
+        {
+            "name": "Change Password",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    },
+                    {
+                        "key": "x-api-key",
+                        "value": "aa3f1a0c-03df-4c43-aeeb-21307bfeafc5",
+                        "type": "text",
+                        "description": "Dynamic API Key"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Token <YOUR_AUTH_TOKEN>",
+                        "type": "text",
+                        "description": "Replace with login token"
+                    }
+                ],
+                "url": {
+                    "raw": "http://127.0.0.1:8000/web/api/",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "web",
+                        "api",
+                        ""
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"old_password\": \"securepassword\",\n    \"new_password\": \"newpassword123\"\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            },
+            "response": [
+                {
+                    "name": "Success Example",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "aa3f1a0c-03df-4c43-aeeb-21307bfeafc5",
+                                "type": "text",
+                                "description": "Dynamic API Key"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token <YOUR_AUTH_TOKEN>",
+                                "type": "text",
+                                "description": "Replace with login token"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/web/api/",
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "web",
+                                "api",
+                                ""
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"old_password\": \"securepassword\",\n    \"new_password\": \"newpassword123\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [],
+                    "cookie": [],
+                    "body": "{\n    \"status_code\": 200,\n    \"message\": \"Success\",\n    \"data\": {}\n}"
+                }
+            ]
+        },
+        {
+            "name": "Checkout",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    },
+                    {
+                        "key": "x-api-key",
+                        "value": "24b525f0-5716-43a0-be7f-8566ef74e92e",
+                        "type": "text",
+                        "description": "Dynamic API Key"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Token <YOUR_AUTH_TOKEN>",
+                        "type": "text",
+                        "description": "Replace with login token"
+                    }
+                ],
+                "url": {
+                    "raw": "http://127.0.0.1:8000/web/api/",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "web",
+                        "api",
+                        ""
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"address_id\": 1,\n    \"payment_mode\": \"cod\"\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            },
+            "response": [
+                {
+                    "name": "Success Example",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "24b525f0-5716-43a0-be7f-8566ef74e92e",
+                                "type": "text",
+                                "description": "Dynamic API Key"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token <YOUR_AUTH_TOKEN>",
+                                "type": "text",
+                                "description": "Replace with login token"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/web/api/",
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "web",
+                                "api",
+                                ""
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"address_id\": 1,\n    \"payment_mode\": \"cod\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [],
+                    "cookie": [],
+                    "body": "{\n    \"status_code\": 200,\n    \"message\": \"Success\",\n    \"data\": {}\n}"
+                }
+            ]
+        },
+        {
+            "name": "Create Payin",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    },
+                    {
+                        "key": "x-api-key",
+                        "value": "41d8399f-eb71-40d7-ac37-4fa4fe683840",
+                        "type": "text",
+                        "description": "Dynamic API Key"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Token <YOUR_AUTH_TOKEN>",
+                        "type": "text",
+                        "description": "Replace with login token"
+                    }
+                ],
+                "url": {
+                    "raw": "http://127.0.0.1:8000/web/api/",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "web",
+                        "api",
+                        ""
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"amount\": 5000.0,\n    \"reference_number\": \"REF123456789\"\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            },
+            "response": [
+                {
+                    "name": "Success Example",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "41d8399f-eb71-40d7-ac37-4fa4fe683840",
+                                "type": "text",
+                                "description": "Dynamic API Key"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token <YOUR_AUTH_TOKEN>",
+                                "type": "text",
+                                "description": "Replace with login token"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/web/api/",
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "web",
+                                "api",
+                                ""
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"amount\": 5000.0,\n    \"reference_number\": \"REF123456789\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [],
+                    "cookie": [],
+                    "body": "{\n    \"status_code\": 200,\n    \"message\": \"Success\",\n    \"data\": {}\n}"
+                }
+            ]
+        },
+        {
+            "name": "Create Ticket",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    },
+                    {
+                        "key": "x-api-key",
+                        "value": "32be73e2-5e18-485b-895f-af89a3e2cbf0",
+                        "type": "text",
+                        "description": "Dynamic API Key"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Token <YOUR_AUTH_TOKEN>",
+                        "type": "text",
+                        "description": "Replace with login token"
+                    }
+                ],
+                "url": {
+                    "raw": "http://127.0.0.1:8000/web/api/",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "web",
+                        "api",
+                        ""
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"subject\": \"Payment Issue\",\n    \"message\": \"I made a payment but wallet not updated.\"\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            },
+            "response": [
+                {
+                    "name": "Success Example",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "32be73e2-5e18-485b-895f-af89a3e2cbf0",
+                                "type": "text",
+                                "description": "Dynamic API Key"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token <YOUR_AUTH_TOKEN>",
+                                "type": "text",
+                                "description": "Replace with login token"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/web/api/",
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "web",
+                                "api",
+                                ""
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"subject\": \"Payment Issue\",\n    \"message\": \"I made a payment but wallet not updated.\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [],
+                    "cookie": [],
+                    "body": "{\n    \"status_code\": 200,\n    \"message\": \"Success\",\n    \"data\": {}\n}"
+                }
+            ]
+        },
+        {
+            "name": "Edit Profile Picture",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "x-api-key",
+                        "value": "1703a667-bf77-49cb-a693-27f9b18d38e4",
+                        "type": "text",
+                        "description": "Dynamic API Key"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Token <YOUR_AUTH_TOKEN>",
+                        "type": "text",
+                        "description": "Replace with login token"
+                    }
+                ],
+                "url": {
+                    "raw": "http://127.0.0.1:8000/web/api/",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "web",
+                        "api",
+                        ""
+                    ]
+                },
+                "body": {
+                    "mode": "formdata",
+                    "formdata": [
+                        {
+                            "key": "profile_image",
+                            "type": "file",
+                            "src": []
+                        }
+                    ]
+                }
+            },
+            "response": [
+                {
+                    "name": "Success Example",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "x-api-key",
+                                "value": "1703a667-bf77-49cb-a693-27f9b18d38e4",
+                                "type": "text",
+                                "description": "Dynamic API Key"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token <YOUR_AUTH_TOKEN>",
+                                "type": "text",
+                                "description": "Replace with login token"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/web/api/",
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "web",
+                                "api",
+                                ""
+                            ]
+                        },
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "profile_image",
+                                    "type": "file",
+                                    "src": []
+                                }
+                            ]
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [],
+                    "cookie": [],
+                    "body": "{\n    \"status_code\": 200,\n    \"message\": \"Success\",\n    \"data\": {}\n}"
+                }
+            ]
+        },
+        {
+            "name": "Get Binary Tree",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    },
+                    {
+                        "key": "x-api-key",
+                        "value": "9c7f1696-efd2-43e2-b728-2c960fd36c2b",
+                        "type": "text",
+                        "description": "Dynamic API Key"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Token <YOUR_AUTH_TOKEN>",
+                        "type": "text",
+                        "description": "Replace with login token"
+                    }
+                ],
+                "url": {
+                    "raw": "http://127.0.0.1:8000/web/api/",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "web",
+                        "api",
+                        ""
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"user_id\": 1\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            },
+            "response": [
+                {
+                    "name": "Success Example",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "9c7f1696-efd2-43e2-b728-2c960fd36c2b",
+                                "type": "text",
+                                "description": "Dynamic API Key"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token <YOUR_AUTH_TOKEN>",
+                                "type": "text",
+                                "description": "Replace with login token"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/web/api/",
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "web",
+                                "api",
+                                ""
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"user_id\": 1\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [],
+                    "cookie": [],
+                    "body": "{\n    \"status_code\": 200,\n    \"message\": \"Success\",\n    \"data\": {}\n}"
+                }
+            ]
+        },
+        {
+            "name": "Get Cart",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    },
+                    {
+                        "key": "x-api-key",
+                        "value": "78872867-9bda-49c1-8a8a-63dd19127a1f",
+                        "type": "text",
+                        "description": "Dynamic API Key"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Token <YOUR_AUTH_TOKEN>",
+                        "type": "text",
+                        "description": "Replace with login token"
+                    }
+                ],
+                "url": {
+                    "raw": "http://127.0.0.1:8000/web/api/",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "web",
+                        "api",
+                        ""
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            },
+            "response": [
+                {
+                    "name": "Success Example",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "78872867-9bda-49c1-8a8a-63dd19127a1f",
+                                "type": "text",
+                                "description": "Dynamic API Key"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token <YOUR_AUTH_TOKEN>",
+                                "type": "text",
+                                "description": "Replace with login token"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/web/api/",
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "web",
+                                "api",
+                                ""
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [],
+                    "cookie": [],
+                    "body": "{\n    \"status_code\": 200,\n    \"message\": \"Success\",\n    \"data\": {}\n}"
+                }
+            ]
+        },
+        {
+            "name": "Get Category Products",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    },
+                    {
+                        "key": "x-api-key",
+                        "value": "f38a0e94-ae20-4e62-b149-4ec4aeccc324",
+                        "type": "text",
+                        "description": "Dynamic API Key"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Token <YOUR_AUTH_TOKEN>",
+                        "type": "text",
+                        "description": "Replace with login token"
+                    }
+                ],
+                "url": {
+                    "raw": "http://127.0.0.1:8000/web/api/",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "web",
+                        "api",
+                        ""
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            },
+            "response": [
+                {
+                    "name": "Success Example",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "f38a0e94-ae20-4e62-b149-4ec4aeccc324",
+                                "type": "text",
+                                "description": "Dynamic API Key"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token <YOUR_AUTH_TOKEN>",
+                                "type": "text",
+                                "description": "Replace with login token"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/web/api/",
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "web",
+                                "api",
+                                ""
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [],
+                    "cookie": [],
+                    "body": "{\n    \"status_code\": 200,\n    \"message\": \"Success\",\n    \"data\": {}\n}"
+                }
+            ]
+        },
+        {
+            "name": "Get Coupons",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    },
+                    {
+                        "key": "x-api-key",
+                        "value": "96b02579-1261-4ebb-b442-2b087a4ef2b2",
+                        "type": "text",
+                        "description": "Dynamic API Key"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Token <YOUR_AUTH_TOKEN>",
+                        "type": "text",
+                        "description": "Replace with login token"
+                    }
+                ],
+                "url": {
+                    "raw": "http://127.0.0.1:8000/web/api/",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "web",
+                        "api",
+                        ""
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            },
+            "response": [
+                {
+                    "name": "Success Example",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "96b02579-1261-4ebb-b442-2b087a4ef2b2",
+                                "type": "text",
+                                "description": "Dynamic API Key"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token <YOUR_AUTH_TOKEN>",
+                                "type": "text",
+                                "description": "Replace with login token"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/web/api/",
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "web",
+                                "api",
+                                ""
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [],
+                    "cookie": [],
+                    "body": "{\n    \"status_code\": 200,\n    \"message\": \"Success\",\n    \"data\": {}\n}"
+                }
+            ]
+        },
+        {
+            "name": "Get Downline List",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    },
+                    {
+                        "key": "x-api-key",
+                        "value": "98070e8d-085b-400f-8292-1ad7e57ac611",
+                        "type": "text",
+                        "description": "Dynamic API Key"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Token <YOUR_AUTH_TOKEN>",
+                        "type": "text",
+                        "description": "Replace with login token"
+                    }
+                ],
+                "url": {
+                    "raw": "http://127.0.0.1:8000/web/api/",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "web",
+                        "api",
+                        ""
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"user_id\": 1\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            },
+            "response": [
+                {
+                    "name": "Success Example",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "98070e8d-085b-400f-8292-1ad7e57ac611",
+                                "type": "text",
+                                "description": "Dynamic API Key"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token <YOUR_AUTH_TOKEN>",
+                                "type": "text",
+                                "description": "Replace with login token"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/web/api/",
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "web",
+                                "api",
+                                ""
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"user_id\": 1\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [],
+                    "cookie": [],
+                    "body": "{\n    \"status_code\": 200,\n    \"message\": \"Success\",\n    \"data\": {}\n}"
+                }
+            ]
+        },
+        {
+            "name": "Get Level Members",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    },
+                    {
+                        "key": "x-api-key",
+                        "value": "407b5180-88b4-4896-9726-8fd1bdb9c7ba",
+                        "type": "text",
+                        "description": "Dynamic API Key"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Token <YOUR_AUTH_TOKEN>",
+                        "type": "text",
+                        "description": "Replace with login token"
+                    }
+                ],
+                "url": {
+                    "raw": "http://127.0.0.1:8000/web/api/",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "web",
+                        "api",
+                        ""
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"user_id\": 1\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            },
+            "response": [
+                {
+                    "name": "Success Example",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "407b5180-88b4-4896-9726-8fd1bdb9c7ba",
+                                "type": "text",
+                                "description": "Dynamic API Key"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token <YOUR_AUTH_TOKEN>",
+                                "type": "text",
+                                "description": "Replace with login token"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/web/api/",
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "web",
+                                "api",
+                                ""
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"user_id\": 1\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [],
+                    "cookie": [],
+                    "body": "{\n    \"status_code\": 200,\n    \"message\": \"Success\",\n    \"data\": {}\n}"
+                }
+            ]
+        },
+        {
+            "name": "Get MLM Dashboard",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    },
+                    {
+                        "key": "x-api-key",
+                        "value": "91b1f76e-f709-499f-9e78-831ec42581e5",
+                        "type": "text",
+                        "description": "Dynamic API Key"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Token <YOUR_AUTH_TOKEN>",
+                        "type": "text",
+                        "description": "Replace with login token"
+                    }
+                ],
+                "url": {
+                    "raw": "http://127.0.0.1:8000/web/api/",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "web",
+                        "api",
+                        ""
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            },
+            "response": [
+                {
+                    "name": "Success Example",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "91b1f76e-f709-499f-9e78-831ec42581e5",
+                                "type": "text",
+                                "description": "Dynamic API Key"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token <YOUR_AUTH_TOKEN>",
+                                "type": "text",
+                                "description": "Replace with login token"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/web/api/",
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "web",
+                                "api",
+                                ""
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [],
+                    "cookie": [],
+                    "body": "{\n    \"status_code\": 200,\n    \"data\": {\n        \"user_info\": {\n            \"username\": \"VEDAON_1234567\",\n            \"first_name\": \"John\"\n        },\n        \"overall_income\": {\n            \"total_credit\": 5000.0,\n            \"binary_income_sum\": 2000.0\n        },\n        \"team_stats\": {\n            \"total_left_count\": 10,\n            \"total_right_count\": 15\n        },\n        \"recent_orders\": []\n    }\n}"
+                }
+            ]
+        },
+        {
+            "name": "Get Pins",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    },
+                    {
+                        "key": "x-api-key",
+                        "value": "0f79aa17-e191-427a-92aa-d470ebc28e07",
+                        "type": "text",
+                        "description": "Dynamic API Key"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Token <YOUR_AUTH_TOKEN>",
+                        "type": "text",
+                        "description": "Replace with login token"
+                    }
+                ],
+                "url": {
+                    "raw": "http://127.0.0.1:8000/web/api/",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "web",
+                        "api",
+                        ""
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"status\": \"active\"\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            },
+            "response": [
+                {
+                    "name": "Success Example",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "0f79aa17-e191-427a-92aa-d470ebc28e07",
+                                "type": "text",
+                                "description": "Dynamic API Key"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token <YOUR_AUTH_TOKEN>",
+                                "type": "text",
+                                "description": "Replace with login token"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/web/api/",
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "web",
+                                "api",
+                                ""
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"status\": \"active\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [],
+                    "cookie": [],
+                    "body": "{\n    \"status_code\": 200,\n    \"message\": \"Success\",\n    \"data\": {}\n}"
+                }
+            ]
+        },
+        {
+            "name": "Get Profile",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    },
+                    {
+                        "key": "x-api-key",
+                        "value": "ac2fd023-ccf6-4545-8ba2-a66532c8b755",
+                        "type": "text",
+                        "description": "Dynamic API Key"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Token <YOUR_AUTH_TOKEN>",
+                        "type": "text",
+                        "description": "Replace with login token"
+                    }
+                ],
+                "url": {
+                    "raw": "http://127.0.0.1:8000/web/api/",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "web",
+                        "api",
+                        ""
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            },
+            "response": [
+                {
+                    "name": "Success Example",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "ac2fd023-ccf6-4545-8ba2-a66532c8b755",
+                                "type": "text",
+                                "description": "Dynamic API Key"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token <YOUR_AUTH_TOKEN>",
+                                "type": "text",
+                                "description": "Replace with login token"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/web/api/",
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "web",
+                                "api",
+                                ""
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [],
+                    "cookie": [],
+                    "body": "{\n    \"status_code\": 200,\n    \"message\": \"Success\",\n    \"data\": {}\n}"
+                }
+            ]
+        },
+        {
+            "name": "Get Tickets",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    },
+                    {
+                        "key": "x-api-key",
+                        "value": "ae1c7e65-668f-4f5b-bf5f-add7dc9fab1f",
+                        "type": "text",
+                        "description": "Dynamic API Key"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Token <YOUR_AUTH_TOKEN>",
+                        "type": "text",
+                        "description": "Replace with login token"
+                    }
+                ],
+                "url": {
+                    "raw": "http://127.0.0.1:8000/web/api/",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "web",
+                        "api",
+                        ""
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            },
+            "response": [
+                {
+                    "name": "Success Example",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "ae1c7e65-668f-4f5b-bf5f-add7dc9fab1f",
+                                "type": "text",
+                                "description": "Dynamic API Key"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token <YOUR_AUTH_TOKEN>",
+                                "type": "text",
+                                "description": "Replace with login token"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/web/api/",
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "web",
+                                "api",
+                                ""
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [],
+                    "cookie": [],
+                    "body": "{\n    \"status_code\": 200,\n    \"message\": \"Success\",\n    \"data\": {}\n}"
+                }
+            ]
+        },
+        {
+            "name": "Get Wallet",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    },
+                    {
+                        "key": "x-api-key",
+                        "value": "28b4526b-800e-4bce-b6f3-901d3cbf4c7c",
+                        "type": "text",
+                        "description": "Dynamic API Key"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Token <YOUR_AUTH_TOKEN>",
+                        "type": "text",
+                        "description": "Replace with login token"
+                    }
+                ],
+                "url": {
+                    "raw": "http://127.0.0.1:8000/web/api/",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "web",
+                        "api",
+                        ""
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            },
+            "response": [
+                {
+                    "name": "Success Example",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "28b4526b-800e-4bce-b6f3-901d3cbf4c7c",
+                                "type": "text",
+                                "description": "Dynamic API Key"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token <YOUR_AUTH_TOKEN>",
+                                "type": "text",
+                                "description": "Replace with login token"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/web/api/",
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "web",
+                                "api",
+                                ""
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [],
+                    "cookie": [],
+                    "body": "{\n    \"status_code\": 200,\n    \"message\": \"Success\",\n    \"data\": {}\n}"
+                }
+            ]
+        },
+        {
+            "name": "Home API",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    },
+                    {
+                        "key": "x-api-key",
+                        "value": "2d3b50a6-461b-47ac-9275-a1e2add90dda",
+                        "type": "text",
+                        "description": "Dynamic API Key"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Token <YOUR_AUTH_TOKEN>",
+                        "type": "text",
+                        "description": "Replace with login token"
+                    }
+                ],
+                "url": {
+                    "raw": "http://127.0.0.1:8000/web/api/",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "web",
+                        "api",
+                        ""
+                    ]
+                }
+            },
+            "response": [
+                {
+                    "name": "Success Example",
+                    "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "2d3b50a6-461b-47ac-9275-a1e2add90dda",
+                                "type": "text",
+                                "description": "Dynamic API Key"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token <YOUR_AUTH_TOKEN>",
+                                "type": "text",
+                                "description": "Replace with login token"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/web/api/",
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "web",
+                                "api",
+                                ""
+                            ]
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [],
+                    "cookie": [],
+                    "body": "{\n    \"status_code\": 200,\n    \"message\": \"Success\",\n    \"data\": {}\n}"
+                }
+            ]
+        },
+        {
+            "name": "Login User",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    },
+                    {
+                        "key": "x-api-key",
+                        "value": "b34f2ee3-2257-4700-9549-5c07b1980faa",
+                        "type": "text",
+                        "description": "Dynamic API Key"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Token <YOUR_AUTH_TOKEN>",
+                        "type": "text",
+                        "description": "Replace with login token"
+                    }
+                ],
+                "url": {
+                    "raw": "http://127.0.0.1:8000/web/api/",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "web",
+                        "api",
+                        ""
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"username\": \"VEDAON_1234567\",\n    \"password\": \"securepassword\"\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            },
+            "response": [
+                {
+                    "name": "Success Example",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "b34f2ee3-2257-4700-9549-5c07b1980faa",
+                                "type": "text",
+                                "description": "Dynamic API Key"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token <YOUR_AUTH_TOKEN>",
+                                "type": "text",
+                                "description": "Replace with login token"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/web/api/",
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "web",
+                                "api",
+                                ""
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"username\": \"VEDAON_1234567\",\n    \"password\": \"securepassword\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [],
+                    "cookie": [],
+                    "body": "{\n    \"status_code\": 200,\n    \"message\": \"Login successful\",\n    \"token\": \"fd9d9...\",\n    \"user_id\": 1,\n    \"username\": \"VEDAON_1234567\"\n}"
+                }
+            ]
+        },
+        {
+            "name": "Manage Address",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    },
+                    {
+                        "key": "x-api-key",
+                        "value": "262aa8f0-43c3-4d31-8c51-1e296731697d",
+                        "type": "text",
+                        "description": "Dynamic API Key"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Token <YOUR_AUTH_TOKEN>",
+                        "type": "text",
+                        "description": "Replace with login token"
+                    }
+                ],
+                "url": {
+                    "raw": "http://127.0.0.1:8000/web/api/",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "web",
+                        "api",
+                        ""
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"action\": \"add\",\n    \"address_line1\": \"123 Main St\",\n    \"city\": \"Metropolis\",\n    \"state\": \"NY\",\n    \"pincode\": \"10001\",\n    \"phone\": \"9876543210\"\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            },
+            "response": [
+                {
+                    "name": "Success Example",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "262aa8f0-43c3-4d31-8c51-1e296731697d",
+                                "type": "text",
+                                "description": "Dynamic API Key"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token <YOUR_AUTH_TOKEN>",
+                                "type": "text",
+                                "description": "Replace with login token"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/web/api/",
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "web",
+                                "api",
+                                ""
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"action\": \"add\",\n    \"address_line1\": \"123 Main St\",\n    \"city\": \"Metropolis\",\n    \"state\": \"NY\",\n    \"pincode\": \"10001\",\n    \"phone\": \"9876543210\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [],
+                    "cookie": [],
+                    "body": "{\n    \"status_code\": 200,\n    \"message\": \"Success\",\n    \"data\": {}\n}"
+                }
+            ]
+        },
+        {
+            "name": "Manage KYC",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    },
+                    {
+                        "key": "x-api-key",
+                        "value": "a3e25434-2102-492c-bfa5-6de37fad4bfe",
+                        "type": "text",
+                        "description": "Dynamic API Key"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Token <YOUR_AUTH_TOKEN>",
+                        "type": "text",
+                        "description": "Replace with login token"
+                    }
+                ],
+                "url": {
+                    "raw": "http://127.0.0.1:8000/web/api/",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "web",
+                        "api",
+                        ""
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"action\": \"create\",\n    \"name_on_card\": \"John Doe\",\n    \"aadhar_number\": \"1234-5678-9012\",\n    \"pan_number\": \"ABCDE1234F\"\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            },
+            "response": [
+                {
+                    "name": "Success Example",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "a3e25434-2102-492c-bfa5-6de37fad4bfe",
+                                "type": "text",
+                                "description": "Dynamic API Key"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token <YOUR_AUTH_TOKEN>",
+                                "type": "text",
+                                "description": "Replace with login token"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/web/api/",
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "web",
+                                "api",
+                                ""
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"action\": \"create\",\n    \"name_on_card\": \"John Doe\",\n    \"aadhar_number\": \"1234-5678-9012\",\n    \"pan_number\": \"ABCDE1234F\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [],
+                    "cookie": [],
+                    "body": "{\n    \"status_code\": 200,\n    \"message\": \"Success\",\n    \"data\": {}\n}"
+                }
+            ]
+        },
+        {
+            "name": "Redeem Coupon",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    },
+                    {
+                        "key": "x-api-key",
+                        "value": "f5888050-cbfe-4395-99dc-73d698b69e83",
+                        "type": "text",
+                        "description": "Dynamic API Key"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Token <YOUR_AUTH_TOKEN>",
+                        "type": "text",
+                        "description": "Replace with login token"
+                    }
+                ],
+                "url": {
+                    "raw": "http://127.0.0.1:8000/web/api/",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "web",
+                        "api",
+                        ""
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"coupon_id\": 1\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            },
+            "response": [
+                {
+                    "name": "Success Example",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "f5888050-cbfe-4395-99dc-73d698b69e83",
+                                "type": "text",
+                                "description": "Dynamic API Key"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token <YOUR_AUTH_TOKEN>",
+                                "type": "text",
+                                "description": "Replace with login token"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/web/api/",
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "web",
+                                "api",
+                                ""
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"coupon_id\": 1\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [],
+                    "cookie": [],
+                    "body": "{\n    \"status_code\": 200,\n    \"message\": \"Success\",\n    \"data\": {}\n}"
+                }
+            ]
+        },
+        {
+            "name": "Redeem Pin",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    },
+                    {
+                        "key": "x-api-key",
+                        "value": "a27393e6-713b-4eea-9388-3508130efd28",
+                        "type": "text",
+                        "description": "Dynamic API Key"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Token <YOUR_AUTH_TOKEN>",
+                        "type": "text",
+                        "description": "Replace with login token"
+                    }
+                ],
+                "url": {
+                    "raw": "http://127.0.0.1:8000/web/api/",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "web",
+                        "api",
+                        ""
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"pin_id\": 1,\n    \"username\": \"TargetUser\"\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            },
+            "response": [
+                {
+                    "name": "Success Example",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "a27393e6-713b-4eea-9388-3508130efd28",
+                                "type": "text",
+                                "description": "Dynamic API Key"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token <YOUR_AUTH_TOKEN>",
+                                "type": "text",
+                                "description": "Replace with login token"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/web/api/",
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "web",
+                                "api",
+                                ""
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"pin_id\": 1,\n    \"username\": \"TargetUser\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [],
+                    "cookie": [],
+                    "body": "{\n    \"status_code\": 200,\n    \"message\": \"Success\",\n    \"data\": {}\n}"
+                }
+            ]
+        },
+        {
+            "name": "Register User",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    },
+                    {
+                        "key": "x-api-key",
+                        "value": "7bb08c46-3b71-48d0-9b8c-a6c3ebf8952a",
+                        "type": "text",
+                        "description": "Dynamic API Key"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Token <YOUR_AUTH_TOKEN>",
+                        "type": "text",
+                        "description": "Replace with login token"
+                    }
+                ],
+                "url": {
+                    "raw": "http://127.0.0.1:8000/web/api/",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "web",
+                        "api",
+                        ""
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"name\": \"John Doe\",\n    \"mobile\": \"john@example.com\",\n    \"password\": \"securepassword\",\n    \"sponsor_id\": \"1\",\n    \"position\": \"L\"\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            },
+            "response": [
+                {
+                    "name": "Success Example",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "7bb08c46-3b71-48d0-9b8c-a6c3ebf8952a",
+                                "type": "text",
+                                "description": "Dynamic API Key"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token <YOUR_AUTH_TOKEN>",
+                                "type": "text",
+                                "description": "Replace with login token"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/web/api/",
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "web",
+                                "api",
+                                ""
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"John Doe\",\n    \"mobile\": \"john@example.com\",\n    \"password\": \"securepassword\",\n    \"sponsor_id\": \"1\",\n    \"position\": \"L\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [],
+                    "cookie": [],
+                    "body": "{\n    \"status_code\": 200,\n    \"message\": \"Success\",\n    \"data\": {}\n}"
+                }
+            ]
+        },
+        {
+            "name": "Remove from Cart",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    },
+                    {
+                        "key": "x-api-key",
+                        "value": "c4aafc65-96ba-4d67-8c9b-25dbd51c3a0d",
+                        "type": "text",
+                        "description": "Dynamic API Key"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Token <YOUR_AUTH_TOKEN>",
+                        "type": "text",
+                        "description": "Replace with login token"
+                    }
+                ],
+                "url": {
+                    "raw": "http://127.0.0.1:8000/web/api/",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "web",
+                        "api",
+                        ""
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"product_id\": 1\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            },
+            "response": [
+                {
+                    "name": "Success Example",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "c4aafc65-96ba-4d67-8c9b-25dbd51c3a0d",
+                                "type": "text",
+                                "description": "Dynamic API Key"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token <YOUR_AUTH_TOKEN>",
+                                "type": "text",
+                                "description": "Replace with login token"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/web/api/",
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "web",
+                                "api",
+                                ""
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"product_id\": 1\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [],
+                    "cookie": [],
+                    "body": "{\n    \"status_code\": 200,\n    \"message\": \"Success\",\n    \"data\": {}\n}"
+                }
+            ]
+        },
+        {
+            "name": "Request Pins",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    },
+                    {
+                        "key": "x-api-key",
+                        "value": "d4aa4852-eafb-427a-987b-5d1e458120cf",
+                        "type": "text",
+                        "description": "Dynamic API Key"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Token <YOUR_AUTH_TOKEN>",
+                        "type": "text",
+                        "description": "Replace with login token"
+                    }
+                ],
+                "url": {
+                    "raw": "http://127.0.0.1:8000/web/api/",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "web",
+                        "api",
+                        ""
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"number_of_pins\": 5\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            },
+            "response": [
+                {
+                    "name": "Success Example",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "d4aa4852-eafb-427a-987b-5d1e458120cf",
+                                "type": "text",
+                                "description": "Dynamic API Key"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token <YOUR_AUTH_TOKEN>",
+                                "type": "text",
+                                "description": "Replace with login token"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/web/api/",
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "web",
+                                "api",
+                                ""
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"number_of_pins\": 5\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [],
+                    "cookie": [],
+                    "body": "{\n    \"status_code\": 200,\n    \"message\": \"Success\",\n    \"data\": {}\n}"
+                }
+            ]
+        },
+        {
+            "name": "Request Withdrawal",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    },
+                    {
+                        "key": "x-api-key",
+                        "value": "75f353ea-ff5b-4bc0-bccb-4a032009cebd",
+                        "type": "text",
+                        "description": "Dynamic API Key"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Token <YOUR_AUTH_TOKEN>",
+                        "type": "text",
+                        "description": "Replace with login token"
+                    }
+                ],
+                "url": {
+                    "raw": "http://127.0.0.1:8000/web/api/",
+                    "protocol": "http",
+                    "host": [
+                        "127",
+                        "0",
+                        "0",
+                        "1"
+                    ],
+                    "port": "8000",
+                    "path": [
+                        "web",
+                        "api",
+                        ""
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"amount\": 1000.0\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            },
+            "response": [
+                {
+                    "name": "Success Example",
+                    "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json",
+                                "type": "text"
+                            },
+                            {
+                                "key": "x-api-key",
+                                "value": "75f353ea-ff5b-4bc0-bccb-4a032009cebd",
+                                "type": "text",
+                                "description": "Dynamic API Key"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Token <YOUR_AUTH_TOKEN>",
+                                "type": "text",
+                                "description": "Replace with login token"
+                            }
+                        ],
+                        "url": {
+                            "raw": "http://127.0.0.1:8000/web/api/",
+                            "protocol": "http",
+                            "host": [
+                                "127",
+                                "0",
+                                "0",
+                                "1"
+                            ],
+                            "port": "8000",
+                            "path": [
+                                "web",
+                                "api",
+                                ""
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"amount\": 1000.0\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "status": "OK",
+                    "code": 200,
+                    "_postman_previewlanguage": "json",
+                    "header": [],
+                    "cookie": [],
+                    "body": "{\n    \"status_code\": 200,\n    \"message\": \"Success\",\n    \"data\": {}\n}"
+                }
+            ]
+        }
+    ]
+}
