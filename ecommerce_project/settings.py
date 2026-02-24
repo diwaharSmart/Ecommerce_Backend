@@ -79,6 +79,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary_storage',
+    'cloudinary',
     'ecommerce_app',
     'rest_framework',
     'rest_framework.authtoken',
@@ -195,3 +197,12 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Cloudinary Configuration
+if 'CLOUDINARY_URL' in os.environ:
+    import cloudinary
+    import cloudinary_storage
+
+    # CLOUDINARY_STORAGE is picked up automatically from CLOUDINARY_URL by django-cloudinary-storage,
+    # but we need to set the default storage backend for media.
+    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
