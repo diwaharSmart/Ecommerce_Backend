@@ -1,6 +1,7 @@
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.db import transaction
+from decimal import Decimal
 from .models import Order, Profile, Wallet, Transaction, Pin, PinRequest
 
 @receiver(post_save, sender=Order)
@@ -34,9 +35,9 @@ def distribute_matching_level_income(source_profile, binary_payout_amount):
         if not current_sponsor or current_sponsor in processed_users:
             break
             
-        amount = float(binary_payout_amount) * percent
+        amount = Decimal(str(float(binary_payout_amount) * percent))
         
-        if amount > 0:
+        if amount > Decimal("0"):
             # Credit Wallet
             wallet, _ = Wallet.objects.get_or_create(user=current_sponsor.user)
             wallet.current_balance += amount
@@ -111,7 +112,7 @@ def process_binary_match(profile):
             profile.current_left_pv -= deduct_left
             profile.current_right_pv -= deduct_right
             # Payout: 100 matched PV (the weak side unit) * 5 Rs = 500 Rs
-            payout_amount = 500
+            payout_amount = Decimal("500.00")
             # Credit Wallet
             wallet, _ = Wallet.objects.get_or_create(user=profile.user)
             wallet.current_balance += payout_amount
