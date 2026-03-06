@@ -39,15 +39,15 @@ def distribute_matching_level_income(source_profile, binary_payout_amount):
         
         if amount > Decimal("0"):
             # Credit Wallet
-            wallet, _ = Wallet.objects.get_or_create(user=current_sponsor.user)
-            wallet.current_balance += amount
-            wallet.save()
+            # wallet, _ = Wallet.objects.get_or_create(user=current_sponsor.user)
+            # wallet.current_balance += amount
+            # wallet.save()
             
             # Create Transaction
             Transaction.objects.create(
                 user=current_sponsor.user,
                 amount=amount,
-                direction='debit',
+                direction='credit',
                 type='level_income', # Or 'matching_level_income' if prefer distinct type
                 description=f"Level {i+1} Matching Income from {source_profile.user.username}'s Binary Match"
             )
