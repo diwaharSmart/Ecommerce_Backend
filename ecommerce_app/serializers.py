@@ -108,10 +108,24 @@ class PayinRequestSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class WithdrawalRequestSerializer(serializers.ModelSerializer):
+    bank_details = serializers.SerializerMethodField()
+    
     class Meta:
         model = WithdrawalRequest
         fields = '__all__'
         read_only_fields = ['status', 'admin_remark']
+
+    def get_bank_details(self, obj):
+        try:
+            kyc = KYC.objects.get(user=obj.user)
+            return {
+                "bank_name": kyc.bank_name,
+                "bank_account_number": kyc.bank_account_number,
+                "ifsc_code": kyc.ifsc_code,
+                "account_holder_name": kyc.account_holder_name
+            }
+        except KYC.DoesNotExist:
+            return None
 
 class TransactionSerializer(serializers.ModelSerializer):
     class Meta:
@@ -172,7 +186,7 @@ class CartSerializer(serializers.ModelSerializer):
 class KYCSerializer(serializers.ModelSerializer):
     class Meta:
         model = KYC
-        # fields = '__all__'
+        fields = '__all__'
         read_only_fields = ['status', 'admin_remark']
         exclude = ['user']
 

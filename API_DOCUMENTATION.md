@@ -55,6 +55,20 @@ Most APIs require an Authentication Token.
 - **Key**: `cadcbdcb-77d3-4caa-bca0-02dce1b704da`
 - **Auth Required**: Yes
 - **Actions**: `create`, `edit`, `get`
+- **Payload (Create/Edit)**:
+  ```json
+  {
+      "api_key": "cadcbdcb-77d3-4caa-bca0-02dce1b704da",
+      "action": "create",
+      "name_on_card": "John Doe",
+      "aadhar_number": "123456789012",
+      "pan_number": "ABCDE1234F",
+      "bank_name": "State Bank of India",
+      "bank_account_number": "1234567890",
+      "ifsc_code": "SBIN0001234",
+      "account_holder_name": "John Doe"
+  }
+  ```
 
 ---
 

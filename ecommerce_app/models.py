@@ -223,8 +223,11 @@ def update_wallet_and_check_activation(sender, instance, created, **kwargs):
         wallet = instance.user.wallet
         
         # Logic to route funds to correct balance
-        if instance.type == 'top_up' and instance.direction == 'credit':
-             wallet.top_up_balance = float(wallet.top_up_balance) + float(instance.amount)
+        if instance.type == 'top_up':
+            if instance.direction == 'credit':
+                 wallet.top_up_balance = float(wallet.top_up_balance) + float(instance.amount)
+            else: # debit
+                 wallet.top_up_balance = float(wallet.top_up_balance) - float(instance.amount)
         elif instance.direction == 'credit':
             wallet.current_balance = float(wallet.current_balance) + float(instance.amount)
         elif instance.direction == 'debit':
@@ -243,55 +246,87 @@ def update_wallet_and_check_activation(sender, instance, created, **kwargs):
                 profile.save()
 
 @receiver(post_save, sender=WithdrawalRequest)
-def process_withdrawal_approval(sender, instance, created, **kwargs):
+def process_withdrawal_status_change(sender, instance, created, **kwargs):
     """
-    If WithdrawalRequest is approved:
-    1. Deduct full amount from Main Wallet via granular transactions.
-    2. Create Transactions for Net, TDS, and Top-Up.
+    Handles Wallet logic for WithdrawalRequests:
+    1. On Creation (pending): Deduct full amount from Main, Credit Top-Up Wallet.
+    2. On Rejection: Refund full amount to Main, Deduct from Top-Up Wallet.
     """
-    if instance.status == 'approved':
-        # Check if transaction exists to avoid duplicates
-        existing_txn = Transaction.objects.filter(related_withdrawal=instance).exists()
-        if not existing_txn:
-            # We do NOT manually update wallet here. We let the signals facilitate it
-            # by creating the appropriate transactions.
-            
-            amount = float(instance.amount)
-            tds = amount * 0.10
-            top_up = amount * 0.10
-            net_amount = amount - tds 
-            
-            # 1. Net Pay (Debit Main)
-            Transaction.objects.create(
-                user=instance.user,
-                amount=net_amount,
-                direction='debit',
-                type='withdrawal',
-                description=f"Withdrawal Approved (Net Pay)",
-                related_withdrawal=instance
-            )
-            
-            
-            
-            # 2. TDS (Debit Main)
-            Transaction.objects.create(
-                user=instance.user,
-                amount=tds,
-                direction='debit',
-                type='tds',
-                description=f"Withdrawal TDS Deduction",
-                related_withdrawal=instance
-            )
-            
-            # 3. Top-Up Credit (Credit Top-Up Wallet)
-            Transaction.objects.create(
-                user=instance.user,
-                amount=top_up,
-                direction='debit',
-                type='top_up',
-                description=f"Top-Up from Withdrawal",
-                related_withdrawal=instance
-            )
+    amount = Decimal(str(instance.amount))
+    tds = amount * Decimal("0.10")
+    top_up = amount * Decimal("0.10")
+    net_amount = amount - tds - top_up
+
+    if created:
+        # AT CREATION: Deduct everything immediately
+        # Net Pay Transaction
+        Transaction.objects.create(
+            user=instance.user,
+            amount=net_amount,
+            direction='debit',
+            type='withdrawal',
+            description=f"Withdrawal Request Created (Net Pay)",
+            related_withdrawal=instance
+        )
+        
+        # TDS Transaction
+        Transaction.objects.create(
+            user=instance.user,
+            amount=tds,
+            direction='debit',
+            type='tds',
+            description=f"Withdrawal TDS Deduction",
+            related_withdrawal=instance
+        )
+        
+        # Top-Up Debit (From Main)
+        Transaction.objects.create(
+            user=instance.user,
+            amount=top_up,
+            direction='debit',
+            type='withdrawal', # Debit from main
+            description=f"Withdrawal Top-Up Deduction",
+            related_withdrawal=instance
+        )
+
+        # Top-Up Credit (To Top-Up Wallet)
+        Transaction.objects.create(
+            user=instance.user,
+            amount=top_up,
+            direction='credit',
+            type='top_up', # Signal handles crediting top_up_balance
+            description=f"Top-Up from Withdrawal Request",
+            related_withdrawal=instance
+        )
+
+    elif instance.status == 'rejected':
+        # ON REJECTION: Refund everything
+        # Check if already refunded to avoid double refund
+        if Transaction.objects.filter(related_withdrawal=instance, description__icontains="Refund").exists():
+            return
+
+        # Refund Net + TDS + TopUp back to Main Wallet
+        Transaction.objects.create(
+            user=instance.user,
+            amount=amount, # Full 100% refund
+            direction='credit',
+            type='deposit',
+            description=f"Refund: Withdrawal Request Rejected (#{instance.id})",
+            related_withdrawal=instance
+        )
+
+        # Reverse the Top-Up Wallet credit (Debit from Top-Up Wallet)
+        Transaction.objects.create(
+            user=instance.user,
+            amount=top_up,
+            direction='debit',
+            type='top_up', # Custom logic in signal or dedicated debit?
+            # Note: Our signal `update_wallet_and_check_activation` handles `top_up` type.
+            # But let's ensure it handles DEBIT correctly for top-up.
+            description=f"Refund Reversal: Withdrawal Rejected Top-Up Deduction",
+            related_withdrawal=instance
+        )
+
 
 @receiver(post_save, sender=Order)
 def generate_coupons_on_order_paid(sender, instance, created, **kwargs):
@@ -378,7 +413,14 @@ class KYC(models.Model):
     aadhar_image = models.ImageField(upload_to='kyc/aadhar/', null=True, blank=True)
     pan_number = models.CharField(max_length=50)
     pan_image = models.ImageField(upload_to='kyc/pan/', null=True, blank=True)
-    passbook_image = models.ImageField(upload_to='kyc/passbooks/')
+    passbook_image = models.ImageField(upload_to='kyc/passbooks/', null=True, blank=True)
+    
+    # Bank Details
+    bank_name = models.CharField(max_length=255, blank=True)
+    bank_account_number = models.CharField(max_length=50, blank=True)
+    ifsc_code = models.CharField(max_length=50, blank=True)
+    account_holder_name = models.CharField(max_length=255, blank=True)
+    
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
     admin_remark = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
