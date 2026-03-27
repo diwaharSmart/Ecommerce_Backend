@@ -1,0 +1,338 @@
+1	1000.00	credit	deposit	Auto-deposit from Payin test1	2026-01-22 04:07:53.829+00	2	1	0.00	0.00	\N
+2	100000.00	credit	deposit	Auto-deposit from Payin testtt1	2026-01-23 06:47:36.535+00	3	1	0.00	0.00	\N
+4	-25000.00		purchase	Purchase of Order	2026-01-23 09:54:16.279+00	\N	1	0.00	0.00	\N
+5	3000.00	credit	deposit	Auto-deposit from Payin utrnumbet	2026-01-23 10:07:14.298+00	4	1	0.00	0.00	\N
+6	3000.00	credit	deposit	Auto-deposit from Payin 639215100286	2026-01-26 12:44:28.753+00	7	31	0.00	0.00	\N
+7	-3000.00		purchase	Purchase of Order	2026-01-26 12:47:17.443+00	\N	31	0.00	0.00	\N
+8	500.00	debit	withdrawal	Withdrawal Approved. Net: 400.0, TDS: 50.0, TopUp: 50.0	2026-01-27 06:56:40.259+00	\N	47	50.00	50.00	1
+9	100.00	debit	purchase		2026-01-27 06:56:40.278+00	\N	47	0.00	0.00	\N
+10	200.00	credit	binary_income		2026-01-27 06:56:40.298+00	\N	47	0.00	0.00	\N
+15	1000.00	credit	deposit	Initial Balance	2026-01-27 07:07:23.013+00	\N	50	0.00	0.00	\N
+16	400.00	debit	withdrawal	Withdrawal Approved (Net Pay)	2026-01-27 07:07:23.038+00	\N	50	0.00	0.00	3
+17	50.00	debit	tds	Withdrawal TDS Deduction	2026-01-27 07:07:23.048+00	\N	50	0.00	0.00	3
+18	50.00	debit	top_up	Withdrawal Top-Up Deduction	2026-01-27 07:07:23.057+00	\N	50	0.00	0.00	3
+19	50.00	credit	top_up	Top-Up from Withdrawal	2026-01-27 07:07:23.066+00	\N	50	0.00	0.00	3
+20	3000.00	deposit	pin_credit	Pin Redeemed by root (Code: 11450C0345)	2026-01-27 15:09:35.854+00	\N	1	0.00	0.00	\N
+21	3000.00	credit	deposit	Pin Redeemed by root (Code: 261DF3A873)	2026-01-29 05:17:05.782+00	\N	1	0.00	0.00	\N
+22	800.00	debit	withdrawal	Withdrawal Approved (Net Pay)	2026-01-29 05:44:34.173+00	\N	1	0.00	0.00	4
+23	200.00	debit	tds	Withdrawal TDS Deduction	2026-01-29 05:44:34.175+00	\N	1	0.00	0.00	4
+24	100.00	credit	top_up	Top-Up from Withdrawal	2026-01-29 05:44:34.176+00	\N	1	0.00	0.00	4
+25	-3000.00		purchase	Purchase of Order	2026-01-29 05:52:23.599+00	\N	1	0.00	0.00	\N
+26	900.00	debit	withdrawal	Withdrawal Approved (Net Pay)	2026-01-29 05:53:02.157+00	\N	1	0.00	0.00	5
+27	100.00	debit	tds	Withdrawal TDS Deduction	2026-01-29 05:53:02.158+00	\N	1	0.00	0.00	5
+28	100.00	debit	top_up	Top-Up from Withdrawal	2026-01-29 05:53:02.159+00	\N	1	0.00	0.00	5
+29	900.00	debit	withdrawal	Withdrawal Approved (Net Pay)	2026-01-29 06:00:06.619+00	\N	1	0.00	0.00	6
+30	100.00	debit	tds	Withdrawal TDS Deduction	2026-01-29 06:00:06.62+00	\N	1	0.00	0.00	6
+31	100.00	debit	top_up	Top-Up from Withdrawal	2026-01-29 06:00:06.621+00	\N	1	0.00	0.00	6
+32	3000.00	credit	deposit	Pin Redeemed by root (Code: 10BACA5A71)	2026-02-19 09:47:44.154+00	\N	121	0.00	0.00	\N
+33	3000.00	credit	deposit	Pin Redeemed by root (Code: 262F87C63D)	2026-02-19 09:48:06.274+00	\N	121	0.00	0.00	\N
+34	3000.00	credit	deposit	Pin Redeemed by root (Code: 31BDA36777)	2026-02-19 09:48:19.884+00	\N	121	0.00	0.00	\N
+35	3000.00	credit	deposit	Pin Redeemed by root (Code: 3E7C645D94)	2026-02-19 09:48:52.802+00	\N	121	0.00	0.00	\N
+36	-3000.00		purchase	Purchase of Order	2026-02-19 10:19:31.923+00	\N	121	0.00	0.00	\N
+37	3000.00	debit	pin_purchase	Pin Purchase	2026-02-19 10:51:34.586+00	\N	121	0.00	0.00	\N
+38	3000.00	debit	pin_purchase	Pin Purchase	2026-02-19 10:53:57.727+00	\N	121	0.00	0.00	\N
+39	3000.00	debit	pin_purchase	Pin Purchase	2026-02-19 10:53:57.75+00	\N	121	0.00	0.00	\N
+40	10000.00	credit	deposit	Auto-deposit from Payin 65241713	2026-02-19 10:56:04.692+00	14	121	0.00	0.00	\N
+41	3000.00	debit	pin_purchase	Pin Purchase	2026-02-19 11:01:14.17+00	\N	121	0.00	0.00	\N
+42	3000.00	debit	pin_purchase	Pin Purchase	2026-02-19 11:01:14.195+00	\N	121	0.00	0.00	\N
+43	3000.00	debit	pin_purchase	Pin Purchase	2026-02-19 11:01:14.214+00	\N	121	0.00	0.00	\N
+44	3000.00	credit	deposit	Pin Redeemed by VN3122841 (Code: E5C2AC5787)	2026-02-19 11:03:16.364+00	\N	122	0.00	0.00	\N
+45	-3000.00		purchase	Purchase of Order	2026-02-19 11:04:55.738+00	\N	122	0.00	0.00	\N
+46	3000.00	credit	deposit	Pin Redeemed by VN3122841 (Code: 72344E08B4)	2026-02-19 11:09:07.328+00	\N	123	0.00	0.00	\N
+47	-3000.00		purchase	Purchase of Order	2026-02-19 11:11:49.813+00	\N	123	0.00	0.00	\N
+48	3000.00	credit	deposit	Pin Redeemed by VN3122841 (Code: 72E024C34C)	2026-02-19 11:20:35.322+00	\N	124	0.00	0.00	\N
+49	-3000.00		purchase	Purchase of Order	2026-02-19 11:26:15.272+00	\N	124	0.00	0.00	\N
+50	500.00	deposit	binary_income	Binary match reward (Deducted L:100 R:200)	2026-02-19 11:26:15.346+00	\N	121	0.00	0.00	\N
+51	12000.00	credit	deposit	Auto-deposit from Payin 119050014484	2026-02-23 13:08:09.093+00	17	17	0.00	0.00	\N
+52	3000.00	debit	pin_purchase	Pin Purchase	2026-02-23 13:09:35.985+00	\N	17	0.00	0.00	\N
+53	3000.00	debit	pin_purchase	Pin Purchase	2026-02-23 13:09:36.019+00	\N	17	0.00	0.00	\N
+54	3000.00	debit	pin_purchase	Pin Purchase	2026-02-23 13:09:36.04+00	\N	17	0.00	0.00	\N
+55	3000.00	debit	pin_purchase	Pin Purchase	2026-02-23 13:09:36.058+00	\N	17	0.00	0.00	\N
+56	3000.00	credit	deposit	Pin Redeemed by root (Code: A321F88DA6)	2026-02-24 12:51:36.764594+00	\N	25	0.00	0.00	\N
+57	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 8	2026-02-24 12:51:36.857531+00	\N	25	0.00	0.00	\N
+58	3000.00	credit	deposit	Pin Redeemed by VN2813230 (Code: C239AA46AB)	2026-02-24 14:35:52.942324+00	\N	51	0.00	0.00	\N
+59	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 14	2026-02-24 14:35:53.025035+00	\N	51	0.00	0.00	\N
+60	3000.00	credit	deposit	Pin Redeemed by VN2813230 (Code: B724109E0E)	2026-02-24 14:36:25.254652+00	\N	101	0.00	0.00	\N
+61	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 14	2026-02-24 14:36:25.342589+00	\N	101	0.00	0.00	\N
+62	500.00	deposit	binary_income	Binary match reward (Deducted L:100 R:200)	2026-02-24 14:36:26.340352+00	\N	1	0.00	0.00	\N
+63	3000.00	credit	deposit	Pin Redeemed by VN2813230 (Code: E5ACDB5158)	2026-02-24 14:36:49.345087+00	\N	125	0.00	0.00	\N
+64	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 14	2026-02-24 14:36:49.434183+00	\N	125	0.00	0.00	\N
+65	3000.00	credit	deposit	Pin Redeemed by VN2813230 (Code: 181F9CA749)	2026-02-24 14:37:11.879999+00	\N	126	0.00	0.00	\N
+66	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 14	2026-02-24 14:37:11.972629+00	\N	126	0.00	0.00	\N
+67	3000.00	credit	deposit	Pin Redeemed by VN2813230 (Code: 874898F34F)	2026-02-24 16:31:45.794039+00	\N	28	0.00	0.00	\N
+68	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 8	2026-02-24 16:31:45.875878+00	\N	28	0.00	0.00	\N
+69	500.00	deposit	binary_income	Binary match reward (Deducted L:100 R:200)	2026-02-24 16:31:46.747961+00	\N	1	0.00	0.00	\N
+76	3000.00	credit	deposit	Pin Redeemed by VN2813230 (Code: 4026BC54BA)	2026-02-24 16:33:59.54531+00	\N	98	0.00	0.00	\N
+77	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 14	2026-02-24 16:33:59.636872+00	\N	98	0.00	0.00	\N
+84	3000.00	credit	deposit	Auto-deposit from Payin 119112558688	2026-02-25 04:47:45.606051+00	18	17	0.00	0.00	\N
+97	3000.00	credit	deposit	Pin Redeemed by root (Code: E00E7203F6)	2026-03-01 05:52:26.134326+00	\N	110	0.00	0.00	\N
+98	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 23	2026-03-01 05:52:26.224438+00	\N	110	0.00	0.00	\N
+99	3000.00	credit	deposit	Pin Redeemed by VN2813230 (Code: 71ABE39F74)	2026-03-04 05:17:07.078595+00	\N	42	0.00	0.00	\N
+100	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 23	2026-03-04 05:17:07.294417+00	\N	42	0.00	0.00	\N
+101	500.00	deposit	binary_income	Binary match reward (Deducted L:100 R:200)	2026-03-04 05:17:09.590976+00	\N	17	0.00	0.00	\N
+106	3000.00	credit	deposit	Pin Redeemed by VN2813230 (Code: 5C59E62442)	2026-03-04 05:18:02.169419+00	\N	43	0.00	0.00	\N
+107	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 25	2026-03-04 05:18:02.388191+00	\N	43	0.00	0.00	\N
+108	500.00	deposit	binary_income	Binary match reward (Deducted L:200 R:100)	2026-03-04 05:18:05.410028+00	\N	1	0.00	0.00	\N
+109	3000.00	credit	deposit	Pin Redeemed by VN2813230 (Code: F56863525F)	2026-03-04 05:20:26.13851+00	\N	106	0.00	0.00	\N
+110	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 23	2026-03-04 05:20:26.356996+00	\N	106	0.00	0.00	\N
+111	500.00	deposit	binary_income	Binary match reward (Deducted L:200 R:100)	2026-03-04 05:20:27.76867+00	\N	28	0.00	0.00	\N
+117	3000.00	credit	deposit	Pin Redeemed by VN2813230 (Code: C461B57E3F)	2026-03-04 07:18:14.304489+00	\N	108	0.00	0.00	\N
+118	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 25	2026-03-04 07:18:14.528687+00	\N	108	0.00	0.00	\N
+119	3000.00	debit	pin_purchase	Pin Purchase	2026-03-04 10:34:16.359578+00	\N	17	0.00	0.00	\N
+120	3000.00	debit	pin_purchase	Pin Purchase	2026-03-04 10:34:16.686186+00	\N	17	0.00	0.00	\N
+121	3000.00	debit	pin_purchase	Pin Purchase	2026-03-04 10:34:17.002275+00	\N	17	0.00	0.00	\N
+122	3000.00	debit	pin_purchase	Pin Purchase	2026-03-04 10:34:17.330133+00	\N	17	0.00	0.00	\N
+123	3000.00	credit	deposit	Pin Redeemed by VN2813230 (Code: DD163D009F)	2026-03-04 16:37:46.316857+00	\N	44	0.00	0.00	\N
+124	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 23	2026-03-04 16:37:46.541868+00	\N	44	0.00	0.00	\N
+125	3000.00	credit	deposit	Pin Redeemed by VN2813230 (Code: CED356AEFC)	2026-03-04 16:38:48.004522+00	\N	127	0.00	0.00	\N
+126	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 25	2026-03-04 16:38:48.221733+00	\N	127	0.00	0.00	\N
+127	500.00	deposit	binary_income	Binary match reward (Deducted L:100 R:200)	2026-03-04 16:38:49.989423+00	\N	28	0.00	0.00	\N
+103	200.00	credit	level_income	Level 2 Matching Income from VN2813230's Binary Match	2026-03-04 05:17:10.610765+00	\N	11	0.00	0.00	\N
+104	150.00	credit	level_income	Level 3 Matching Income from VN2813230's Binary Match	2026-03-04 05:17:11.112171+00	\N	10	0.00	0.00	\N
+105	50.00	credit	level_income	Level 4 Matching Income from VN2813230's Binary Match	2026-03-04 05:17:11.618387+00	\N	1	0.00	0.00	\N
+112	250.00	credit	level_income	Level 1 Matching Income from VN8171363's Binary Match	2026-03-04 05:20:28.588956+00	\N	27	0.00	0.00	\N
+113	200.00	credit	level_income	Level 2 Matching Income from VN8171363's Binary Match	2026-03-04 05:20:29.143841+00	\N	17	0.00	0.00	\N
+114	150.00	credit	level_income	Level 3 Matching Income from VN8171363's Binary Match	2026-03-04 05:20:29.707703+00	\N	12	0.00	0.00	\N
+115	50.00	credit	level_income	Level 4 Matching Income from VN8171363's Binary Match	2026-03-04 05:20:30.21988+00	\N	11	0.00	0.00	\N
+116	50.00	credit	level_income	Level 5 Matching Income from VN8171363's Binary Match	2026-03-04 05:20:30.732338+00	\N	10	0.00	0.00	\N
+133	75000.00	credit	deposit	Auto-deposit from Payin 768182526941	2026-03-04 21:27:52.89294+00	19	17	0.00	0.00	\N
+134	3000.00	credit	deposit	Pin Redeemed by VN2813230 (Code: AEF1E3AB76)	2026-03-05 01:23:36.54588+00	\N	133	0.00	0.00	\N
+135	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 53	2026-03-05 01:23:36.7682+00	\N	133	0.00	0.00	\N
+136	3000.00	credit	deposit	Pin Redeemed by VN2813230 (Code: 9A4FBAF839)	2026-03-05 01:28:36.532881+00	\N	45	0.00	0.00	\N
+137	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 53	2026-03-05 01:28:36.754257+00	\N	45	0.00	0.00	\N
+138	3000.00	debit	pin_purchase	Pin Purchase	2026-03-06 06:54:42.6263+00	\N	28	0.00	0.00	\N
+139	3000.00	credit	deposit	Pin Redeemed by VN8171363 (Code: BE20275819)	2026-03-06 06:55:46.932444+00	\N	134	0.00	0.00	\N
+140	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 23	2026-03-06 06:55:47.170017+00	\N	134	0.00	0.00	\N
+141	500.00	deposit	binary_income	Binary match reward (Deducted L:100 R:200)	2026-03-06 06:55:48.372496+00	\N	37	0.00	0.00	\N
+147	3000.00	credit	deposit	Auto-deposit from Payin 119582680598	2026-03-06 07:07:29.563411+00	20	28	0.00	0.00	\N
+102	250.00	credit	level_income	Level 1 Matching Income from VN2813230's Binary Match	2026-03-04 05:17:10.101531+00	\N	12	0.00	0.00	\N
+128	250.00	credit	level_income	Level 1 Matching Income from VN8171363's Binary Match	2026-03-04 16:38:50.490379+00	\N	27	0.00	0.00	\N
+129	200.00	credit	level_income	Level 2 Matching Income from VN8171363's Binary Match	2026-03-04 16:38:50.993789+00	\N	17	0.00	0.00	\N
+130	150.00	credit	level_income	Level 3 Matching Income from VN8171363's Binary Match	2026-03-04 16:38:51.502094+00	\N	12	0.00	0.00	\N
+131	50.00	credit	level_income	Level 4 Matching Income from VN8171363's Binary Match	2026-03-04 16:38:52.007732+00	\N	11	0.00	0.00	\N
+132	50.00	credit	level_income	Level 5 Matching Income from VN8171363's Binary Match	2026-03-04 16:38:52.555582+00	\N	10	0.00	0.00	\N
+142	250.00	credit	level_income	Level 1 Matching Income from VN1587075's Binary Match	2026-03-06 06:55:48.930412+00	\N	28	0.00	0.00	\N
+143	200.00	credit	level_income	Level 2 Matching Income from VN1587075's Binary Match	2026-03-06 06:55:49.581634+00	\N	27	0.00	0.00	\N
+144	150.00	credit	level_income	Level 3 Matching Income from VN1587075's Binary Match	2026-03-06 06:55:50.133055+00	\N	17	0.00	0.00	\N
+145	50.00	credit	level_income	Level 4 Matching Income from VN1587075's Binary Match	2026-03-06 06:55:50.685945+00	\N	12	0.00	0.00	\N
+146	50.00	credit	level_income	Level 5 Matching Income from VN1587075's Binary Match	2026-03-06 06:55:51.346468+00	\N	11	0.00	0.00	\N
+148	3000.00	debit	pin_purchase	Pin Purchase	2026-03-07 17:32:07.800761+00	\N	17	0.00	0.00	\N
+149	3000.00	credit	deposit	Pin Redeemed by VN2813230 (Code: 2BF2B496BE)	2026-03-07 17:33:22.592225+00	\N	135	0.00	0.00	\N
+150	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 53	2026-03-07 17:33:22.813543+00	\N	135	0.00	0.00	\N
+151	500.00	deposit	binary_income	Binary match reward (Deducted L:200 R:100)	2026-03-07 17:33:24.523455+00	\N	28	0.00	0.00	\N
+152	250.00	credit	level_income	Level 1 Matching Income from VN8171363's Binary Match	2026-03-07 17:33:24.891148+00	\N	27	0.00	0.00	\N
+153	200.00	credit	level_income	Level 2 Matching Income from VN8171363's Binary Match	2026-03-07 17:33:25.27161+00	\N	17	0.00	0.00	\N
+154	150.00	credit	level_income	Level 3 Matching Income from VN8171363's Binary Match	2026-03-07 17:33:25.650852+00	\N	12	0.00	0.00	\N
+155	50.00	credit	level_income	Level 4 Matching Income from VN8171363's Binary Match	2026-03-07 17:33:26.017761+00	\N	11	0.00	0.00	\N
+156	50.00	credit	level_income	Level 5 Matching Income from VN8171363's Binary Match	2026-03-07 17:33:26.387879+00	\N	10	0.00	0.00	\N
+157	3000.00	debit	pin_purchase	Pin Purchase	2026-03-08 12:45:00.324531+00	\N	17	0.00	0.00	\N
+158	3000.00	debit	pin_purchase	Pin Purchase	2026-03-08 12:45:00.641944+00	\N	17	0.00	0.00	\N
+159	3000.00	debit	pin_purchase	Pin Purchase	2026-03-08 12:45:00.958163+00	\N	17	0.00	0.00	\N
+160	3000.00	debit	pin_purchase	Pin Purchase	2026-03-08 12:45:01.272456+00	\N	17	0.00	0.00	\N
+161	3000.00	debit	pin_purchase	Pin Purchase	2026-03-08 12:45:01.575677+00	\N	17	0.00	0.00	\N
+162	3000.00	debit	pin_purchase	Pin Purchase	2026-03-08 12:45:01.882628+00	\N	17	0.00	0.00	\N
+163	3000.00	debit	pin_purchase	Pin Purchase	2026-03-08 12:45:02.202106+00	\N	17	0.00	0.00	\N
+164	3000.00	debit	pin_purchase	Pin Purchase	2026-03-08 12:45:02.505084+00	\N	17	0.00	0.00	\N
+165	3000.00	debit	pin_purchase	Pin Purchase	2026-03-08 12:45:02.809938+00	\N	17	0.00	0.00	\N
+166	3000.00	debit	pin_purchase	Pin Purchase	2026-03-08 12:45:03.111653+00	\N	17	0.00	0.00	\N
+167	3000.00	debit	pin_purchase	Pin Purchase	2026-03-08 12:45:03.418277+00	\N	17	0.00	0.00	\N
+168	3000.00	debit	pin_purchase	Pin Purchase	2026-03-08 12:45:03.724678+00	\N	17	0.00	0.00	\N
+169	3000.00	debit	pin_purchase	Pin Purchase	2026-03-08 12:45:04.028478+00	\N	17	0.00	0.00	\N
+170	3000.00	debit	pin_purchase	Pin Purchase	2026-03-08 12:45:04.331128+00	\N	17	0.00	0.00	\N
+171	3000.00	debit	pin_purchase	Pin Purchase	2026-03-08 12:45:04.634713+00	\N	17	0.00	0.00	\N
+172	3000.00	credit	deposit	Pin Redeemed by VN2813230 (Code: A92322FA73)	2026-03-08 12:47:38.43329+00	\N	65	0.00	0.00	\N
+173	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 53	2026-03-08 12:47:38.668695+00	\N	65	0.00	0.00	\N
+174	3000.00	credit	deposit	Pin Redeemed by VN2813230 (Code: C9076E0996)	2026-03-08 12:48:24.163153+00	\N	66	0.00	0.00	\N
+175	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 53	2026-03-08 12:48:24.406976+00	\N	66	0.00	0.00	\N
+176	500.00	deposit	binary_income	Binary match reward (Deducted L:100 R:200)	2026-03-08 12:48:26.323013+00	\N	17	0.00	0.00	\N
+177	250.00	credit	level_income	Level 1 Matching Income from VN2813230's Binary Match	2026-03-08 12:48:26.70788+00	\N	12	0.00	0.00	\N
+178	200.00	credit	level_income	Level 2 Matching Income from VN2813230's Binary Match	2026-03-08 12:48:27.090635+00	\N	11	0.00	0.00	\N
+179	150.00	credit	level_income	Level 3 Matching Income from VN2813230's Binary Match	2026-03-08 12:48:27.476984+00	\N	10	0.00	0.00	\N
+180	50.00	credit	level_income	Level 4 Matching Income from VN2813230's Binary Match	2026-03-08 12:48:27.856877+00	\N	1	0.00	0.00	\N
+181	3000.00	credit	deposit	Pin Redeemed by VN2813230 (Code: 9BD80FD662)	2026-03-08 12:49:01.762677+00	\N	67	0.00	0.00	\N
+182	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 23	2026-03-08 12:49:02.001182+00	\N	67	0.00	0.00	\N
+183	500.00	deposit	binary_income	Binary match reward (Deducted L:100 R:200)	2026-03-08 12:49:04.11391+00	\N	17	0.00	0.00	\N
+184	250.00	credit	level_income	Level 1 Matching Income from VN2813230's Binary Match	2026-03-08 12:49:04.504707+00	\N	12	0.00	0.00	\N
+185	200.00	credit	level_income	Level 2 Matching Income from VN2813230's Binary Match	2026-03-08 12:49:04.900454+00	\N	11	0.00	0.00	\N
+186	150.00	credit	level_income	Level 3 Matching Income from VN2813230's Binary Match	2026-03-08 12:49:05.289294+00	\N	10	0.00	0.00	\N
+187	50.00	credit	level_income	Level 4 Matching Income from VN2813230's Binary Match	2026-03-08 12:49:05.748892+00	\N	1	0.00	0.00	\N
+188	3000.00	credit	deposit	Pin Redeemed by VN2813230 (Code: 10C296DE79)	2026-03-08 12:49:46.102523+00	\N	72	0.00	0.00	\N
+189	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 53	2026-03-08 12:49:46.330265+00	\N	72	0.00	0.00	\N
+190	3000.00	credit	deposit	Pin Redeemed by VN2813230 (Code: 499EA00B27)	2026-03-08 12:50:20.623098+00	\N	82	0.00	0.00	\N
+191	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 53	2026-03-08 12:50:20.856348+00	\N	82	0.00	0.00	\N
+192	500.00	deposit	binary_income	Binary match reward (Deducted L:100 R:200)	2026-03-08 12:50:24.585385+00	\N	17	0.00	0.00	\N
+193	250.00	credit	level_income	Level 1 Matching Income from VN2813230's Binary Match	2026-03-08 12:50:24.961012+00	\N	12	0.00	0.00	\N
+194	200.00	credit	level_income	Level 2 Matching Income from VN2813230's Binary Match	2026-03-08 12:50:25.339123+00	\N	11	0.00	0.00	\N
+195	150.00	credit	level_income	Level 3 Matching Income from VN2813230's Binary Match	2026-03-08 12:50:25.719628+00	\N	10	0.00	0.00	\N
+196	50.00	credit	level_income	Level 4 Matching Income from VN2813230's Binary Match	2026-03-08 12:50:26.099865+00	\N	1	0.00	0.00	\N
+197	3000.00	credit	deposit	Pin Redeemed by VN2813230 (Code: FCF713B0FD)	2026-03-08 12:50:57.401144+00	\N	83	0.00	0.00	\N
+198	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 23	2026-03-08 12:50:57.64293+00	\N	83	0.00	0.00	\N
+199	500.00	deposit	binary_income	Binary match reward (Deducted L:100 R:200)	2026-03-08 12:51:01.587936+00	\N	17	0.00	0.00	\N
+200	250.00	credit	level_income	Level 1 Matching Income from VN2813230's Binary Match	2026-03-08 12:51:02.027959+00	\N	12	0.00	0.00	\N
+201	200.00	credit	level_income	Level 2 Matching Income from VN2813230's Binary Match	2026-03-08 12:51:02.430386+00	\N	11	0.00	0.00	\N
+202	150.00	credit	level_income	Level 3 Matching Income from VN2813230's Binary Match	2026-03-08 12:51:02.827239+00	\N	10	0.00	0.00	\N
+203	50.00	credit	level_income	Level 4 Matching Income from VN2813230's Binary Match	2026-03-08 12:51:03.219598+00	\N	1	0.00	0.00	\N
+204	3000.00	credit	deposit	Pin Redeemed by VN2813230 (Code: 2A97941AE1)	2026-03-08 12:51:42.496282+00	\N	86	0.00	0.00	\N
+205	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 53	2026-03-08 12:51:42.716844+00	\N	86	0.00	0.00	\N
+206	3000.00	credit	deposit	Pin Redeemed by VN2813230 (Code: 0ADB549709)	2026-03-08 12:52:15.292819+00	\N	87	0.00	0.00	\N
+207	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 53	2026-03-08 12:52:15.544809+00	\N	87	0.00	0.00	\N
+208	3000.00	credit	deposit	Pin Redeemed by VN2813230 (Code: F422F12CBB)	2026-03-08 12:52:55.122844+00	\N	88	0.00	0.00	\N
+209	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 23	2026-03-08 12:52:55.345272+00	\N	88	0.00	0.00	\N
+210	3000.00	credit	deposit	Pin Redeemed by VN2813230 (Code: 5F36D19382)	2026-03-08 12:53:46.442362+00	\N	92	0.00	0.00	\N
+211	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 53	2026-03-08 12:53:46.668899+00	\N	92	0.00	0.00	\N
+212	3000.00	credit	deposit	Pin Redeemed by VN2813230 (Code: A775488563)	2026-03-08 12:54:22.52895+00	\N	93	0.00	0.00	\N
+213	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 53	2026-03-08 12:54:22.749506+00	\N	93	0.00	0.00	\N
+214	3000.00	credit	deposit	Pin Redeemed by VN2813230 (Code: A9CBD9F37D)	2026-03-08 12:54:52.586473+00	\N	94	0.00	0.00	\N
+215	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 23	2026-03-08 12:54:52.813708+00	\N	94	0.00	0.00	\N
+216	3000.00	credit	deposit	Pin Redeemed by VN2813230 (Code: 0494B98A3B)	2026-03-08 12:55:40.672565+00	\N	95	0.00	0.00	\N
+217	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 25	2026-03-08 12:55:40.895761+00	\N	95	0.00	0.00	\N
+218	3000.00	credit	deposit	Pin Redeemed by VN2813230 (Code: 3ADCF69E82)	2026-03-08 12:56:13.143852+00	\N	96	0.00	0.00	\N
+219	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 23	2026-03-08 12:56:13.371524+00	\N	96	0.00	0.00	\N
+220	500.00	deposit	binary_income	Binary match reward (Deducted L:100 R:200)	2026-03-08 12:56:14.365832+00	\N	92	0.00	0.00	\N
+221	250.00	credit	level_income	Level 1 Matching Income from VN8492061's Binary Match	2026-03-08 12:56:14.754399+00	\N	65	0.00	0.00	\N
+222	200.00	credit	level_income	Level 2 Matching Income from VN8492061's Binary Match	2026-03-08 12:56:15.13198+00	\N	35	0.00	0.00	\N
+223	150.00	credit	level_income	Level 3 Matching Income from VN8492061's Binary Match	2026-03-08 12:56:15.510623+00	\N	34	0.00	0.00	\N
+224	50.00	credit	level_income	Level 4 Matching Income from VN8492061's Binary Match	2026-03-08 12:56:15.888656+00	\N	18	0.00	0.00	\N
+225	50.00	credit	level_income	Level 5 Matching Income from VN8492061's Binary Match	2026-03-08 12:56:16.267205+00	\N	12	0.00	0.00	\N
+226	3000.00	credit	deposit	Pin Redeemed by VN2813230 (Code: 63F4E8B6E3)	2026-03-08 12:56:57.258764+00	\N	89	0.00	0.00	\N
+227	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 53	2026-03-08 12:56:57.474103+00	\N	89	0.00	0.00	\N
+228	3000.00	credit	deposit	Auto-deposit from Payin 643209187781	2026-03-08 12:59:54.614798+00	21	17	0.00	0.00	\N
+229	3000.00	debit	pin_purchase	Pin Purchase	2026-03-09 09:04:52.175185+00	\N	17	0.00	0.00	\N
+230	3000.00	debit	pin_purchase	Pin Purchase	2026-03-09 09:04:52.469161+00	\N	17	0.00	0.00	\N
+231	3000.00	debit	pin_purchase	Pin Purchase	2026-03-09 09:04:52.762332+00	\N	17	0.00	0.00	\N
+232	3000.00	debit	pin_purchase	Pin Purchase	2026-03-09 09:04:53.057133+00	\N	17	0.00	0.00	\N
+233	3000.00	credit	deposit	Pin Redeemed by VN2813230 (Code: EA7D47CB21)	2026-03-09 09:05:33.381609+00	\N	143	0.00	0.00	\N
+234	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 53	2026-03-09 09:05:33.604954+00	\N	143	0.00	0.00	\N
+235	500.00	deposit	binary_income	Binary match reward (Deducted L:200 R:100)	2026-03-09 09:05:35.17241+00	\N	51	0.00	0.00	\N
+236	250.00	credit	level_income	Level 1 Matching Income from VN4814964's Binary Match	2026-03-09 09:05:35.54575+00	\N	18	0.00	0.00	\N
+237	200.00	credit	level_income	Level 2 Matching Income from VN4814964's Binary Match	2026-03-09 09:05:35.920908+00	\N	12	0.00	0.00	\N
+238	150.00	credit	level_income	Level 3 Matching Income from VN4814964's Binary Match	2026-03-09 09:05:36.295882+00	\N	11	0.00	0.00	\N
+239	50.00	credit	level_income	Level 4 Matching Income from VN4814964's Binary Match	2026-03-09 09:05:36.667227+00	\N	10	0.00	0.00	\N
+240	50.00	credit	level_income	Level 5 Matching Income from VN4814964's Binary Match	2026-03-09 09:05:37.062777+00	\N	1	0.00	0.00	\N
+241	3000.00	credit	deposit	Pin Redeemed by VN2813230 (Code: 208F5F6E0D)	2026-03-09 09:06:15.511383+00	\N	146	0.00	0.00	\N
+242	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 53	2026-03-09 09:06:15.735576+00	\N	146	0.00	0.00	\N
+243	3000.00	credit	deposit	Pin Redeemed by VN2813230 (Code: 23238799FB)	2026-03-09 09:06:52.002641+00	\N	149	0.00	0.00	\N
+244	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 53	2026-03-09 09:06:52.227897+00	\N	149	0.00	0.00	\N
+245	500.00	deposit	binary_income	Binary match reward (Deducted L:200 R:100)	2026-03-09 09:06:54.115928+00	\N	51	0.00	0.00	\N
+246	250.00	credit	level_income	Level 1 Matching Income from VN4814964's Binary Match	2026-03-09 09:06:54.498427+00	\N	18	0.00	0.00	\N
+247	200.00	credit	level_income	Level 2 Matching Income from VN4814964's Binary Match	2026-03-09 09:06:54.875241+00	\N	12	0.00	0.00	\N
+248	150.00	credit	level_income	Level 3 Matching Income from VN4814964's Binary Match	2026-03-09 09:06:55.255974+00	\N	11	0.00	0.00	\N
+249	50.00	credit	level_income	Level 4 Matching Income from VN4814964's Binary Match	2026-03-09 09:06:55.632561+00	\N	10	0.00	0.00	\N
+250	50.00	credit	level_income	Level 5 Matching Income from VN4814964's Binary Match	2026-03-09 09:06:56.006999+00	\N	1	0.00	0.00	\N
+251	3000.00	credit	deposit	Pin Redeemed by VN2813230 (Code: 4826F966F3)	2026-03-09 09:07:22.139674+00	\N	152	0.00	0.00	\N
+252	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 53	2026-03-09 09:07:22.362955+00	\N	152	0.00	0.00	\N
+253	3000.00	debit	pin_purchase	Pin Purchase	2026-03-10 16:56:30.978467+00	\N	17	0.00	0.00	\N
+254	3000.00	debit	pin_purchase	Pin Purchase	2026-03-10 16:56:31.386857+00	\N	17	0.00	0.00	\N
+255	3000.00	debit	pin_purchase	Pin Purchase	2026-03-10 16:56:31.725642+00	\N	17	0.00	0.00	\N
+256	3000.00	debit	pin_purchase	Pin Purchase	2026-03-10 16:56:32.065808+00	\N	17	0.00	0.00	\N
+257	3000.00	credit	deposit	Pin Redeemed by VN2813230 (Code: 675D76F69B)	2026-03-10 16:57:00.326592+00	\N	139	0.00	0.00	\N
+258	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 25	2026-03-10 16:57:00.566839+00	\N	139	0.00	0.00	\N
+259	500.00	deposit	binary_income	Binary match reward (Deducted L:200 R:100)	2026-03-10 16:57:03.894973+00	\N	17	0.00	0.00	\N
+260	250.00	credit	level_income	Level 1 Matching Income from VN2813230's Binary Match	2026-03-10 16:57:04.287564+00	\N	12	0.00	0.00	\N
+261	200.00	credit	level_income	Level 2 Matching Income from VN2813230's Binary Match	2026-03-10 16:57:04.679743+00	\N	11	0.00	0.00	\N
+262	150.00	credit	level_income	Level 3 Matching Income from VN2813230's Binary Match	2026-03-10 16:57:05.072235+00	\N	10	0.00	0.00	\N
+263	50.00	credit	level_income	Level 4 Matching Income from VN2813230's Binary Match	2026-03-10 16:57:05.507388+00	\N	1	0.00	0.00	\N
+264	3000.00	credit	deposit	Pin Redeemed by VN2813230 (Code: D24A94C747)	2026-03-10 16:57:26.914898+00	\N	140	0.00	0.00	\N
+265	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 25	2026-03-10 16:57:27.155352+00	\N	140	0.00	0.00	\N
+266	500.00	deposit	binary_income	Binary match reward (Deducted L:200 R:100)	2026-03-10 16:57:30.212589+00	\N	17	0.00	0.00	\N
+267	250.00	credit	level_income	Level 1 Matching Income from VN2813230's Binary Match	2026-03-10 16:57:30.61496+00	\N	12	0.00	0.00	\N
+268	200.00	credit	level_income	Level 2 Matching Income from VN2813230's Binary Match	2026-03-10 16:57:31.014962+00	\N	11	0.00	0.00	\N
+269	150.00	credit	level_income	Level 3 Matching Income from VN2813230's Binary Match	2026-03-10 16:57:31.422145+00	\N	10	0.00	0.00	\N
+270	50.00	credit	level_income	Level 4 Matching Income from VN2813230's Binary Match	2026-03-10 16:57:31.839899+00	\N	1	0.00	0.00	\N
+271	3000.00	credit	deposit	Pin Redeemed by VN2813230 (Code: FC2F997BFD)	2026-03-10 16:57:56.782582+00	\N	141	0.00	0.00	\N
+272	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 23	2026-03-10 16:57:57.174051+00	\N	141	0.00	0.00	\N
+273	500.00	deposit	binary_income	Binary match reward (Deducted L:200 R:100)	2026-03-10 16:57:58.373526+00	\N	42	0.00	0.00	\N
+274	250.00	credit	level_income	Level 1 Matching Income from VN8674093's Binary Match	2026-03-10 16:57:58.761409+00	\N	37	0.00	0.00	\N
+275	200.00	credit	level_income	Level 2 Matching Income from VN8674093's Binary Match	2026-03-10 16:57:59.246251+00	\N	28	0.00	0.00	\N
+276	150.00	credit	level_income	Level 3 Matching Income from VN8674093's Binary Match	2026-03-10 16:57:59.655267+00	\N	27	0.00	0.00	\N
+277	50.00	credit	level_income	Level 4 Matching Income from VN8674093's Binary Match	2026-03-10 16:58:00.044897+00	\N	17	0.00	0.00	\N
+278	50.00	credit	level_income	Level 5 Matching Income from VN8674093's Binary Match	2026-03-10 16:58:00.436147+00	\N	12	0.00	0.00	\N
+279	500.00	deposit	binary_income	Binary match reward (Deducted L:200 R:100)	2026-03-10 16:58:02.633325+00	\N	17	0.00	0.00	\N
+280	250.00	credit	level_income	Level 1 Matching Income from VN2813230's Binary Match	2026-03-10 16:58:03.12192+00	\N	12	0.00	0.00	\N
+281	200.00	credit	level_income	Level 2 Matching Income from VN2813230's Binary Match	2026-03-10 16:58:03.895163+00	\N	11	0.00	0.00	\N
+282	150.00	credit	level_income	Level 3 Matching Income from VN2813230's Binary Match	2026-03-10 16:58:04.284652+00	\N	10	0.00	0.00	\N
+283	50.00	credit	level_income	Level 4 Matching Income from VN2813230's Binary Match	2026-03-10 16:58:04.671915+00	\N	1	0.00	0.00	\N
+284	3000.00	credit	deposit	Pin Redeemed by VN2813230 (Code: CA83354A4C)	2026-03-10 16:58:26.237968+00	\N	142	0.00	0.00	\N
+285	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 23	2026-03-10 16:58:26.52967+00	\N	142	0.00	0.00	\N
+286	500.00	deposit	binary_income	Binary match reward (Deducted L:200 R:100)	2026-03-10 16:58:28.369583+00	\N	42	0.00	0.00	\N
+287	250.00	credit	level_income	Level 1 Matching Income from VN8674093's Binary Match	2026-03-10 16:58:28.763881+00	\N	37	0.00	0.00	\N
+288	200.00	credit	level_income	Level 2 Matching Income from VN8674093's Binary Match	2026-03-10 16:58:29.249069+00	\N	28	0.00	0.00	\N
+289	150.00	credit	level_income	Level 3 Matching Income from VN8674093's Binary Match	2026-03-10 16:58:29.66796+00	\N	27	0.00	0.00	\N
+290	50.00	credit	level_income	Level 4 Matching Income from VN8674093's Binary Match	2026-03-10 16:58:30.058138+00	\N	17	0.00	0.00	\N
+291	50.00	credit	level_income	Level 5 Matching Income from VN8674093's Binary Match	2026-03-10 16:58:30.451874+00	\N	12	0.00	0.00	\N
+292	500.00	deposit	binary_income	Binary match reward (Deducted L:200 R:100)	2026-03-10 16:58:32.659141+00	\N	17	0.00	0.00	\N
+293	250.00	credit	level_income	Level 1 Matching Income from VN2813230's Binary Match	2026-03-10 16:58:33.407693+00	\N	12	0.00	0.00	\N
+294	200.00	credit	level_income	Level 2 Matching Income from VN2813230's Binary Match	2026-03-10 16:58:33.888962+00	\N	11	0.00	0.00	\N
+295	150.00	credit	level_income	Level 3 Matching Income from VN2813230's Binary Match	2026-03-10 16:58:34.2798+00	\N	10	0.00	0.00	\N
+296	50.00	credit	level_income	Level 4 Matching Income from VN2813230's Binary Match	2026-03-10 16:58:34.686502+00	\N	1	0.00	0.00	\N
+297	12000.00	credit	deposit	Auto-deposit from Payin 643559141218	2026-03-11 04:52:08.118711+00	22	17	0.00	0.00	\N
+298	3000.00	debit	pin_purchase	Pin Purchase	2026-03-11 05:52:40.239712+00	\N	17	0.00	0.00	\N
+299	3000.00	debit	pin_purchase	Pin Purchase	2026-03-11 05:52:40.547505+00	\N	17	0.00	0.00	\N
+300	3000.00	debit	pin_purchase	Pin Purchase	2026-03-11 05:52:40.852507+00	\N	17	0.00	0.00	\N
+301	3000.00	debit	pin_purchase	Pin Purchase	2026-03-11 05:52:41.169029+00	\N	17	0.00	0.00	\N
+302	3000.00	credit	deposit	Pin Redeemed by VN2813230 (Code: AB3DBCE792)	2026-03-11 05:53:10.162531+00	\N	153	0.00	0.00	\N
+303	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 25	2026-03-11 05:53:10.393821+00	\N	153	0.00	0.00	\N
+304	500.00	deposit	binary_income	Binary match reward (Deducted L:200 R:100)	2026-03-11 05:53:11.888109+00	\N	125	0.00	0.00	\N
+305	250.00	credit	level_income	Level 1 Matching Income from VN6058514's Binary Match	2026-03-11 05:53:12.268453+00	\N	51	0.00	0.00	\N
+306	200.00	credit	level_income	Level 2 Matching Income from VN6058514's Binary Match	2026-03-11 05:53:12.654155+00	\N	18	0.00	0.00	\N
+307	150.00	credit	level_income	Level 3 Matching Income from VN6058514's Binary Match	2026-03-11 05:53:13.037594+00	\N	12	0.00	0.00	\N
+308	50.00	credit	level_income	Level 4 Matching Income from VN6058514's Binary Match	2026-03-11 05:53:13.421771+00	\N	11	0.00	0.00	\N
+309	50.00	credit	level_income	Level 5 Matching Income from VN6058514's Binary Match	2026-03-11 05:53:13.80228+00	\N	10	0.00	0.00	\N
+310	500.00	deposit	binary_income	Binary match reward (Deducted L:200 R:100)	2026-03-11 05:53:14.952084+00	\N	51	0.00	0.00	\N
+311	250.00	credit	level_income	Level 1 Matching Income from VN4814964's Binary Match	2026-03-11 05:53:15.334155+00	\N	18	0.00	0.00	\N
+312	200.00	credit	level_income	Level 2 Matching Income from VN4814964's Binary Match	2026-03-11 05:53:15.713947+00	\N	12	0.00	0.00	\N
+313	150.00	credit	level_income	Level 3 Matching Income from VN4814964's Binary Match	2026-03-11 05:53:16.094648+00	\N	11	0.00	0.00	\N
+314	50.00	credit	level_income	Level 4 Matching Income from VN4814964's Binary Match	2026-03-11 05:53:16.476184+00	\N	10	0.00	0.00	\N
+315	50.00	credit	level_income	Level 5 Matching Income from VN4814964's Binary Match	2026-03-11 05:53:16.857928+00	\N	1	0.00	0.00	\N
+316	3000.00	credit	deposit	Pin Redeemed by VN2813230 (Code: 1E59B1DA9A)	2026-03-11 05:54:37.716747+00	\N	151	0.00	0.00	\N
+317	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 23	2026-03-11 05:54:37.958064+00	\N	151	0.00	0.00	\N
+318	500.00	deposit	binary_income	Binary match reward (Deducted L:200 R:100)	2026-03-11 05:54:40.242722+00	\N	51	0.00	0.00	\N
+319	250.00	credit	level_income	Level 1 Matching Income from VN4814964's Binary Match	2026-03-11 05:54:40.675869+00	\N	18	0.00	0.00	\N
+320	200.00	credit	level_income	Level 2 Matching Income from VN4814964's Binary Match	2026-03-11 05:54:41.071511+00	\N	12	0.00	0.00	\N
+321	150.00	credit	level_income	Level 3 Matching Income from VN4814964's Binary Match	2026-03-11 05:54:41.487673+00	\N	11	0.00	0.00	\N
+322	50.00	credit	level_income	Level 4 Matching Income from VN4814964's Binary Match	2026-03-11 05:54:41.878628+00	\N	10	0.00	0.00	\N
+323	50.00	credit	level_income	Level 5 Matching Income from VN4814964's Binary Match	2026-03-11 05:54:42.270162+00	\N	1	0.00	0.00	\N
+324	3000.00	credit	deposit	Pin Redeemed by VN2813230 (Code: 1F730D7D16)	2026-03-11 05:55:17.697612+00	\N	150	0.00	0.00	\N
+325	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 25	2026-03-11 05:55:17.925457+00	\N	150	0.00	0.00	\N
+326	500.00	deposit	binary_income	Binary match reward (Deducted L:200 R:100)	2026-03-11 05:55:19.984299+00	\N	51	0.00	0.00	\N
+327	250.00	credit	level_income	Level 1 Matching Income from VN4814964's Binary Match	2026-03-11 05:55:20.366223+00	\N	18	0.00	0.00	\N
+328	200.00	credit	level_income	Level 2 Matching Income from VN4814964's Binary Match	2026-03-11 05:55:20.744439+00	\N	12	0.00	0.00	\N
+329	150.00	credit	level_income	Level 3 Matching Income from VN4814964's Binary Match	2026-03-11 05:55:21.131986+00	\N	11	0.00	0.00	\N
+330	50.00	credit	level_income	Level 4 Matching Income from VN4814964's Binary Match	2026-03-11 05:55:21.527958+00	\N	10	0.00	0.00	\N
+331	50.00	credit	level_income	Level 5 Matching Income from VN4814964's Binary Match	2026-03-11 05:55:21.909993+00	\N	1	0.00	0.00	\N
+332	3000.00	credit	deposit	Pin Redeemed by VN2813230 (Code: 843A49CAE7)	2026-03-11 05:57:17.30703+00	\N	147	0.00	0.00	\N
+333	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 23	2026-03-11 05:57:17.537378+00	\N	147	0.00	0.00	\N
+334	500.00	deposit	binary_income	Binary match reward (Deducted L:100 R:200)	2026-03-11 05:57:18.684125+00	\N	143	0.00	0.00	\N
+335	250.00	credit	level_income	Level 1 Matching Income from VN6770050's Binary Match	2026-03-11 05:57:19.064696+00	\N	125	0.00	0.00	\N
+336	200.00	credit	level_income	Level 2 Matching Income from VN6770050's Binary Match	2026-03-11 05:57:19.447355+00	\N	51	0.00	0.00	\N
+337	150.00	credit	level_income	Level 3 Matching Income from VN6770050's Binary Match	2026-03-11 05:57:19.829513+00	\N	18	0.00	0.00	\N
+338	50.00	credit	level_income	Level 4 Matching Income from VN6770050's Binary Match	2026-03-11 05:57:20.211958+00	\N	12	0.00	0.00	\N
+339	50.00	credit	level_income	Level 5 Matching Income from VN6770050's Binary Match	2026-03-11 05:57:20.61387+00	\N	11	0.00	0.00	\N
+340	3000.00	credit	deposit	Auto-deposit from Payin 607109929577	2026-03-12 09:58:16.637403+00	23	17	0.00	0.00	\N
+341	3000.00	debit	pin_purchase	Pin Purchase	2026-03-12 10:03:29.059244+00	\N	17	0.00	0.00	\N
+342	3000.00	credit	deposit	Pin Redeemed by VN2813230 (Code: 2E7860AE92)	2026-03-12 10:04:16.89609+00	\N	154	0.00	0.00	\N
+343	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 53	2026-03-12 10:04:17.151435+00	\N	154	0.00	0.00	\N
+344	3000.00	credit	deposit	Auto-deposit from Payin 608353897796	2026-03-24 17:11:47.274944+00	24	17	0.00	0.00	\N
+345	3000.00	debit	pin_purchase	Pin Purchase	2026-03-24 17:21:25.484557+00	\N	17	0.00	0.00	\N
+346	3000.00	credit	deposit	Pin Redeemed by VN2813230 (Code: 37EA8FDFA6)	2026-03-24 17:22:03.648168+00	\N	206	0.00	0.00	\N
+347	3000.00	debit	purchase	Order Checkout via Pin Redemption for Product ID: 23	2026-03-24 17:22:03.890052+00	\N	206	0.00	0.00	\N
+348	500.00	deposit	binary_income	Binary match reward for 1 pairs (Deducted L:100 R:200)	2026-03-24 17:22:05.246853+00	\N	29	0.00	0.00	\N
+349	250.00	credit	level_income	Level 1 Matching Income from VN9059431's Binary Match	2026-03-24 17:22:05.639321+00	\N	27	0.00	0.00	\N
+350	100.00	credit	level_income	Level 2 Matching Income from VN9059431's Binary Match	2026-03-24 17:22:06.146985+00	\N	17	0.00	0.00	\N
+351	50.00	credit	level_income	Level 3 Matching Income from VN9059431's Binary Match	2026-03-24 17:22:06.582142+00	\N	12	0.00	0.00	\N
+352	50.00	credit	level_income	Level 4 Matching Income from VN9059431's Binary Match	2026-03-24 17:22:06.975204+00	\N	11	0.00	0.00	\N
+353	50.00	credit	level_income	Level 5 Matching Income from VN9059431's Binary Match	2026-03-24 17:22:07.371283+00	\N	10	0.00	0.00	\N
+354	500.00	deposit	binary_income	Binary match reward for 1 pairs (Deducted L:200 R:100)	2026-03-24 17:22:08.079963+00	\N	28	0.00	0.00	\N
+355	250.00	credit	level_income	Level 1 Matching Income from VN8171363's Binary Match	2026-03-24 17:22:08.472793+00	\N	27	0.00	0.00	\N
+356	100.00	credit	level_income	Level 2 Matching Income from VN8171363's Binary Match	2026-03-24 17:22:08.897745+00	\N	17	0.00	0.00	\N
+357	50.00	credit	level_income	Level 3 Matching Income from VN8171363's Binary Match	2026-03-24 17:22:09.348961+00	\N	12	0.00	0.00	\N
+358	50.00	credit	level_income	Level 4 Matching Income from VN8171363's Binary Match	2026-03-24 17:22:09.742649+00	\N	11	0.00	0.00	\N
+359	50.00	credit	level_income	Level 5 Matching Income from VN8171363's Binary Match	2026-03-24 17:22:10.139358+00	\N	10	0.00	0.00	\N
+360	500.00	deposit	binary_income	Binary match reward for 1 pairs (Deducted L:200 R:100)	2026-03-24 17:22:11.495669+00	\N	17	0.00	0.00	\N
+361	250.00	credit	level_income	Level 1 Matching Income from VN2813230's Binary Match	2026-03-24 17:22:11.891643+00	\N	12	0.00	0.00	\N
+362	100.00	credit	level_income	Level 2 Matching Income from VN2813230's Binary Match	2026-03-24 17:22:12.289956+00	\N	11	0.00	0.00	\N
+363	50.00	credit	level_income	Level 3 Matching Income from VN2813230's Binary Match	2026-03-24 17:22:12.683097+00	\N	10	0.00	0.00	\N
+364	50.00	credit	level_income	Level 4 Matching Income from VN2813230's Binary Match	2026-03-24 17:22:13.079563+00	\N	1	0.00	0.00	\N
+\.
+
+

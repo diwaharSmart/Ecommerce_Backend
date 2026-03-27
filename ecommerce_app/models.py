@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.utils.text import slugify
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from decimal import Decimal
 
 # --- Ecommerce Models ---
 class Category(models.Model):
@@ -141,7 +142,10 @@ class WithdrawalRequest(models.Model):
         ('rejected', 'Rejected'),
     )
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='withdrawal_requests')
-    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    amount = models.DecimalField(max_digits=10, decimal_places=2) # Net Amount (80%)
+    total_amount = models.DecimalField(max_digits=10, decimal_places=2, default=0.00) # Gross Amount (100%)
+    tds_amount = models.DecimalField(max_digits=10, decimal_places=2, default=0.00) # 10% TDS
+    top_up_amount = models.DecimalField(max_digits=10, decimal_places=2, default=0.00) # 10% TopUp
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
     admin_remark = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -242,9 +246,6 @@ def update_wallet_and_check_activation(sender, instance, created, **kwargs):
                 profile.is_active = True
                 profile.save()
 
-                profile.is_active = True
-                profile.save()
-
 @receiver(post_save, sender=WithdrawalRequest)
 def process_withdrawal_status_change(sender, instance, created, **kwargs):
     """
@@ -252,10 +253,10 @@ def process_withdrawal_status_change(sender, instance, created, **kwargs):
     1. On Creation (pending): Deduct full amount from Main, Credit Top-Up Wallet.
     2. On Rejection: Refund full amount to Main, Deduct from Top-Up Wallet.
     """
-    amount = Decimal(str(instance.amount))
-    tds = amount * Decimal("0.10")
-    top_up = amount * Decimal("0.10")
-    net_amount = amount - tds - top_up
+    net_amount = instance.amount
+    total_gross = instance.total_amount
+    tds = instance.tds_amount
+    top_up = instance.top_up_amount
 
     if created:
         # AT CREATION: Deduct everything immediately
@@ -308,7 +309,7 @@ def process_withdrawal_status_change(sender, instance, created, **kwargs):
         # Refund Net + TDS + TopUp back to Main Wallet
         Transaction.objects.create(
             user=instance.user,
-            amount=amount, # Full 100% refund
+            amount=total_gross, # Full 100% refund
             direction='credit',
             type='deposit',
             description=f"Refund: Withdrawal Request Rejected (#{instance.id})",
@@ -320,9 +321,7 @@ def process_withdrawal_status_change(sender, instance, created, **kwargs):
             user=instance.user,
             amount=top_up,
             direction='debit',
-            type='top_up', # Custom logic in signal or dedicated debit?
-            # Note: Our signal `update_wallet_and_check_activation` handles `top_up` type.
-            # But let's ensure it handles DEBIT correctly for top-up.
+            type='top_up', 
             description=f"Refund Reversal: Withdrawal Rejected Top-Up Deduction",
             related_withdrawal=instance
         )

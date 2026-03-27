@@ -1,0 +1,37 @@
+1	admin	logentry
+2	auth	group
+3	auth	permission
+4	auth	user
+5	contenttypes	contenttype
+6	sessions	session
+7	ecommerce_app	banner
+8	ecommerce_app	cart
+9	ecommerce_app	cartitem
+10	ecommerce_app	category
+11	ecommerce_app	coupon
+12	ecommerce_app	kyc
+13	ecommerce_app	order
+14	ecommerce_app	orderitem
+15	ecommerce_app	payinrequest
+16	ecommerce_app	pin
+17	ecommerce_app	pinrequest
+18	ecommerce_app	product
+19	ecommerce_app	profile
+20	ecommerce_app	supportticket
+21	ecommerce_app	transaction
+22	ecommerce_app	useraddress
+23	ecommerce_app	wallet
+24	ecommerce_app	withdrawalrequest
+25	authtoken	token
+26	authtoken	tokenproxy
+27	website	api
+28	website	cascadestyle
+29	website	file
+30	website	javascript
+31	website	jsonserializer
+32	website	page
+33	website	website
+34	website	widget
+\.
+
+

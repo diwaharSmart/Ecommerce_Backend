@@ -1,0 +1,597 @@
+[
+{
+    "model": "ecommerce_app.product",
+    "pk": 18,
+    "fields": {
+        "category": 7,
+        "name": "Manali- Family package",
+        "slug": "manali-family-package",
+        "image": "media/products/Untitled_design_zfted5",
+        "description": "Travel Package: MANALI FAMILY PACKAGE\r\nPrice: ₹ 12999.00 \r\nDuration: 03N / 04 Days Completely in Manali\r\nINCLUSIONS 📌\r\n* 📌 Delhi - Manali - Delhi Volvo Bus 2 Tickets\r\n* 📌 3 Night Accommodation in hotel\r\n* 📌 Double Sharing Basis Accommodation in Hotel (Deluxe Room in Use, Non AC Room)\r\n* 📌 All Days Breakfast and Dinner\r\n* 📌 Pick up and Drop from Manali Volvo Bus Stand to Hotel\r\n* 📌 One Day Sightseeing of Local Manali by Private Car\r\n* 📌 One Full Day Sightseeing of Solang Valley by Private Car\r\n* 📌 One Full Day Sightseeing of Kullu - Nagar Castle by Private Car\r\n* 📌 All taxes included\r\nEXCLUSIONS\r\n* ❌ Up & down traveling Charges to Delhi\r\n* ❌ Lunch Food\r\n* ❌ Entry Charges\r\nEXTRAS\r\n* 🔳 Room Heater\r\n* 🔳 Game Activities\r\n* 🔳 Entry Fee in sightseeing places\r\n* 🔳 Kesar Milk, Cake for Honeymoon Night\r\n* 🔳 Rotang Pass\r\n* 🔳 Sissu Valley\r\n* 🔳 Extra Day Sightseeing\r\n* 🔳 Shopping Costs\r\nITINERARY\r\nDAY 01: DELHI - MANALI (570 KMS)\r\nCatch the Volvo bus from Delhi to Manali in the evening (5:00 P.M) to proceed Overnight journey towards Manali in the Volvo bus.\r\nDAY 02: MANALI ARRIVAL (LOCAL MANALI)\r\nArrive Manali in the morning, check in the hotel and after having some rest proceed to local Manali Sightseeing:\r\n* 📍 Hadimba Devi Temple\r\n* 📍 Manu Temple Van Vihar\r\n* 📍 Club House\r\n* 📍 Shiva Temple\r\n* 📍 Tibetan Monasteries\r\n* 📍 Evening free to visit Mall Road\r\n* 📍 Dinner\r\n* 📍 Overnight stay at the hotel\r\nDAY 03: SOLANG VALLEY\r\nMorning after breakfast proceed to full day sightseeing:\r\n* 📍 Solang Valley\r\n* 📍 Dinner\r\n* 📍 Overnight stay at hotel\r\nDAY 04: KULLU-NAGGAR\r\nMorning after breakfast, Full day sightseeing:\r\n* 📍 Kullu Valley\r\n* 📍 Naggar Castle Sightseeing\r\n* 📍 Parvati River\r\n* 📍 Vaishno Devi Temple\r\nDAY 05: MANALI TO DELHI\r\nMorning after Breakfast, Check out form the hotel. And the rest of the day at leisure in the evening catch the volvo bus from Manali to Delhi overnight Journey in the bus.",
+        "price": "12999.00",
+        "pv": 10,
+        "stock": 0,
+        "available": true,
+        "created_at": "2026-02-27T18:31:54.912Z",
+        "updated_at": "2026-02-28T06:04:03.597Z"
+    }
+},
+{
+    "model": "ecommerce_app.product",
+    "pk": 19,
+    "fields": {
+        "category": 7,
+        "name": "Goa Family Package",
+        "slug": "goa-family-package",
+        "image": "media/products/Untitled_design_grrfiz",
+        "description": "GOA FAMILY TOUR PACKAGES \r\n₹ 11,999.00 \r\n🔥 A COMPLETE GOA TOUR @ Rs. 6999/- per person 🔥\r\nExplore Goa in 2Nights/3Days... 🤩🥳\r\n(Note : To Customize package For extra Days reach us Directly) 🤝\r\nINCLUSIONS 👍\r\n❣️ One way Train Fare 🚄\r\n❣️ *Railway station Pickup and drop *\r\n❣️ 2 Nights Stay in Resort 🏠\r\n🔸 AC ROOM WITH SWIMMING POOL\r\n🔸 BALCONY + BAR/ RESTAURANT\r\n🔸 Resort is nearby Baga Beach\r\n(Check-in 12pm, check out 10am)\r\n❣️ Breakfast, and Dinner for all the days in Goa 🥣\r\n🔸 One time Non-Veg a day (Limited)\r\n❣️ 2 Days North & South Goa Sightseeing\r\n🔸 one day north goa\r\n🔸 one dy South goa\r\n❣️ Local Tamil Co-ordinator Assistance 😊\r\nEXCLUSIONS 👎\r\n✖️ Entries for Pubs & other Activities\r\n✖️ RETURN TRAIN FARE",
+        "price": "11999.00",
+        "pv": 10,
+        "stock": 0,
+        "available": true,
+        "created_at": "2026-02-27T18:39:29.043Z",
+        "updated_at": "2026-02-28T06:27:46.113Z"
+    }
+},
+{
+    "model": "ecommerce_app.product",
+    "pk": 20,
+    "fields": {
+        "category": 7,
+        "name": "Coorg- Packages",
+        "slug": "coorg-packages",
+        "image": "media/products/Untitled_design_owv9qh",
+        "description": "INCLUSIONS:\r\n* Comfortable stay in 3* category hotel accommodation\r\n* 2N stay in Coorg Deluxe Room (Check-in: 2:00 PM)\r\n* Double sharing basis room – 1 Nos\r\n* Breakfast & Dinner (4 times)\r\n* Pickup and drop from Mysore Railway Station\r\n* 3 days private cab for sightseeing\r\n* 24x7 Tamil speaking coordinator assistance\r\nEXCLUSIONS:\r\n* 1st Breakfast on Day 01 & Last Day Dinner\r\n* Laundry services\r\n* Trekking\r\n* All entrance fees – Off road jeep rides – Adventure sports – Rides – Boating, Camp fire charges excluded\r\n* Game activities\r\n* Extra day sightseeing\r\n* Shopping costs\r\n* GST 5%\r\nDETAILED TOUR ITINERARY:\r\nDAY 01: MYSURU TO COORG\r\n* Check in & Freshup\r\n* Golden Temple\r\n* Nisarga Dhama\r\n* Dubare Forest\r\n* Harangi Dam\r\n* Dubare Forest Elephant Camp\r\n* Dinner\r\n* Overnight Stay\r\nDAY 02: ABBEY FALLS\r\n* Breakfast\r\n* Thalakaveri\r\n* Bhagamandala\r\n* Abbey Falls\r\n* Raja's Seat\r\n* Dinner\r\n* Overnight Stay\r\nDAY 03: CHECK OUT & MYSURU\r\n* Breakfast\r\n* Mysore Palace\r\n* Zoo\r\n* Chamundi Temple\r\n* Drop",
+        "price": "25800.00",
+        "pv": 10,
+        "stock": 0,
+        "available": true,
+        "created_at": "2026-02-27T18:50:14.589Z",
+        "updated_at": "2026-02-28T06:16:35.911Z"
+    }
+},
+{
+    "model": "ecommerce_app.product",
+    "pk": 21,
+    "fields": {
+        "category": 7,
+        "name": "Grand Kerala Tour Package",
+        "slug": "grand-kerala-tour-package",
+        "image": "media/products/Untitled_design_ujphap",
+        "description": "₹29,999/\r\nPer Person\r\n6 Days / 5 Nights\r\nMax People : 2\r\nKerala\r\nKerala, with its lush landscapes, tranquil backwaters, and vibrant culture, is a dream destination. From the hill stations of Munnar to the serene backwaters of Alleppey, this tour takes you through the best of what Kerala has to offer. Whether you’re sipping tea in Munnar, cruising the backwaters, or soaking in the coastal vibes of Varkala, this 6-day trip is a perfect blend of nature, culture, and relaxation!\r\n\r\nIncluded and Excluded\r\nUp & Down Train Tickets (Non-AC Sleeper) From Your Hometown To Kochi 🚆\r\nPickup From Ernakulam Railway Station To Munnar By Private Cab 🚗\r\n2 Nights Accommodation In Munnar With Balcony View 🌄 (1 Room)\r\n2 Days Breakfast & Dinner In Munnar 🍽️\r\nKochi And Mattupetti Direction Tour 🏞️\r\nMunnar To Thekkady Travel By Private AC Cab 🚙\r\n1 Night Accommodation In Thekkady 🏨\r\nBreakfast & Dinner In Thekkady 🍽️\r\nEnroute Sightseeing From Munnar To Thekkady 🌳\r\nThekkady To Varkala Travel By Private AC Cab 🚗\r\n1 Night AC Accommodation In Varkala 🏖️ With Breakfast\r\nVisit Jatayu Earth Center In Varkala 🦅\r\nVarkala To Alleppey Sightseeing By Private AC Cab 🚙\r\n1 Night Hygienic Sanitized AC Houseboat Stay (Deluxe Single Bed Room With Upper Deck) 🚤\r\nLunch, Dinner & Breakfast On The Houseboat (Kari Meen Fry Available) 🍤\r\nTea, Coffee & Snacks Provided During Houseboat Stay ☕🍪\r\nDrop From Boat House To Alleppey Railway Station By Auto 🛺\r\nDriver Charges, Parking Charges Included 🅿️\r\n24/7 Customer Support Available 📞\r\nPersonal Expenses\r\nEntry Fees To Some Attractions\r\nAdditional Meals & Drinks\r\nHighlights of the Tour\r\nScenic Beauty: Explore The Lush Hills Of Munnar, The Wildlife Of Thekkady, And The Beaches Of Varkala.\r\nHouseboat Bliss: Experience The Serene Backwaters Of Kerala In A Deluxe Houseboat.\r\nDelicious Kerala Cuisine: Relish Local Dishes Like Kari Meen Fry, And Enjoy Authentic Meals At Every Stop.\r\nComfortable Travel: Private AC Cabs And A Relaxing Train Journey Ensure A Comfortable Trip Throughout.\r\nWildlife & Cultur",
+        "price": "29999.00",
+        "pv": 10,
+        "stock": 0,
+        "available": true,
+        "created_at": "2026-02-27T19:02:46.556Z",
+        "updated_at": "2026-02-28T06:00:05.364Z"
+    }
+},
+{
+    "model": "ecommerce_app.product",
+    "pk": 22,
+    "fields": {
+        "category": 6,
+        "name": "Navam Nutri Pro",
+        "slug": "navam-nutri-pro",
+        "image": "media/products/proo_11zon_siqmn1",
+        "description": "Navam Nutri Pro: Traditional Women’s Health Drink\r\nElevate your daily wellness with Navam Nutri Pro, a premium plant-based protein powder crafted specifically for women. Combining the ancient wisdom of sprouted and fried grains, this 500g powerhouse features 22 natural ingredients, including Ragi, Kodo Millet, and Red Rice, enriched with Almonds, Cashews, and Pistachios.\r\nDesigned for a balanced and natural lifestyle, it serves as a nutrient-dense porridge that supports bone health and sustained energy. Simply whisk two tablespoons into milk or water, boil for two minutes, and enjoy. Pure, traditional, and free from artificial fillers—it’s India’s premium choice for holistic nutrition.",
+        "price": "2000.00",
+        "pv": 400,
+        "stock": 0,
+        "available": true,
+        "created_at": "2026-02-27T19:07:11.429Z",
+        "updated_at": "2026-02-27T19:07:11.429Z"
+    }
+},
+{
+    "model": "ecommerce_app.product",
+    "pk": 23,
+    "fields": {
+        "category": 6,
+        "name": "Sea Buckthorn Juice",
+        "slug": "sea-buckthorn-juice",
+        "image": "media/products/buck_mkfsrd",
+        "description": "Vedaon Natural Sea Buckthorn Juice is a potent, nutrient-dense wellness elixir crafted from pure Himalayan berries. Often called the \"Holy Fruit,\" this juice is a rare plant-based source of Omega-3, 6, 9, and the elusive Omega-7, which supports skin regeneration and digestive health.  \r\nRich in Vitamin C, flavonoids, and antioxidants, it serves as a powerful immunity booster and natural energy enhancer. Its tart, citrusy profile reflects its raw, minimally processed nature, ensuring no artificial colors or flavors. Regular consumption aids in detoxifying the body, improving cardiovascular health, and maintaining a radiant complexion.  \r\nKey Benefits\r\n* Heart Health: High Omega-7 content helps maintain healthy cholesterol levels.  \r\n* Skin Vitality: Promotes collagen production and hydration.  \r\n* Immune Support: Packed with more Vitamin C than oranges.",
+        "price": "3000.00",
+        "pv": 100,
+        "stock": 0,
+        "available": true,
+        "created_at": "2026-02-27T19:26:01.759Z",
+        "updated_at": "2026-02-27T21:03:47.323Z"
+    }
+},
+{
+    "model": "ecommerce_app.product",
+    "pk": 24,
+    "fields": {
+        "category": 6,
+        "name": "Utro Free",
+        "slug": "utro-free",
+        "image": "media/products/utro_free_1_ghgj2d",
+        "description": "UTRO FREE 100% Natural Bamboo Pads are designed for the strong, fearless woman who prioritizes both health and the environment. Crafted from ultra-soft bamboo fiber, these pads provide a breathable, rash-free experience with superior absorption and advanced odor control technology.\r\nCompletely free from plastics and harsh chemicals, our 100% biodegradable pads offer a sustainable alternative that is safe for your skin and the soil. By choosing UTRO FREE, you embrace a premium, eco-conscious lifestyle without compromising on comfort. Make a small change for a big impact. Feel Pure. Feel Free.",
+        "price": "600.00",
+        "pv": 120,
+        "stock": 0,
+        "available": true,
+        "created_at": "2026-02-27T19:40:32.472Z",
+        "updated_at": "2026-02-27T19:40:32.472Z"
+    }
+},
+{
+    "model": "ecommerce_app.product",
+    "pk": 25,
+    "fields": {
+        "category": 6,
+        "name": "Acaiberry-Juice",
+        "slug": "acaiberry-juice",
+        "image": "media/products/acai_eeky4y",
+        "description": "Vedaon Natural Acai Berry Juice is a potent wellness supplement derived from premium, sustainably sourced Amazonian berries. Renowned for its exceptionally high antioxidant content, this juice is formulated to neutralize free radicals, supporting cellular health and immune resilience. Rich in essential Omega-3, 6, and 9 fatty acids, it promotes cardiovascular health and enhances skin vitality from within.\r\nThis natural elixir also aids metabolic function, providing a sustained energy boost without synthetic additives or artificial sugars. Its clean, earthy flavor profile makes it a perfect daily addition for those seeking holistic vitality. Experience pure, plant-based nutrition designed to revitalize your body and mind.",
+        "price": "3000.00",
+        "pv": 100,
+        "stock": 0,
+        "available": true,
+        "created_at": "2026-02-27T19:44:42.177Z",
+        "updated_at": "2026-02-27T21:04:17.227Z"
+    }
+},
+{
+    "model": "ecommerce_app.product",
+    "pk": 26,
+    "fields": {
+        "category": 6,
+        "name": "Vedaon-Pure Alovera Gel",
+        "slug": "vedaon-pure-alovera-gel",
+        "image": "media/products/allo_zmb378",
+        "description": "This VEDAON Premium Pure Aloe Vera Gel is presented as a versatile, all-natural beauty solution housed in a clear, textured glass jar with a sophisticated deep-green and gold label. Marketed as \"Nature’s Elixir,\" the product is designed for multi-purpose use on the face, body, and hair.\r\nThe formula emphasizes purity, specifically highlighting that it is alcohol and paraben-free, making it a gentle choice for sensitive skin. The gel’s crystal-clear consistency suggests a lightweight, non-greasy texture intended to hydrate and soothe. Surrounded by fresh aloe leaves and delicate white flora, the packaging reflects an eco-conscious, botanical aesthetic rooted in wellness.",
+        "price": "160.00",
+        "pv": 32,
+        "stock": 0,
+        "available": true,
+        "created_at": "2026-02-27T19:50:38.190Z",
+        "updated_at": "2026-02-27T19:50:38.190Z"
+    }
+},
+{
+    "model": "ecommerce_app.product",
+    "pk": 27,
+    "fields": {
+        "category": 6,
+        "name": "Vedaon - Nirvaa",
+        "slug": "vedaon-nirvaa",
+        "image": "media/products/char_1_dybys2",
+        "description": "Elevate your daily ritual with Vedaon Nirvaa’s Activated Charcoal Soap, a masterpiece of handcrafted skincare. Encased in elegant, gold-embellished packaging, this 100% natural and organic soap is designed for those who seek a deep, detoxifying cleanse without compromising on luxury.\r\nInfused with premium organic activated charcoal, coconut oil, and olive oil, the gentle formula draws out impurities and excess oils while nourishing the skin. Its rich, velvety lather leaves your complexion feeling purified, refreshed, and balanced. Experience the \"luxury of nature\" with a chemical-free, sustainable bar that prioritizes both your skin’s health and the planet’s well-being.",
+        "price": "240.00",
+        "pv": 48,
+        "stock": 0,
+        "available": true,
+        "created_at": "2026-02-27T19:55:16.858Z",
+        "updated_at": "2026-02-27T19:55:16.858Z"
+    }
+},
+{
+    "model": "ecommerce_app.product",
+    "pk": 28,
+    "fields": {
+        "category": 6,
+        "name": "Velvet Bean Honey",
+        "slug": "velvet-bean-honey",
+        "image": "media/products/hoo_1_ljkquz",
+        "description": "This premium Velvet Bean Honey by Vedaon is a sophisticated wellness blend, presented in a classic square glass jar with an elegant gold-toned lid. The rich, dark amber hue of the honey suggests a deep, robust flavor profile derived from high-quality nectar.\r\nAs a \"mixed product,\" it combines the natural sweetness of honey with the nutritional powerhouse of velvet bean (Mucuna pruriens). The label highlights its functional benefits, specifically designed to support vitality, muscle energy, and cognitive function. It’s an ideal choice for those seeking a natural supplement that promotes overall well-being with a touch of luxury.",
+        "price": "3000.00",
+        "pv": 100,
+        "stock": 0,
+        "available": true,
+        "created_at": "2026-02-27T20:02:23.792Z",
+        "updated_at": "2026-02-27T21:05:17.059Z"
+    }
+},
+{
+    "model": "ecommerce_app.product",
+    "pk": 29,
+    "fields": {
+        "category": 6,
+        "name": "Diabetic Care",
+        "slug": "diabetic-care",
+        "image": "media/products/die_1_a7bl2b",
+        "description": "This Vedaon Diabetic Care Advanced Formula is a specialized dietary supplement designed to support metabolic health and blood sugar management. Encased in a professional white bottle with a clean, navy blue label, the product highlights three primary health goals: maintaining healthy blood sugar levels, supporting insulin sensitivity, and providing anti-inflammatory support.\r\nThe branding features the Vedaon logo and an illustrative graphic of a glucose monitor, emphasizing its targeted use for those monitoring their glycemic index. As an \"Advanced Formula,\" it likely blends traditional herbal ingredients with modern nutritional science to promote holistic wellness. This supplement serves as a convenient addition to a balanced diet and active lifestyle for individuals seeking proactive support for their metabolic well-being and long-term vitality",
+        "price": "1000.00",
+        "pv": 33,
+        "stock": 0,
+        "available": true,
+        "created_at": "2026-02-27T20:16:38.039Z",
+        "updated_at": "2026-02-27T21:08:04.252Z"
+    }
+},
+{
+    "model": "ecommerce_app.product",
+    "pk": 30,
+    "fields": {
+        "category": 6,
+        "name": "Curcumin Capsule",
+        "slug": "curcumin-capsule",
+        "image": "media/products/cuur_2_okcrx3",
+        "description": "This high-quality supplement bottle features Curcumin Pure Extract Capsules, presented in a sleek, matte black container with a sophisticated gold-toned cap. The deep blue label is elegantly designed with gold accents, highlighting its \"100% Natural Herbameral Extracts\" and a 60-capsule count.\r\nTo emphasize its botanical origins, the bottle is staged alongside fresh, sliced turmeric roots and a vibrant mound of golden turmeric powder, all resting on a polished wooden surface. The moody, dark green gradient background creates a premium, apothecary-style aesthetic that communicates purity and wellness. This concentrated formula is designed to deliver the potent antioxidant and anti-inflammatory benefits of turmeric in a convenient, professional-grade format, making it an essential addition to any modern health regimen.",
+        "price": "1000.00",
+        "pv": 33,
+        "stock": 0,
+        "available": true,
+        "created_at": "2026-02-27T20:31:07.443Z",
+        "updated_at": "2026-02-27T21:06:58.856Z"
+    }
+},
+{
+    "model": "ecommerce_app.product",
+    "pk": 32,
+    "fields": {
+        "category": 12,
+        "name": "Meera-Anti Dandruff Shampoo",
+        "slug": "meera",
+        "image": "media/products/Untitled_design_qxbl1y",
+        "description": "Meera Anti-Dandruff Shampoo combines herbal ingredients to gently cleanse the scalp and reduce dandruff. It controls flakes, soothes irritation, and strengthens hair roots. Regular use keeps hair fresh, soft, and healthy, giving long-lasting cleanliness and a naturally refreshed feeling daily.",
+        "price": "674.00",
+        "pv": 1,
+        "stock": 0,
+        "available": true,
+        "created_at": "2026-02-28T06:53:39.358Z",
+        "updated_at": "2026-03-01T05:52:25.571Z"
+    }
+},
+{
+    "model": "ecommerce_app.product",
+    "pk": 33,
+    "fields": {
+        "category": 12,
+        "name": "Meera -Kunkudukai & Badam Shampoo",
+        "slug": "meera-kunkudukai-badam-shampoo",
+        "image": "media/products/Untitled_design_oqwo6o",
+        "description": "Meera Kunkudukai and Badam Shampoo blends traditional soapnut cleansing with nourishing almond goodness. It gently removes dirt, strengthens hair, adds shine, reduces dryness, and leaves hair soft, smooth, and refreshed.",
+        "price": "705.00",
+        "pv": 1,
+        "stock": 0,
+        "available": true,
+        "created_at": "2026-02-28T07:03:21.818Z",
+        "updated_at": "2026-03-01T05:55:53.565Z"
+    }
+},
+{
+    "model": "ecommerce_app.product",
+    "pk": 34,
+    "fields": {
+        "category": 12,
+        "name": "Yippee-4 in one Pack",
+        "slug": "yippee-4-in-one-pack",
+        "image": "media/products/Untitled_design_esvev0",
+        "description": "Yippee 4-in-One Pack offers delicious instant noodles in multiple tasty flavors, perfect for quick meals and sharing. Easy to cook and full of flavor, it’s a convenient choice for anytime hunger cravings.",
+        "price": "81.00",
+        "pv": 1,
+        "stock": 0,
+        "available": true,
+        "created_at": "2026-02-28T07:07:54.116Z",
+        "updated_at": "2026-03-01T05:57:53.668Z"
+    }
+},
+{
+    "model": "ecommerce_app.product",
+    "pk": 35,
+    "fields": {
+        "category": 12,
+        "name": "Vatika -Health Shampoo",
+        "slug": "vatika-health-shampoo",
+        "image": "media/products/Untitled_design_xl1gay",
+        "description": "Vatika Shampoo nourishes hair with natural herbal extracts, helping reduce dryness, strengthen roots, and improve shine. Its gentle formula cleanses effectively, leaving hair soft, manageable, and refreshed after each wash.",
+        "price": "337.00",
+        "pv": 1,
+        "stock": 0,
+        "available": true,
+        "created_at": "2026-02-28T07:10:10.133Z",
+        "updated_at": "2026-03-01T06:42:43.293Z"
+    }
+},
+{
+    "model": "ecommerce_app.product",
+    "pk": 36,
+    "fields": {
+        "category": 12,
+        "name": "Vicco- Vajradanti Paste",
+        "slug": "vicco-vajradanti-paste",
+        "image": "media/products/Untitled_design_fss3ms",
+        "description": "Vicco Vajradanti Toothpaste is an Ayurvedic formula enriched with herbal ingredients that help strengthen gums, reduce tooth problems, control bad breath, and support overall oral health with a natural clean.",
+        "price": "50.00",
+        "pv": 1,
+        "stock": 0,
+        "available": true,
+        "created_at": "2026-02-28T07:12:38.742Z",
+        "updated_at": "2026-03-01T06:41:34.634Z"
+    }
+},
+{
+    "model": "ecommerce_app.product",
+    "pk": 37,
+    "fields": {
+        "category": 12,
+        "name": "Vim-Liquid",
+        "slug": "vim-liquid",
+        "image": "media/products/Untitled_design_cz562y",
+        "description": "Vim Liquid Dishwash effectively removes tough grease and stains with a powerful lemon formula. It cleans utensils quickly, leaves no residue, and provides long-lasting freshness while being gentle on hands.",
+        "price": "55.00",
+        "pv": 1,
+        "stock": 0,
+        "available": true,
+        "created_at": "2026-02-28T08:02:47.516Z",
+        "updated_at": "2026-03-01T06:39:52.109Z"
+    }
+},
+{
+    "model": "ecommerce_app.product",
+    "pk": 38,
+    "fields": {
+        "category": 12,
+        "name": "Vim - Bar",
+        "slug": "vim-bar",
+        "image": "media/products/Untitled_design_lcpksy",
+        "description": "Vim Bar is a powerful dishwashing soap that removes stubborn grease and food stains easily. Its active formula delivers sparkling clean utensils, long-lasting freshness, and effective cleaning with every wash.",
+        "price": "10.00",
+        "pv": 1,
+        "stock": 0,
+        "available": true,
+        "created_at": "2026-02-28T08:04:49.416Z",
+        "updated_at": "2026-03-01T06:38:56.852Z"
+    }
+},
+{
+    "model": "ecommerce_app.product",
+    "pk": 39,
+    "fields": {
+        "category": 12,
+        "name": "Sensodyne-Tooth paste",
+        "slug": "sensodyne-tooth-paste",
+        "image": "media/products/Untitled_design_vapev4",
+        "description": "Sensodyne Toothpaste is specially formulated for sensitive teeth, providing lasting protection against sensitivity pain while strengthening enamel, promoting gum health, and delivering gentle yet effective cleaning for oral care comfort.",
+        "price": "220.00",
+        "pv": 1,
+        "stock": 0,
+        "available": true,
+        "created_at": "2026-02-28T08:06:33.766Z",
+        "updated_at": "2026-03-01T06:35:17.604Z"
+    }
+},
+{
+    "model": "ecommerce_app.product",
+    "pk": 40,
+    "fields": {
+        "category": 12,
+        "name": "Surf Excel Matic",
+        "slug": "surf-excel-matic",
+        "image": "media/products/surf__birw54",
+        "description": "Surf Excel Matic detergent is specially designed for washing machines, removing tough stains while protecting fabric color and softness. Its powerful formula ensures deep cleaning, freshness, and performance per wash.",
+        "price": "209.00",
+        "pv": 1,
+        "stock": 0,
+        "available": true,
+        "created_at": "2026-02-28T08:09:11.696Z",
+        "updated_at": "2026-02-28T08:09:11.696Z"
+    }
+},
+{
+    "model": "ecommerce_app.product",
+    "pk": 41,
+    "fields": {
+        "category": 12,
+        "name": "Vcare-Herbal Hair Dye",
+        "slug": "vcare-herbal-hair-dye",
+        "image": "media/products/Untitled_design_az6cin",
+        "description": "V Care Herbal Hair Dye offers natural-looking color enriched with herbal ingredients. It covers grey hair effectively, nourishes strands, reduces damage, and leaves hair soft, shiny, with long-lasting results finish.",
+        "price": "79.00",
+        "pv": 1,
+        "stock": 0,
+        "available": true,
+        "created_at": "2026-02-28T08:11:12.599Z",
+        "updated_at": "2026-03-01T06:22:13.270Z"
+    }
+},
+{
+    "model": "ecommerce_app.product",
+    "pk": 42,
+    "fields": {
+        "category": 12,
+        "name": "Sree Nandhini Sambrani Cup",
+        "slug": "sree-nandhini-sambrani-cup",
+        "image": "media/products/Untitled_design_e8ytpt",
+        "description": "Sree Nandhini Samburani Cup releases a soothing traditional fragrance that purifies surroundings, creates a calm spiritual atmosphere, and helps freshen homes and prayer spaces with long-lasting aromatic smoke naturally daily.",
+        "price": "72.00",
+        "pv": 1,
+        "stock": 0,
+        "available": true,
+        "created_at": "2026-02-28T08:14:10.171Z",
+        "updated_at": "2026-03-01T06:25:49.317Z"
+    }
+},
+{
+    "model": "ecommerce_app.product",
+    "pk": 43,
+    "fields": {
+        "category": 12,
+        "name": "Navratna - Ayurvedic Oil",
+        "slug": "navratna-ayurvedic-oil",
+        "image": "media/products/Untitled_design_s0t8ld",
+        "description": "Navratna Ayurvedic Oil is a cooling herbal hair oil enriched with natural ingredients that relax the mind, reduce stress, nourish scalp, strengthen roots, and promote healthy, shiny hair with aroma.",
+        "price": "177.00",
+        "pv": 1,
+        "stock": 0,
+        "available": true,
+        "created_at": "2026-02-28T08:18:32.953Z",
+        "updated_at": "2026-03-01T06:17:00.553Z"
+    }
+},
+{
+    "model": "ecommerce_app.product",
+    "pk": 44,
+    "fields": {
+        "category": 12,
+        "name": "Mysore Sandal  Soap -75g",
+        "slug": "mysore-sandal-soap-75g",
+        "image": "media/products/my_jthf23",
+        "description": "Mysore Sandal Soap is a premium bathing bar enriched with pure sandalwood oil, gently cleansing skin while nourishing and moisturizing. It leaves a refreshing fragrance, texture, and a natural glow.",
+        "price": "38.00",
+        "pv": 1,
+        "stock": 0,
+        "available": true,
+        "created_at": "2026-02-28T08:51:37.470Z",
+        "updated_at": "2026-02-28T08:51:37.470Z"
+    }
+},
+{
+    "model": "ecommerce_app.product",
+    "pk": 45,
+    "fields": {
+        "category": 12,
+        "name": "Medimix  Sandal Soap",
+        "slug": "medimix-sandal-soap",
+        "image": "media/products/med_f38sft",
+        "description": "Medimix Sandal Soap blends Ayurvedic herbs with soothing sandalwood to gently cleanse, nourish, and protect skin. It helps maintain freshness, improves texture, and leaves a calming fragrance for healthy-looking skin.",
+        "price": "33.00",
+        "pv": 1,
+        "stock": 0,
+        "available": true,
+        "created_at": "2026-02-28T08:54:56.832Z",
+        "updated_at": "2026-02-28T08:54:56.832Z"
+    }
+},
+{
+    "model": "ecommerce_app.product",
+    "pk": 46,
+    "fields": {
+        "category": 12,
+        "name": "Margo-Soap",
+        "slug": "margo-soap",
+        "image": "media/products/Untitled_design_q1vvkd",
+        "description": "Margo Soap is enriched with natural neem extracts that help fight germs, control acne, and keep skin fresh. It gently cleanses, protects from impurities, and promotes healthy, clear skin daily.",
+        "price": "32.00",
+        "pv": 1,
+        "stock": 0,
+        "available": true,
+        "created_at": "2026-02-28T09:01:48.282Z",
+        "updated_at": "2026-03-01T05:59:10.988Z"
+    }
+},
+{
+    "model": "ecommerce_app.product",
+    "pk": 47,
+    "fields": {
+        "category": 12,
+        "name": "Munch Max",
+        "slug": "munch-max",
+        "image": "media/products/Untitled_design_f0iaa0",
+        "description": "Nestlé Munch Max is a crunchy wafer chocolate bar layered with delicious cocoa cream and coated in rich chocolate, offering a light, crispy bite perfect for quick snacks and cravings.",
+        "price": "20.00",
+        "pv": 1,
+        "stock": 0,
+        "available": true,
+        "created_at": "2026-02-28T09:04:12.257Z",
+        "updated_at": "2026-03-01T06:34:20.465Z"
+    }
+},
+{
+    "model": "ecommerce_app.product",
+    "pk": 48,
+    "fields": {
+        "category": 12,
+        "name": "Mugi Fresh -1 ltr",
+        "slug": "mugi-fresh-1-ltr",
+        "image": "media/products/Untitled_design_pumx36",
+        "description": "Mugi Fresh 1 Litre floor cleaner delivers powerful cleaning with a refreshing fragrance. It removes dirt, stains, and germs effectively, leaving floors hygienic, shiny, and scented for a clean home.",
+        "price": "230.00",
+        "pv": 1,
+        "stock": 0,
+        "available": true,
+        "created_at": "2026-02-28T09:06:40.769Z",
+        "updated_at": "2026-03-01T06:15:56.247Z"
+    }
+},
+{
+    "model": "ecommerce_app.product",
+    "pk": 49,
+    "fields": {
+        "category": 12,
+        "name": "Moov Cream",
+        "slug": "moov-cream",
+        "image": "media/products/Untitled_design_oexase",
+        "description": "Moov Pain Relief Cream provides fast relief from muscle and joint pain with a powerful Ayurvedic formula. It penetrates deeply, reduces stiffness, relaxes muscles, and helps you stay active comfortably.",
+        "price": "225.00",
+        "pv": 1,
+        "stock": 0,
+        "available": true,
+        "created_at": "2026-02-28T09:09:06.291Z",
+        "updated_at": "2026-03-01T06:00:23.896Z"
+    }
+},
+{
+    "model": "ecommerce_app.product",
+    "pk": 50,
+    "fields": {
+        "category": 12,
+        "name": "Nycil  Powder",
+        "slug": "nycil-powder",
+        "image": "media/products/Untitled_design_hxrhwj",
+        "description": "Nycil Cooling Powder protects skin from sweat, heat, and itching with its soothing formula. It absorbs excess moisture, prevents rashes, and keeps skin cool, fresh, and comfortable throughout summer days.",
+        "price": "225.00",
+        "pv": 1,
+        "stock": 0,
+        "available": true,
+        "created_at": "2026-02-28T09:11:20.172Z",
+        "updated_at": "2026-03-01T06:03:35.737Z"
+    }
+},
+{
+    "model": "ecommerce_app.product",
+    "pk": 51,
+    "fields": {
+        "category": 12,
+        "name": "Tide - Washing Powder 1Kg",
+        "slug": "tide-washing-powder-1kg",
+        "image": "media/products/Untitled_design_co9qoh",
+        "description": "Tide Washing Powder 1kg delivers powerful stain removal with advanced cleaning formula. It removes tough dirt, brightens clothes, maintains fabric freshness, and provides a long-lasting clean fragrance after every wash.",
+        "price": "129.00",
+        "pv": 1,
+        "stock": 0,
+        "available": true,
+        "created_at": "2026-02-28T09:21:16.727Z",
+        "updated_at": "2026-03-01T06:36:25.376Z"
+    }
+},
+{
+    "model": "ecommerce_app.product",
+    "pk": 52,
+    "fields": {
+        "category": 12,
+        "name": "Zundu Balm Red",
+        "slug": "zundu-balm-red",
+        "image": "media/products/Untitled_design_kzgbyo",
+        "description": "Zandu Balm Red provides fast relief from headaches, body aches, and cold discomfort with its strong Ayurvedic formula. It delivers warming comfort, improves blood circulation, and helps feel relaxed quickly.",
+        "price": "48.00",
+        "pv": 1,
+        "stock": 0,
+        "available": true,
+        "created_at": "2026-02-28T09:24:46.171Z",
+        "updated_at": "2026-03-01T06:05:28.899Z"
+    }
+},
+{
+    "model": "ecommerce_app.product",
+    "pk": 53,
+    "fields": {
+        "category": 12,
+        "name": "Grocery coupen",
+        "slug": "grocery-coupen",
+        "image": "media/products/Untitled_design_ew1nym",
+        "description": "",
+        "price": "3000.00",
+        "pv": 50,
+        "stock": 0,
+        "available": true,
+        "created_at": "2026-03-04T21:24:52.940Z",
+        "updated_at": "2026-03-04T21:24:52.940Z"
+    }
+}
+]

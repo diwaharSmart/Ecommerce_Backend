@@ -52,8 +52,12 @@ SAMPLE_PAYLOADS = {
     "Manage KYC": {
         "action": "create",
         "name_on_card": "John Doe",
-        "aadhar_number": "1234-5678-9012",
+        "aadhar_number": "123456789012",
         "pan_number": "ABCDE1234F",
+        "bank_name": "State Bank of India",
+        "bank_account_number": "1234567890",
+        "ifsc_code": "SBIN0001234",
+        "account_holder_name": "John Doe"
         # Images handled separately in Postman (form-data), but here we document JSON structure or similar
     },
     "Request Pins": {

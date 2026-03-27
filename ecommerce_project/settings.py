@@ -134,11 +134,14 @@ WSGI_APPLICATION = 'ecommerce_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'veadondb',
-        'USER': 'veadon_user',
-        'PASSWORD': 'ntontt8vtqIujxUeWDGSPH2mMJ7FcYW3',
-        'HOST': 'dpg-d6ejs5ngi27c73fcs7h0-a.oregon-postgres.render.com',
+        'NAME': 'neondb',
+        'USER': 'neondb_owner',
+        'PASSWORD': 'npg_rH1P9YkIgiSw',
+        'HOST': 'ep-fancy-base-an3by5jr.c-6.us-east-1.aws.neon.tech', # Unpooled host is better for management tasks
         'PORT': '5432',
+        'OPTIONS': {
+            'sslmode': 'require',
+        }
     }
 }
 
@@ -146,6 +149,13 @@ DATABASES = {
 db_url = os.environ.get('DATABASE_URL')
 if db_url:
     DATABASES['default'] = dj_database_url.parse(db_url, conn_max_age=600)
+
+# UAT Database Override
+if os.environ.get('USE_UAT_DB') == '1' or os.environ.get('USE_UAT_DB') == 'True':
+    DATABASES['default'] = {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'uat_db.sqlite3',
+    }
 
 # Backup original sqlite3 database config
 # DATABASES = {

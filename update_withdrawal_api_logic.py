@@ -9,7 +9,7 @@ django.setup()
 from website.models import Api
 
 def main():
-    print("Updating 'Request Withdrawal' API with Rs 500 minimum...")
+    print("Updating 'Request Withdrawal' API with 80/10/10 split logic...")
     api = Api.objects.filter(name="Request Withdrawal").first()
     if not api:
         print("Error: 'Request Withdrawal' API not found!")
@@ -23,8 +23,8 @@ if request.user.is_authenticated:
     
     if amount:
         try:
-            amount_decimal = Decimal(str(amount))
-            if amount_decimal < 500:
+            total_decimal = Decimal(str(amount))
+            if total_decimal < 500:
                  response_data['status_code'] = 400
                  response_data['message'] = "Minimum withdrawal amount is Rs 500"
             else:
@@ -38,15 +38,23 @@ if request.user.is_authenticated:
                         # 2. Check Wallet Balance
                         wallet, _ = Wallet.objects.get_or_create(user=request.user)
                         
-                        if wallet.current_balance >= amount_decimal:
-                             # Create Request (Deduction handled by signal in models.py)
+                        if wallet.current_balance >= total_decimal:
+                             # Calculate Split
+                             tds = total_decimal * Decimal("0.10")
+                             top_up = total_decimal * Decimal("0.10")
+                             net = total_decimal - tds - top_up
+                             
+                             # Create Request (Signals handle the wallet movement)
                              withdrawal = WithdrawalRequest.objects.create(
                                  user=request.user,
-                                 amount=amount_decimal,
+                                 total_amount=total_decimal,
+                                 amount=net, # Net Amount (80%)
+                                 tds_amount=tds,
+                                 top_up_amount=top_up,
                                  status='pending'
                              )
                              response_data['status_code'] = 201
-                             response_data['message'] = "Withdrawal request submitted successfully. Amount deducted."
+                             response_data['message'] = "Withdrawal request submitted. Rs {0} deducted (Net: {1}, TDS: {2}, TopUp: {3})".format(total_decimal, net, tds, top_up)
                              response_data['request_id'] = withdrawal.id
                         else:
                              response_data['status_code'] = 400

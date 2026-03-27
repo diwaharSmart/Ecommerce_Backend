@@ -1,0 +1,35 @@
+[
+{
+    "model": "ecommerce_app.category",
+    "pk": 6,
+    "fields": {
+        "name": "Wellness",
+        "slug": "wellness",
+        "image": "media/categories/well_11zon_rifodw",
+        "banner_image": "media/categories/banner/Untitled_design_zi6mmw",
+        "description": ""
+    }
+},
+{
+    "model": "ecommerce_app.category",
+    "pk": 7,
+    "fields": {
+        "name": "Tours and Trips",
+        "slug": "tours-and-trips",
+        "image": "media/categories/tat_11zon_z8zjjq",
+        "banner_image": "",
+        "description": ""
+    }
+},
+{
+    "model": "ecommerce_app.category",
+    "pk": 12,
+    "fields": {
+        "name": "Grocery",
+        "slug": "grocery",
+        "image": "media/categories/grocerry_1_pw0ue9",
+        "banner_image": "media/categories/banner/mmm_na8kpl",
+        "description": ""
+    }
+}
+]

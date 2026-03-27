@@ -1,0 +1,139 @@
+1	Can add log entry	1	add_logentry
+2	Can change log entry	1	change_logentry
+3	Can delete log entry	1	delete_logentry
+4	Can view log entry	1	view_logentry
+5	Can add permission	3	add_permission
+6	Can change permission	3	change_permission
+7	Can delete permission	3	delete_permission
+8	Can view permission	3	view_permission
+9	Can add group	2	add_group
+10	Can change group	2	change_group
+11	Can delete group	2	delete_group
+12	Can view group	2	view_group
+13	Can add user	4	add_user
+14	Can change user	4	change_user
+15	Can delete user	4	delete_user
+16	Can view user	4	view_user
+17	Can add content type	5	add_contenttype
+18	Can change content type	5	change_contenttype
+19	Can delete content type	5	delete_contenttype
+20	Can view content type	5	view_contenttype
+21	Can add session	6	add_session
+22	Can change session	6	change_session
+23	Can delete session	6	delete_session
+24	Can view session	6	view_session
+25	Can add category	10	add_category
+26	Can change category	10	change_category
+27	Can delete category	10	delete_category
+28	Can view category	10	view_category
+29	Can add product	18	add_product
+30	Can change product	18	change_product
+31	Can delete product	18	delete_product
+32	Can view product	18	view_product
+33	Can add order	13	add_order
+34	Can change order	13	change_order
+35	Can delete order	13	delete_order
+36	Can view order	13	view_order
+37	Can add order item	14	add_orderitem
+38	Can change order item	14	change_orderitem
+39	Can delete order item	14	delete_orderitem
+40	Can view order item	14	view_orderitem
+41	Can add profile	19	add_profile
+42	Can change profile	19	change_profile
+43	Can delete profile	19	delete_profile
+44	Can view profile	19	view_profile
+45	Can add wallet	23	add_wallet
+46	Can change wallet	23	change_wallet
+47	Can delete wallet	23	delete_wallet
+48	Can view wallet	23	view_wallet
+49	Can add payin request	15	add_payinrequest
+50	Can change payin request	15	change_payinrequest
+51	Can delete payin request	15	delete_payinrequest
+52	Can view payin request	15	view_payinrequest
+53	Can add withdrawal request	24	add_withdrawalrequest
+54	Can change withdrawal request	24	change_withdrawalrequest
+55	Can delete withdrawal request	24	delete_withdrawalrequest
+56	Can view withdrawal request	24	view_withdrawalrequest
+57	Can add transaction	21	add_transaction
+58	Can change transaction	21	change_transaction
+59	Can delete transaction	21	delete_transaction
+60	Can view transaction	21	view_transaction
+61	Can add coupon	11	add_coupon
+62	Can change coupon	11	change_coupon
+63	Can delete coupon	11	delete_coupon
+64	Can view coupon	11	view_coupon
+65	Can add user address	22	add_useraddress
+66	Can change user address	22	change_useraddress
+67	Can delete user address	22	delete_useraddress
+68	Can view user address	22	view_useraddress
+69	Can add cart	8	add_cart
+70	Can change cart	8	change_cart
+71	Can delete cart	8	delete_cart
+72	Can view cart	8	view_cart
+73	Can add cart item	9	add_cartitem
+74	Can change cart item	9	change_cartitem
+75	Can delete cart item	9	delete_cartitem
+76	Can view cart item	9	view_cartitem
+77	Can add kyc	12	add_kyc
+78	Can change kyc	12	change_kyc
+79	Can delete kyc	12	delete_kyc
+80	Can view kyc	12	view_kyc
+81	Can add support ticket	20	add_supportticket
+82	Can change support ticket	20	change_supportticket
+83	Can delete support ticket	20	delete_supportticket
+84	Can view support ticket	20	view_supportticket
+85	Can add banner	7	add_banner
+86	Can change banner	7	change_banner
+87	Can delete banner	7	delete_banner
+88	Can view banner	7	view_banner
+89	Can add pin request	17	add_pinrequest
+90	Can change pin request	17	change_pinrequest
+91	Can delete pin request	17	delete_pinrequest
+92	Can view pin request	17	view_pinrequest
+93	Can add pin	16	add_pin
+94	Can change pin	16	change_pin
+95	Can delete pin	16	delete_pin
+96	Can view pin	16	view_pin
+97	Can add Token	25	add_token
+98	Can change Token	25	change_token
+99	Can delete Token	25	delete_token
+100	Can view Token	25	view_token
+101	Can add Token	26	add_tokenproxy
+102	Can change Token	26	change_tokenproxy
+103	Can delete Token	26	delete_tokenproxy
+104	Can view Token	26	view_tokenproxy
+105	Can add website	33	add_website
+106	Can change website	33	change_website
+107	Can delete website	33	delete_website
+108	Can view website	33	view_website
+109	Can add page	32	add_page
+110	Can change page	32	change_page
+111	Can delete page	32	delete_page
+112	Can view page	32	view_page
+113	Can add widget	34	add_widget
+114	Can change widget	34	change_widget
+115	Can delete widget	34	delete_widget
+116	Can view widget	34	view_widget
+117	Can add cascade style	28	add_cascadestyle
+118	Can change cascade style	28	change_cascadestyle
+119	Can delete cascade style	28	delete_cascadestyle
+120	Can view cascade style	28	view_cascadestyle
+121	Can add java script	30	add_javascript
+122	Can change java script	30	change_javascript
+123	Can delete java script	30	delete_javascript
+124	Can view java script	30	view_javascript
+125	Can add api	27	add_api
+126	Can change api	27	change_api
+127	Can delete api	27	delete_api
+128	Can view api	27	view_api
+129	Can add json serializer	31	add_jsonserializer
+130	Can change json serializer	31	change_jsonserializer
+131	Can delete json serializer	31	delete_jsonserializer
+132	Can view json serializer	31	view_jsonserializer
+133	Can add file	29	add_file
+134	Can change file	29	change_file
+135	Can delete file	29	delete_file
+136	Can view file	29	view_file
+\.
+
+
