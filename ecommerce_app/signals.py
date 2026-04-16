@@ -114,14 +114,14 @@ def process_binary_match(profile):
             # Payout: 100 matched PV (the weak side unit) * 5 Rs = 500 Rs
             payout_amount = Decimal("500.00")
             # Credit Wallet
-            wallet, _ = Wallet.objects.get_or_create(user=profile.user)
-            wallet.current_balance += payout_amount
-            wallet.save()
+            # wallet, _ = Wallet.objects.get_or_create(user=profile.user)
+            # wallet.current_balance += payout_amount
+            # wallet.save()
             # Create Transaction
             Transaction.objects.create(
                 user=profile.user,
                 amount=payout_amount,
-                direction='deposit',
+                direction='credit',
                 type='binary_income',
                 description=f"Binary match reward (Deducted L:{deduct_left} R:{deduct_right})"
             )
