@@ -25,7 +25,7 @@ def distribute_matching_level_income(source_profile, binary_payout_amount):
     Level 4: 10%
     Level 5: 10%
     """
-    percentages = [0.50, 0.20, 0.10, 0.10, 0.10]
+    percentages = [0.50, 0.40, 0.30, 0.10, 0.10]
     current_sponsor = source_profile.sponsor
     
     # We use a set to prevent circular loops
@@ -85,57 +85,55 @@ def process_binary_PV(order):
 def process_binary_match(profile):
     """
     Checks for 1:2 or 2:1 matching (min 100:200).
-    Deducts PV and calculates total payout first, then bulk writes to database.
-    This prevents O(N) database crashes when processing massive PV increments.
+    Deducts PV and credits wallet.
+    Recursive check until no more matches.
     """
-    left = profile.current_left_pv
-    right = profile.current_right_pv
-    
-    total_deduct_left = Decimal("0")
-    total_deduct_right = Decimal("0")
-    total_matches = 0
-    
-    # Calculate matches in memory (RAM is fast) instead of writing to DB each iteration
     while True:
+        left = profile.current_left_pv
+        right = profile.current_right_pv
+        # Determine weak and strong sides for the 100:200 ratio
+        # We need at least 100 on one side and 200 on the other.   
+        match_found = False
+        deduct_left = 0
+        deduct_right = 0
+        payout_amount = 0
+        # Case 1: Left is Strong (>=200), Right is Weak (>=100) -> 2:1
         if left >= 200 and right >= 100:
-            left -= 200
-            right -= 100
-            total_deduct_left += 200
-            total_deduct_right += 100
-            total_matches += 1
+            deduct_left = 200
+            deduct_right = 100
+            match_found = True
+        # Case 2: Left is Weak (>=100), Right is Strong (>=200) -> 1:2
         elif left >= 100 and right >= 200:
-            left -= 100
-            right -= 200
-            total_deduct_left += 100
-            total_deduct_right += 200
-            total_matches += 1
+            deduct_left = 100
+            deduct_right = 200
+            match_found = True
+        if match_found:
+            # Apply deduction
+            profile.current_left_pv -= deduct_left
+            profile.current_right_pv -= deduct_right
+            # Payout: 100 matched PV (the weak side unit) * 5 Rs = 500 Rs
+            payout_amount = Decimal("500.00")
+            # Credit Wallet
+            wallet, _ = Wallet.objects.get_or_create(user=profile.user)
+            wallet.current_balance += payout_amount
+            wallet.save()
+            # Create Transaction
+            Transaction.objects.create(
+                user=profile.user,
+                amount=payout_amount,
+                direction='deposit',
+                type='binary_income',
+                description=f"Binary match reward (Deducted L:{deduct_left} R:{deduct_right})"
+            )
+            # --- DISTRIBUTE MATCHING LEVEL INCOME ---
+            distribute_matching_level_income(profile, payout_amount)
+            # Don't save profile here, the caller loop saves it, 
+            # OR we save here to ensure transaction consistency.
+            # The caller `process_binary_PV` saves `parent_profile` after calling this.
+            # But since we are modifying it in a while loop, we rely on the object reference modification.
+            
         else:
             break
-
-    if total_matches > 0:
-        # Apply bulk deduction mathematically
-        profile.current_left_pv -= total_deduct_left
-        profile.current_right_pv -= total_deduct_right
-        
-        # Payout: 100 matched PV (the weak side unit) * 5 Rs = 500 Rs per pair
-        total_payout = Decimal(str(total_matches * 500))
-        
-        # 1. Credit Wallet ONCE
-        wallet, _ = Wallet.objects.get_or_create(user=profile.user)
-        wallet.current_balance += total_payout
-        wallet.save()
-        
-        # 2. Create Transaction ONCE
-        Transaction.objects.create(
-            user=profile.user,
-            amount=total_payout,
-            direction='deposit',
-            type='binary_income',
-            description=f"Binary match reward for {total_matches} pairs (Deducted L:{total_deduct_left} R:{total_deduct_right})"
-        )
-        
-        # 3. Distribute Matching Level Income ONCE based on total payout
-        distribute_matching_level_income(profile, total_payout)
 
 @receiver(post_save, sender=Profile)
 def update_member_counts(sender, instance, created, **kwargs):

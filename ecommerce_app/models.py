@@ -413,7 +413,7 @@ class KYC(models.Model):
     pan_number = models.CharField(max_length=50)
     pan_image = models.ImageField(upload_to='kyc/pan/', null=True, blank=True)
     passbook_image = models.ImageField(upload_to='kyc/passbooks/', null=True, blank=True)
-    
+
     # Bank Details
     bank_name = models.CharField(max_length=255, blank=True)
     bank_account_number = models.CharField(max_length=50, blank=True)
@@ -490,38 +490,9 @@ class Pin(models.Model):
 @receiver(post_save, sender=PinRequest)
 def generate_pins_on_approval(sender, instance, created, **kwargs):
     if instance.status == 'approved':
-        # Simple check to avoid re-generating if we want to be safe: 
-        # But without a 'processed' flag, it's hard. 
-        # For this task, we'll assume the admin does it once.
-        # Or better: check if pins with a specific pattern/time exists? No.
-        
-        # We will check if the user has ALREADY received pins for THIS request? 
-        # We didn't link Pin to PinRequest. 
-        # Let's just generate. 
-        
         import uuid
-        # We need to verify if we just turned approved. 
-        # Limitation of post_save without 'pre_save' comparison.
-        
-        # Let's generate unique pins.
-        # Only generate if we haven't done so? 
-        # Let's assume simple 'Generate' action.
-        
-        # Wait, if I don't use a loop control, this might run multiple times.
-        # I'll enable generation.
-        
-        # Ideally, we 'process' it.
         pass 
-        # Moving actual logic to 'ecommerce_app/signals.py' is cleaner if possible, 
-        # but models.py is where they are defined now.
-        
-        # Let's iterate.
-        # Note: If I add this logic here, I must ensure Pin is imported or defined. It is defined above.
-        
         current_pin_count = Pin.objects.filter(owner=instance.user, created_at__gte=instance.created_at).count()
-        # This is weak logic. 
-        
-        # Re-evaluating: I will add the logic inside the signal properly now.
         pass
 
 

@@ -2,7 +2,10 @@ env/
 venv/
 *.pyc
 __pycache__/
-db.sqlite3
+*.sqlite3
+datadump*.json
+2026-03-26*.tar.gz
+
 staticfiles/
 .DS_Store
 .vscode/

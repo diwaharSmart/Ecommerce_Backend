@@ -1,0 +1,148 @@
+=== USERS WITH 200 PV DEDUCTION ANOMALY ===
+
+User ID: 121 | Username: VN3122841 | Total Pair Matches (Lifetime): 0
+Errors Detected:
+  - Txn #50: Binary match reward (Deducted L:100 R:200)
+
+------------------------------------------------------------
+
+User ID: 1 | Username: root | Total Pair Matches (Lifetime): 0
+Errors Detected:
+  - Txn #62: Binary match reward (Deducted L:100 R:200)
+  - Txn #69: Binary match reward (Deducted L:100 R:200)
+  - Txn #108: Binary match reward (Deducted L:200 R:100)
+
+------------------------------------------------------------
+
+User ID: 17 | Username: VN2813230 | Total Pair Matches (Lifetime): 5
+Errors Detected:
+  - Txn #101: Binary match reward (Deducted L:100 R:200)
+  - Txn #176: Binary match reward (Deducted L:100 R:200)
+  - Txn #183: Binary match reward (Deducted L:100 R:200)
+  - Txn #192: Binary match reward (Deducted L:100 R:200)
+  - Txn #199: Binary match reward (Deducted L:100 R:200)
+  - Txn #259: Binary match reward (Deducted L:200 R:100)
+  - Txn #266: Binary match reward (Deducted L:200 R:100)
+  - Txn #279: Binary match reward (Deducted L:200 R:100)
+  - Txn #292: Binary match reward (Deducted L:200 R:100)
+  - Txn #360: Binary match reward for 1 pairs (Deducted L:200 R:100)
+  - Txn #388: Binary match reward for 1 pairs (Deducted L:200 R:100)
+  - Txn #453: Binary match reward for 1 pairs (Deducted L:200 R:100)
+  - Txn #476: Binary match reward for 1 pairs (Deducted L:200 R:100)
+  - Txn #503: Binary match reward for 1 pairs (Deducted L:200 R:100)
+
+------------------------------------------------------------
+
+User ID: 28 | Username: VN8171363 | Total Pair Matches (Lifetime): 1
+Errors Detected:
+  - Txn #111: Binary match reward (Deducted L:200 R:100)
+  - Txn #127: Binary match reward (Deducted L:100 R:200)
+  - Txn #151: Binary match reward (Deducted L:200 R:100)
+  - Txn #354: Binary match reward for 1 pairs (Deducted L:200 R:100)
+
+------------------------------------------------------------
+
+User ID: 37 | Username: VN1587075 | Total Pair Matches (Lifetime): 0
+Errors Detected:
+  - Txn #141: Binary match reward (Deducted L:100 R:200)
+
+------------------------------------------------------------
+
+User ID: 92 | Username: VN8492061 | Total Pair Matches (Lifetime): 0
+Errors Detected:
+  - Txn #220: Binary match reward (Deducted L:100 R:200)
+
+------------------------------------------------------------
+
+User ID: 51 | Username: VN4814964 | Total Pair Matches (Lifetime): 0
+Errors Detected:
+  - Txn #235: Binary match reward (Deducted L:200 R:100)
+  - Txn #245: Binary match reward (Deducted L:200 R:100)
+  - Txn #310: Binary match reward (Deducted L:200 R:100)
+  - Txn #318: Binary match reward (Deducted L:200 R:100)
+  - Txn #326: Binary match reward (Deducted L:200 R:100)
+
+------------------------------------------------------------
+
+User ID: 42 | Username: VN8674093 | Total Pair Matches (Lifetime): 0
+Errors Detected:
+  - Txn #273: Binary match reward (Deducted L:200 R:100)
+  - Txn #286: Binary match reward (Deducted L:200 R:100)
+
+------------------------------------------------------------
+
+User ID: 125 | Username: VN6058514 | Total Pair Matches (Lifetime): 2
+Errors Detected:
+  - Txn #304: Binary match reward (Deducted L:200 R:100)
+  - Txn #400: Binary match reward for 1 pairs (Deducted L:200 R:100)
+  - Txn #420: Binary match reward for 1 pairs (Deducted L:100 R:200)
+
+------------------------------------------------------------
+
+User ID: 143 | Username: VN6770050 | Total Pair Matches (Lifetime): 0
+Errors Detected:
+  - Txn #334: Binary match reward (Deducted L:100 R:200)
+
+------------------------------------------------------------
+
+User ID: 29 | Username: VN9059431 | Total Pair Matches (Lifetime): 1
+Errors Detected:
+  - Txn #348: Binary match reward for 1 pairs (Deducted L:100 R:200)
+
+------------------------------------------------------------
+
+User ID: 138 | Username: VN9599886 | Total Pair Matches (Lifetime): 1
+Errors Detected:
+  - Txn #410: Binary match reward for 1 pairs (Deducted L:200 R:100)
+
+------------------------------------------------------------
+
+User ID: 129 | Username: VN9723384 | Total Pair Matches (Lifetime): 1
+Errors Detected:
+  - Txn #430: Binary match reward for 1 pairs (Deducted L:200 R:100)
+
+------------------------------------------------------------
+
+User ID: 36 | Username: VN3760205 | Total Pair Matches (Lifetime): 4
+Errors Detected:
+  - Txn #447: Binary match reward for 1 pairs (Deducted L:200 R:100)
+  - Txn #460: Binary match reward for 1 pairs (Deducted L:200 R:100)
+  - Txn #470: Binary match reward for 1 pairs (Deducted L:200 R:100)
+  - Txn #516: Binary match reward for 1 pairs (Deducted L:200 R:100)
+
+------------------------------------------------------------
+
+User ID: 149 | Username: VN1328876 | Total Pair Matches (Lifetime): 1
+Errors Detected:
+  - Txn #497: Binary match reward for 1 pairs (Deducted L:100 R:200)
+
+------------------------------------------------------------
+
+User ID: 19 | Username: VN6981406 | Total Pair Matches (Lifetime): 10
+Errors Detected:
+  - Txn #526: Binary match reward for 1 pairs (Deducted L:100 R:200)
+  - Txn #549: Binary match reward for 1 pairs (Deducted L:100 R:200)
+  - Txn #557: Binary match reward for 1 pairs (Deducted L:100 R:200)
+  - Txn #565: Binary match reward for 1 pairs (Deducted L:100 R:200)
+  - Txn #579: Binary match reward for 1 pairs (Deducted L:100 R:200)
+  - Txn #587: Binary match reward for 1 pairs (Deducted L:100 R:200)
+  - Txn #595: Binary match reward for 1 pairs (Deducted L:100 R:200)
+  - Txn #617: Binary match reward for 1 pairs (Deducted L:100 R:200)
+  - Txn #625: Binary match reward for 1 pairs (Deducted L:100 R:200)
+  - Txn #650: Binary match reward for 1 pairs (Deducted L:200 R:100)
+
+------------------------------------------------------------
+
+User ID: 231 | Username: VN2910854 | Total Pair Matches (Lifetime): 1
+Errors Detected:
+  - Txn #573: Binary match reward for 1 pairs (Deducted L:200 R:100)
+
+------------------------------------------------------------
+
+User ID: 236 | Username: VN1590066 | Total Pair Matches (Lifetime): 2
+Errors Detected:
+  - Txn #611: Binary match reward for 1 pairs (Deducted L:100 R:200)
+  - Txn #644: Binary match reward for 1 pairs (Deducted L:100 R:200)
+
+------------------------------------------------------------
+

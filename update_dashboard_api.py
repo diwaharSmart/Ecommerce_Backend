@@ -45,7 +45,9 @@ if request.user.is_authenticated:
             
             # --- 2. Pair Match Count ---
             transactions = Transaction.objects.filter(user=user)
-            pair_match_count = transactions.filter(type='binary_income').count()
+            # Calculate total pairs by inspecting the amount (500 Rs = 1 pair)
+            binary_income_total = transactions.filter(type='binary_income').aggregate(Sum('amount'))['amount__sum'] or 0.0
+            pair_match_count = int(float(binary_income_total) / 500.0)
             
             # --- 3. Active Directs ---
             active_directs = Profile.objects.filter(sponsor=profile, is_active=True).count()
