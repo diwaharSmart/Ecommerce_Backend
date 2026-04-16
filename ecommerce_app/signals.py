@@ -99,13 +99,13 @@ def process_binary_match(profile):
         payout_amount = 0
         # Case 1: Left is Strong (>=200), Right is Weak (>=100) -> 2:1
         if left >= 200 and right >= 100:
-            deduct_left = 200
+            deduct_left = 100
             deduct_right = 100
             match_found = True
         # Case 2: Left is Weak (>=100), Right is Strong (>=200) -> 1:2
         elif left >= 100 and right >= 200:
             deduct_left = 100
-            deduct_right = 200
+            deduct_right = 100
             match_found = True
         if match_found:
             # Apply deduction
