@@ -26,4 +26,8 @@ router.register(r'support-tickets', SupportTicketViewSet, basename='support-tick
 urlpatterns = [
     path('api/home/', HomeAPIView.as_view(), name='home-api'),
     path('api/', include(router.urls)),
+    
+    # Custom Admin Views
+    path('admin/payouts/weekly/', __import__('ecommerce_app.admin_views').admin_views.weekly_payouts_list, name='weekly_payouts_list'),
+    path('admin/payouts/weekly/<str:mobile>/', __import__('ecommerce_app.admin_views').admin_views.weekly_payouts_detail, name='weekly_payouts_detail'),
 ]

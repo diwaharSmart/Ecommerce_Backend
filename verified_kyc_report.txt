@@ -1,0 +1,111 @@
+================================================================================
+                      VERIFIED KYC USERS AND WALLET REPORT                      
+================================================================================
+User 1: test_withdraw_user (Name: TestUser )
+  - Bank Name       : 
+  - Acc Number      : 
+  - IFSC Code       : 
+  - Passbook URL    : /media/img.jpg
+  - Binary Income   : Rs 200.0
+  - Level Income    : Rs 0.0
+  - Current Balance : Rs -400.0
+--------------------------------------------------------------------------------
+User 2: test_granular (Name: TestUser )
+  - Bank Name       : 
+  - Acc Number      : 
+  - IFSC Code       : 
+  - Passbook URL    : /media/img.jpg
+  - Binary Income   : Rs 0.0
+  - Level Income    : Rs 0.0
+  - Current Balance : Rs 550.0
+--------------------------------------------------------------------------------
+User 3: VN2813230 (Name: Maneshkar Jayapal )
+  - Bank Name       : 
+  - Acc Number      : 
+  - IFSC Code       : 
+  - Passbook URL    : /media/media/kyc/passbooks/scaled_86053_efezd6
+  - Binary Income   : Rs 12500.0
+  - Level Income    : Rs 11400.0
+  - Current Balance : Rs 4800.0
+--------------------------------------------------------------------------------
+User 4: VN4814964 (Name: RAKESH R )
+  - Bank Name       : 
+  - Acc Number      : 
+  - IFSC Code       : 
+  - Passbook URL    : /media/media/kyc/passbooks/scaled_Screenshot_2026-03-17-19-12-03-079_com.whatsapp_gzg6wo
+  - Binary Income   : Rs 5000.0
+  - Level Income    : Rs 2450.0
+  - Current Balance : Rs 4450.0
+--------------------------------------------------------------------------------
+User 5: VN3427579 (Name: B. SATHISH KUMAR. )
+  - Bank Name       : 
+  - Acc Number      : 
+  - IFSC Code       : 
+  - Passbook URL    : /media/media/kyc/passbooks/scaled_IMG-20260228-WA0008_gsay9x
+  - Binary Income   : Rs 0.0
+  - Level Income    : Rs 0.0
+  - Current Balance : Rs 0.0
+--------------------------------------------------------------------------------
+User 6: VN6058514 (Name: PARI GNANAMANI )
+  - Bank Name       : 
+  - Acc Number      : 
+  - IFSC Code       : 
+  - Passbook URL    : /media/media/kyc/passbooks/scaled_1000097444_nb1jwt
+  - Binary Income   : Rs 3000.0
+  - Level Income    : Rs 600.0
+  - Current Balance : Rs 3100.0
+--------------------------------------------------------------------------------
+User 7: VN9565339 (Name: K subbhu Lakshmi )
+  - Bank Name       : 
+  - Acc Number      : 
+  - IFSC Code       : 
+  - Passbook URL    : /media/media/kyc/passbooks/scaled_98966_bpgrwb
+  - Binary Income   : Rs 0.0
+  - Level Income    : Rs 0.0
+  - Current Balance : Rs 3000.0
+--------------------------------------------------------------------------------
+User 8: VN6866745 (Name: Maneskar Jeyapal )
+  - Bank Name       : 
+  - Acc Number      : 
+  - IFSC Code       : 
+  - Passbook URL    : /media/media/kyc/passbooks/scaled_IMG-20260304-WA0002_eut0u1
+  - Binary Income   : Rs 0.0
+  - Level Income    : Rs 2400.0
+  - Current Balance : Rs 400.0
+--------------------------------------------------------------------------------
+User 9: VN8694720 (Name: M. Ramu )
+  - Bank Name       : 
+  - Acc Number      : 
+  - IFSC Code       : 
+  - Passbook URL    : /media/media/kyc/passbooks/scaled_94059_omzthb
+  - Binary Income   : Rs 0.0
+  - Level Income    : Rs 0.0
+  - Current Balance : Rs 0.0
+--------------------------------------------------------------------------------
+User 10: VN1587075 (Name: MURUGANANDAM V )
+  - Bank Name       : 
+  - Acc Number      : 
+  - IFSC Code       : 
+  - Passbook URL    : /media/media/kyc/passbooks/scaled_93854_txykw5
+  - Binary Income   : Rs 500.0
+  - Level Income    : Rs 500.0
+  - Current Balance : Rs 1000.0
+--------------------------------------------------------------------------------
+User 11: VN9656027 (Name: SMK MURUGAN )
+  - Bank Name       : 
+  - Acc Number      : 
+  - IFSC Code       : 
+  - Passbook URL    : /media/media/kyc/passbooks/scaled_IMG-20260306-WA0132_cy2vyh
+  - Binary Income   : Rs 0.0
+  - Level Income    : Rs 0.0
+  - Current Balance : Rs 0.0
+--------------------------------------------------------------------------------
+User 12: VN1590066 (Name: SANGEETHA M )
+  - Bank Name       : Indian Overseas Bank
+  - Acc Number      : 228801000024891
+  - IFSC Code       : IOBA0002288
+  - Passbook URL    : /media/media/kyc/passbooks/scaled_175232_ivr2hd
+  - Binary Income   : Rs 6000.0
+  - Level Income    : Rs 2700.0
+  - Current Balance : Rs 8700.0
+--------------------------------------------------------------------------------

@@ -1,0 +1,99 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+
+{% block extrastyle %}
+{{ block.super }}
+<style>
+    .results table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .results th, .results td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    .results th {
+        background-color: #f4f4f4;
+    }
+    .btn {
+        display: inline-block;
+        padding: 6px 12px;
+        margin-bottom: 0;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.42857143;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        cursor: pointer;
+        background-image: none;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        text-decoration: none;
+    }
+    .btn-primary {
+        color: #fff;
+        background-color: #417690;
+        border-color: #417690;
+    }
+    .btn-primary:hover {
+        background-color: #2c5061;
+        border-color: #2c5061;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div id="content-main">
+    {% if messages %}
+    <ul class="messagelist">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <div class="module">
+        <h2>Duplicate Accounts by Mobile Number (with KYC)</h2>
+        <div class="results">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Mobile Number</th>
+                        <th>Accounts Count</th>
+                        <th>Bank Name</th>
+                        <th>Account Number</th>
+                        <th>IFSC</th>
+                        <th>Total Binary Income</th>
+                        <th>Total Level Income</th>
+                        <th>Total Wallet Balance</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for group in payout_groups %}
+                    <tr>
+                        <td>{{ group.mobile }}</td>
+                        <td>{{ group.accounts_count }}</td>
+                        <td>{{ group.bank_name }}</td>
+                        <td>{{ group.account_number }}</td>
+                        <td>{{ group.ifsc_code }}</td>
+                        <td>Rs {{ group.total_binary|floatformat:2 }}</td>
+                        <td>Rs {{ group.total_level|floatformat:2 }}</td>
+                        <td><strong>Rs {{ group.total_balance|floatformat:2 }}</strong></td>
+                        <td>
+                            <a href="{% url 'weekly_payouts_detail' group.mobile %}" class="btn btn-primary">Initiate Withdrawal</a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="9" style="text-align: center;">No weekly payouts pending.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

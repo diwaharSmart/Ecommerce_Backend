@@ -1,0 +1,133 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+
+{% block extrastyle %}
+{{ block.super }}
+<style>
+    .module-content { padding: 15px; }
+    .kyc-box {
+        background: #f9f9f9;
+        border: 1px solid #ddd;
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 4px;
+        display: flex;
+        gap: 20px;
+    }
+    .kyc-details { flex: 1; }
+    .kyc-image {
+        width: 300px;
+        border: 1px solid #ccc;
+        padding: 5px;
+        background: #fff;
+    }
+    .kyc-image img { max-width: 100%; height: auto; }
+    
+    .results table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+    .results th, .results td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    .results th { background-color: #f4f4f4; }
+    
+    .action-box {
+        background: #e1f0fa;
+        padding: 15px;
+        border: 1px solid #b7d5ea;
+        border-radius: 4px;
+        margin-top: 20px;
+    }
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        cursor: pointer;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        text-decoration: none;
+    }
+    .btn-success {
+        color: #fff;
+        background-color: #28a745;
+        border-color: #28a745;
+    }
+    .btn-success:hover { background-color: #218838; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div id="content-main">
+    <div class="module">
+        <h2>Payout Details for Mobile: {{ mobile }}</h2>
+        
+        <div class="module-content">
+            <h3>Shared KYC Details</h3>
+            <div class="kyc-box">
+                <div class="kyc-details">
+                    <p><strong>Bank Name:</strong> {{ kyc.bank_name }}</p>
+                    <p><strong>Account Holder:</strong> {{ kyc.account_holder_name|default:"N/A" }}</p>
+                    <p><strong>Account Number:</strong> {{ kyc.bank_account_number }}</p>
+                    <p><strong>IFSC Code:</strong> {{ kyc.ifsc_code }}</p>
+                </div>
+                <div class="kyc-image">
+                    {% if kyc.passbook_image %}
+                    <img src="{{ kyc.passbook_image.url }}" alt="Passbook Image">
+                    {% else %}
+                    <p>No Passbook Image Available</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <h3>Accounts to Process</h3>
+            <div class="results">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Name</th>
+                            <th>Binary Income</th>
+                            <th>Level Income</th>
+                            <th>Current Wallet Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in group %}
+                        <tr>
+                            <td>{{ item.user.username }}</td>
+                            <td>{{ item.user.first_name }} {{ item.user.last_name }}</td>
+                            <td>Rs {{ item.binary_income|floatformat:2 }}</td>
+                            <td>Rs {{ item.level_income|floatformat:2 }}</td>
+                            <td><strong>Rs {{ item.balance|floatformat:2 }}</strong></td>
+                        </tr>
+                        {% endfor %}
+                        <tr style="background-color: #e9ecef; font-weight: bold;">
+                            <td colspan="4" style="text-align: right;">Total Wallet Balance to Withdraw:</td>
+                            <td>Rs {{ total_group_balance|floatformat:2 }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="action-box">
+                <h3>Process Payout</h3>
+                <p>Clicking the button below will automatically create 'Approved' Withdrawal Requests for the entire wallet balance of the accounts listed above. This will deduct the balance from their wallets.</p>
+                
+                <form method="POST" onsubmit="return confirm('Are you sure you want to mark this payment as completed? This will instantly deduct Rs {{ total_group_balance|floatformat:2 }} from these accounts.');">
+                    {% csrf_token %}
+                    <button type="submit" name="initiate_withdrawal" class="btn btn-success">
+                        Payment Completed (Yes)
+                    </button>
+                    <a href="{% url 'weekly_payouts_list' %}" style="margin-left: 15px;">Cancel and go back</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

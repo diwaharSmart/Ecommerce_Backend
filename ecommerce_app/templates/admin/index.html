@@ -1,0 +1,12 @@
+{% extends "admin/index.html" %}
+{% load i18n %}
+
+{% block content %}
+<div style="margin-bottom: 20px; background: #e1f0fa; padding: 15px; border: 1px solid #b7d5ea; border-radius: 4px;">
+    <h2>Custom Tools</h2>
+    <ul class="actionlist" style="margin-top: 10px;">
+        <li><a href="{% url 'weekly_payouts_list' %}" style="font-size: 16px; font-weight: bold; color: #417690; text-decoration: none;">📅 Weekly Payouts & Bulk Withdrawal</a></li>
+    </ul>
+</div>
+{{ block.super }}
+{% endblock %}

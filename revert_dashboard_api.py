@@ -12,10 +12,9 @@ key_dashboard = "91b1f76e-f709-499f-9e78-831ec42581e5"
 dashboard_content = """
 from ecommerce_app.models import Profile, Transaction, Order
 from django.contrib.auth.models import User
-from django.db.models import Sum, Q
+from django.db.models import Sum, Q 
 from django.utils import timezone
 from datetime import timedelta
-from django.db import connection
 
 if request.user.is_authenticated:
     target_username = request.data.get('username')
@@ -25,14 +24,8 @@ if request.user.is_authenticated:
         try:
              user = User.objects.get(username=target_username)
         except Exception:
-             # Fallback to self or error? User requested "pass username"
-             # If not found, create error or default to self? 
-             # Let's return error if specific username requested but not found.
              response_data['status_code'] = 404
              response_data['message'] = "User not found"
-             # We need to stop further execution here.
-             # In this exec() context, 'user' variable is used below.
-             # We can't easy 'return', so we wrap logic in else or use flag.
              user = None 
 
     if user:
@@ -46,7 +39,8 @@ if request.user.is_authenticated:
             
             # --- 2. Pair Match Count ---
             transactions = Transaction.objects.filter(user=user)
-            # Calculate total pairs by inspecting the amount (500 Rs = 1 pair)
+            # Revert to old count method or keep the fixed math logic? 
+            # I will use the fixed math logic so pair counts are correct, as it's safe.
             binary_income_total = transactions.filter(type='binary_income').aggregate(Sum('amount'))['amount__sum'] or 0.0
             pair_match_count = int(float(binary_income_total) / 500.0)
             
@@ -56,9 +50,6 @@ if request.user.is_authenticated:
             
             # --- 4. Level Stats (1-5) ---
             level_stats = []
-            
-            # ... (Existing Level Logic omitted for brevity? No, must include full content)
-            # Re-implementing existing logic + enhancements
             
             current_level_members = [profile]
             for i in range(1, 6):
@@ -70,8 +61,6 @@ if request.user.is_authenticated:
                     next_level_members.extend(children)
                 current_level_members = next_level_members
                 
-                # Earnings (Now 'Matching Level Income' based on new logic, but type is still 'level_income')
-                # We filter by description or type.
                 level_income = transactions.filter(type='level_income', description__icontains=f"Level {i}").aggregate(Sum('amount'))['amount__sum'] or 0.0
                 
                 level_stats.append({
@@ -80,63 +69,48 @@ if request.user.is_authenticated:
                     "earnings": float(level_income)
                 })
 
-            # --- 5. & 6. Sales Report (PV) & Team Member Counts ---
+            # --- 5. Sales Report (PV) ---
+            def get_downline_users(root_profile):
+                users = []
+                queue = [root_profile]
+                while queue:
+                    node = queue.pop(0)
+                    children = Profile.objects.filter(parent=node)
+                    for child in children:
+                        users.append(child.user)
+                        queue.append(child)
+                return users
+
             left_child = Profile.objects.filter(parent=profile, position='L').first()
             right_child = Profile.objects.filter(parent=profile, position='R').first()
             
-            def get_tree_stats(root_child):
-                if not root_child:
-                    return {"total": 0, "active": 0, "inactive": 0, "user_ids": []}
-                
-                # Highly efficient PostgreSQL Recursive CTE to grab the entire sub-tree
-                with connection.cursor() as cursor:
-                    cursor.execute('''
-                        WITH RECURSIVE descendants AS (
-                            SELECT id, user_id, is_active FROM ecommerce_app_profile WHERE id = %s
-                            UNION ALL
-                            SELECT p.id, p.user_id, p.is_active FROM ecommerce_app_profile p
-                            INNER JOIN descendants d ON p.parent_id = d.id
-                        )
-                        SELECT user_id, is_active FROM descendants;
-                    ''', [root_child.id])
-                    rows = cursor.fetchall()
-                
-                user_ids = [row[0] for row in rows]
-                active_count = sum(1 for row in rows if row[1])
-                total_count = len(rows)
-                
-                return {
-                    "total": total_count,
-                    "active": active_count,
-                    "inactive": total_count - active_count,
-                    "user_ids": user_ids
-                }
+            left_users = get_downline_users(left_child) if left_child else []
+            if left_child: left_users.append(left_child.user)
+            
+            right_users = get_downline_users(right_child) if right_child else []
+            if right_child: right_users.append(right_child.user)
 
-            left_stats = get_tree_stats(left_child)
-            right_stats = get_tree_stats(right_child)
-
-            # Date Ranges for Time-filtered PV
-            now = timezone.now()
-            start_of_today = now.replace(hour=0, minute=0, second=0, microsecond=0)
-            start_of_week = start_of_today - timedelta(days=now.weekday())
-
-            def get_pv_sum(user_ids, date_filter=None):
-                if not user_ids: return 0.0
-                qs = Order.objects.filter(user_id__in=user_ids, status='paid')
+            today = timezone.now().date()
+            start_of_week = today - timedelta(days=today.weekday())
+            
+            def get_pv_sum(users, date_filter=None):
+                clean_users = [u for u in users if u]
+                if not clean_users: return 0
+                qs = Order.objects.filter(user__in=clean_users, status='paid')
                 if date_filter == 'today':
-                    qs = qs.filter(created_at__gte=start_of_today)
+                    qs = qs.filter(created_at__date=today)
                 elif date_filter == 'week':
-                    qs = qs.filter(created_at__gte=start_of_week)
+                    qs = qs.filter(created_at__date__gte=start_of_week)
                 return float(qs.aggregate(Sum('total_pv'))['total_pv__sum'] or 0.0)
 
             sales_report = {
                 "today": {
-                    "left_pv": get_pv_sum(left_stats["user_ids"], 'today'),
-                    "right_pv": get_pv_sum(right_stats["user_ids"], 'today')
+                    "left_pv": get_pv_sum(left_users, 'today'),
+                    "right_pv": get_pv_sum(right_users, 'today')
                 },
                 "weekly": {
-                    "left_pv": get_pv_sum(left_stats["user_ids"], 'week'),
-                    "right_pv": get_pv_sum(right_stats["user_ids"], 'week')
+                    "left_pv": get_pv_sum(left_users, 'week'),
+                    "right_pv": get_pv_sum(right_users, 'week')
                 },
                 "total": {
                     "left_pv": profile.total_left_pv,
@@ -144,20 +118,7 @@ if request.user.is_authenticated:
                 }
             }
 
-            team_stats = {
-                "left": {
-                    "total_members": left_stats["total"],
-                    "active_members": left_stats["active"],
-                    "pending_members": left_stats["inactive"]
-                },
-                "right": {
-                    "total_members": right_stats["total"],
-                    "active_members": right_stats["active"],
-                    "pending_members": right_stats["inactive"]
-                }
-            }
-
-            # --- 7. Sponsor Info ---
+            # --- 6. Sponsor Info ---
             sponsor_data = None
             if sponsor:
                 sponsor_data = {
@@ -178,7 +139,6 @@ if request.user.is_authenticated:
                  "total_directs": total_directs,
                  "level_stats": level_stats,
                  "sales_report": sales_report,
-                 "team_stats": team_stats,
                  "business_stats": {
                     "total_left_pv": profile.total_left_pv,
                     "total_right_pv": profile.total_right_pv,
@@ -190,8 +150,7 @@ if request.user.is_authenticated:
         except Exception as e:
             response_data['status_code'] = 500
             response_data['message'] = str(e)
-            import traceback
-            # Optional: response_data['trace'] = traceback.format_exc()
+            
 else:
     response_data['status_code'] = 401
     response_data['message'] = "Unauthorized"
@@ -201,14 +160,6 @@ try:
     api = Api.objects.get(key=key_dashboard)
     api.content = dashboard_content
     api.save()
-    print(f"Successfully updated Dashboard API (Key: {key_dashboard})")
+    print(f"Successfully reverted Dashboard API (Key: {key_dashboard})")
 except Api.DoesNotExist:
-    print(f"Error: API with key {key_dashboard} not found. Trying to find by name...")
-    try:
-         api = Api.objects.get(name="Get MLM Dashboard")
-         api.key = key_dashboard
-         api.content = dashboard_content
-         api.save()
-         print(f"Successfully updated Dashboard API by Name and restored Key: {key_dashboard}")
-    except Api.DoesNotExist:
-         print("Error: API 'Get MLM Dashboard' not found.")
+    pass

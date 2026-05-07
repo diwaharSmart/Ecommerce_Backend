@@ -1,0 +1,273 @@
+================================================================================
+                KYC VERIFIED ACCOUNTS REPORT (GROUPED BY MOBILE)                
+================================================================================
+
+[ MOBILE NUMBER ]: 8072433632 (Accounts: 3, Sharing KYC: YES)
+---------------------------------------------------------------------------
+  * Name      : V Ravichandran
+  * Username  : VN0851849 (Email: 8072433632@veadon.com)
+  * Mobile No : 8072433632
+  * Bank Name : Canara Bank
+  * Account No: 4686101002214
+  * IFSC Code : CNRB0004686
+  * Image URL : /media/media/kyc/passbooks/scaled_IMG-20260408-WA0017_tc88gq
+  * Wallet Bal: Rs 0.00
+  * Binary Inc: Rs 0.00
+  * Level Inc : Rs 0.00
+  ............................................................
+  * Name      : V Ravichandran
+  * Username  : VN4306739 (Email: 8072433632@veadon.com)
+  * Mobile No : 8072433632
+  * Bank Name : Canara Bank
+  * Account No: 4686101002214
+  * IFSC Code : CNRB0004686
+  * Image URL : /media/media/kyc/passbooks/scaled_IMG-20260408-WA0017_tc88gq
+  * Wallet Bal: Rs 0.00
+  * Binary Inc: Rs 0.00
+  * Level Inc : Rs 0.00
+  ............................................................
+  * Name      : V Ravichandran
+  * Username  : VN6981406 (Email: 8072433632@veadon.com)
+  * Mobile No : 8072433632
+  * Bank Name : Canara Bank
+  * Account No: 4686101002214
+  * IFSC Code : CNRB0004686
+  * Image URL : /media/media/kyc/passbooks/scaled_IMG-20260408-WA0017_tc88gq
+  * Wallet Bal: Rs 16850.00
+  * Binary Inc: Rs 9500.00
+  * Level Inc : Rs 7350.00
+  ............................................................
+  ====> TOTAL GROUP WALLET BALANCE: Rs 16850.00 <====
+
+[ MOBILE NUMBER ]: 8778546539 (Accounts: 4, Sharing KYC: YES)
+---------------------------------------------------------------------------
+  * Name      : YOGESWARI V
+  * Username  : VN8171363 (Email: 8778546539@vedaon.com)
+  * Mobile No : 8778546539
+  * Bank Name : Central Bank of India
+  * Account No: 3303442355
+  * IFSC Code : CBIN0284398
+  * Image URL : /media/media/kyc/passbooks/scaled_IMG_20230712_132030_xwmd8i
+  * Wallet Bal: Rs 4150.00
+  * Binary Inc: Rs 2500.00
+  * Level Inc : Rs 1650.00
+  ............................................................
+  * Name      : YOGESWARI V
+  * Username  : VN7694538 (Email: 8778546539)
+  * Mobile No : 8778546539
+  * Bank Name : Central Bank of India
+  * Account No: 3303442355
+  * IFSC Code : CBIN0284398
+  * Image URL : /media/media/kyc/passbooks/scaled_IMG_20230712_132030_xwmd8i
+  * Wallet Bal: Rs 0.00
+  * Binary Inc: Rs 0.00
+  * Level Inc : Rs 0.00
+  ............................................................
+  * Name      : YOGESWARI V
+  * Username  : VN8035350 (Email: 8778546539)
+  * Mobile No : 8778546539
+  * Bank Name : Central Bank of India
+  * Account No: 3303442355
+  * IFSC Code : CBIN0284398
+  * Image URL : /media/media/kyc/passbooks/scaled_IMG_20230712_132030_xwmd8i
+  * Wallet Bal: Rs 0.00
+  * Binary Inc: Rs 0.00
+  * Level Inc : Rs 0.00
+  ............................................................
+  * Name      : YOGESWARI V
+  * Username  : VN7515901 (Email: 8778546539)
+  * Mobile No : 8778546539
+  * Bank Name : Central Bank of India
+  * Account No: 3303442355
+  * IFSC Code : CBIN0284398
+  * Image URL : /media/media/kyc/passbooks/scaled_IMG_20230712_132030_xwmd8i
+  * Wallet Bal: Rs 0.00
+  * Binary Inc: Rs 0.00
+  * Level Inc : Rs 0.00
+  ............................................................
+  ====> TOTAL GROUP WALLET BALANCE: Rs 4150.00 <====
+
+[ MOBILE NUMBER ]: 8940864510 (Accounts: 3, Sharing KYC: YES)
+---------------------------------------------------------------------------
+  * Name      : CHITRA  S
+  * Username  : VN6224742 (Email: 8940864510)
+  * Mobile No : 8940864510
+  * Bank Name : Canara Bank
+  * Account No: 1014101037785
+  * IFSC Code : CNRB0001014
+  * Image URL : /media/media/kyc/passbooks/scaled_IMG-20260416-WA0078_n2l0e7
+  * Wallet Bal: Rs 0.00
+  * Binary Inc: Rs 0.00
+  * Level Inc : Rs 0.00
+  ............................................................
+  * Name      : CHITRA  S
+  * Username  : VN2910854 (Email: 8940864510)
+  * Mobile No : 8940864510
+  * Bank Name : Canara Bank
+  * Account No: 1014101037785
+  * IFSC Code : CNRB0001014
+  * Image URL : /media/media/kyc/passbooks/scaled_IMG-20260416-WA0078_n2l0e7
+  * Wallet Bal: Rs 3750.00
+  * Binary Inc: Rs 3500.00
+  * Level Inc : Rs 250.00
+  ............................................................
+  * Name      : CHITRA  S
+  * Username  : VN6634538 (Email: 8940864510)
+  * Mobile No : 8940864510
+  * Bank Name : Canara Bank
+  * Account No: 1014101037785
+  * IFSC Code : CNRB0001014
+  * Image URL : /media/media/kyc/passbooks/scaled_IMG-20260416-WA0078_n2l0e7
+  * Wallet Bal: Rs 0.00
+  * Binary Inc: Rs 0.00
+  * Level Inc : Rs 0.00
+  ............................................................
+  ====> TOTAL GROUP WALLET BALANCE: Rs 3750.00 <====
+
+[ MOBILE NUMBER ]: 9047563128 (Accounts: 3, Sharing KYC: YES)
+---------------------------------------------------------------------------
+  * Name      : SANGEETHA M
+  * Username  : VN1590066 (Email: 9047563128)
+  * Mobile No : 9047563128
+  * Bank Name : Indian Overseas Bank
+  * Account No: 228801000024891
+  * IFSC Code : IOBA0002288
+  * Image URL : /media/media/kyc/passbooks/scaled_175232_ivr2hd
+  * Wallet Bal: Rs 8700.00
+  * Binary Inc: Rs 6000.00
+  * Level Inc : Rs 2700.00
+  ............................................................
+  * Name      : SANGEETHA M
+  * Username  : VN3868792 (Email: 9047563128)
+  * Mobile No : 9047563128
+  * Bank Name : Indian Overseas Bank
+  * Account No: 228801000024891
+  * IFSC Code : IOBA0002288
+  * Image URL : /media/media/kyc/passbooks/scaled_175232_ivr2hd
+  * Wallet Bal: Rs 2750.00
+  * Binary Inc: Rs 2500.00
+  * Level Inc : Rs 250.00
+  ............................................................
+  * Name      : SANGEETHA M
+  * Username  : VN5213962 (Email: 9047563128)
+  * Mobile No : 9047563128
+  * Bank Name : Indian Overseas Bank
+  * Account No: 228801000024891
+  * IFSC Code : IOBA0002288
+  * Image URL : /media/media/kyc/passbooks/scaled_175232_ivr2hd
+  * Wallet Bal: Rs 1500.00
+  * Binary Inc: Rs 1500.00
+  * Level Inc : Rs 0.00
+  ............................................................
+  ====> TOTAL GROUP WALLET BALANCE: Rs 12950.00 <====
+
+[ MOBILE NUMBER ]: 7094020372 (Accounts: 3, Sharing KYC: YES)
+---------------------------------------------------------------------------
+  * Name      : KANIMOZHI A
+  * Username  : VN0134709 (Email: 7094020372)
+  * Mobile No : 7094020372
+  * Bank Name : INDIAN BANK
+  * Account No: 6187574693
+  * IFSC Code : IIDIB000N117
+  * Image URL : /media/media/kyc/passbooks/scaled_181555_ihzxw7
+  * Wallet Bal: Rs 500.00
+  * Binary Inc: Rs 500.00
+  * Level Inc : Rs 0.00
+  ............................................................
+  * Name      : KANIMOZHI A
+  * Username  : VN3294760 (Email: 7094020372)
+  * Mobile No : 7094020372
+  * Bank Name : INDIAN BANK
+  * Account No: 6187574693
+  * IFSC Code : IIDIB000N117
+  * Image URL : /media/media/kyc/passbooks/scaled_181555_ihzxw7
+  * Wallet Bal: Rs 0.00
+  * Binary Inc: Rs 0.00
+  * Level Inc : Rs 0.00
+  ............................................................
+  * Name      : KANIMOZHI A
+  * Username  : VN4965087 (Email: 7094020372)
+  * Mobile No : 7094020372
+  * Bank Name : INDIAN BANK
+  * Account No: 6187574693
+  * IFSC Code : IIDIB000N117
+  * Image URL : /media/media/kyc/passbooks/scaled_181555_ihzxw7
+  * Wallet Bal: Rs 0.00
+  * Binary Inc: Rs 0.00
+  * Level Inc : Rs 0.00
+  ............................................................
+  ====> TOTAL GROUP WALLET BALANCE: Rs 500.00 <====
+
+[ MOBILE NUMBER ]: 9787260723 (Accounts: 3, Sharing KYC: YES)
+---------------------------------------------------------------------------
+  * Name      : S. DHEEPA
+  * Username  : VN6125800 (Email: 9787260723)
+  * Mobile No : 9787260723
+  * Bank Name : Canara Bank
+  * Account No: 1598101025397
+  * IFSC Code : CNRB0001598
+  * Image URL : /media/media/kyc/passbooks/scaled_1000796530_ayzgmd
+  * Wallet Bal: Rs 500.00
+  * Binary Inc: Rs 500.00
+  * Level Inc : Rs 0.00
+  ............................................................
+  * Name      : S. DHEEPA
+  * Username  : VN0535337 (Email: 9787260723)
+  * Mobile No : 9787260723
+  * Bank Name : Canara Bank
+  * Account No: 1598101025397
+  * IFSC Code : CNRB0001598
+  * Image URL : /media/media/kyc/passbooks/scaled_1000796530_ayzgmd
+  * Wallet Bal: Rs 0.00
+  * Binary Inc: Rs 0.00
+  * Level Inc : Rs 0.00
+  ............................................................
+  * Name      : S. DHEEPA
+  * Username  : VN6149531 (Email: 9787260723)
+  * Mobile No : 9787260723
+  * Bank Name : Canara Bank
+  * Account No: 1598101025397
+  * IFSC Code : CNRB0001598
+  * Image URL : /media/media/kyc/passbooks/scaled_1000796530_ayzgmd
+  * Wallet Bal: Rs 0.00
+  * Binary Inc: Rs 0.00
+  * Level Inc : Rs 0.00
+  ............................................................
+  ====> TOTAL GROUP WALLET BALANCE: Rs 500.00 <====
+
+[ MOBILE NUMBER ]: 7845148812 (Accounts: 3, Sharing KYC: YES)
+---------------------------------------------------------------------------
+  * Name      : SATHISHKUMAR. K
+  * Username  : VN7593593 (Email: 7845148812)
+  * Mobile No : 7845148812
+  * Bank Name : Indian Bank
+  * Account No: 8240690841
+  * IFSC Code : IDIB000T197
+  * Image URL : /media/media/kyc/passbooks/scaled_1000101883_px0zsk
+  * Wallet Bal: Rs 0.00
+  * Binary Inc: Rs 0.00
+  * Level Inc : Rs 0.00
+  ............................................................
+  * Name      : SATHISHKUMAR. K
+  * Username  : VN0858217 (Email: 7845148812)
+  * Mobile No : 7845148812
+  * Bank Name : Indian Bank
+  * Account No: 8240690841
+  * IFSC Code : IDIB000T197
+  * Image URL : /media/media/kyc/passbooks/scaled_1000101883_px0zsk
+  * Wallet Bal: Rs 0.00
+  * Binary Inc: Rs 0.00
+  * Level Inc : Rs 0.00
+  ............................................................
+  * Name      : SATHISHKUMAR. K
+  * Username  : VN1535657 (Email: 7845148812)
+  * Mobile No : 7845148812
+  * Bank Name : Indian Bank
+  * Account No: 8240690841
+  * IFSC Code : IDIB000T197
+  * Image URL : /media/media/kyc/passbooks/scaled_1000101883_px0zsk
+  * Wallet Bal: Rs 0.00
+  * Binary Inc: Rs 0.00
+  * Level Inc : Rs 0.00
+  ............................................................
+  ====> TOTAL GROUP WALLET BALANCE: Rs 0.00 <====
