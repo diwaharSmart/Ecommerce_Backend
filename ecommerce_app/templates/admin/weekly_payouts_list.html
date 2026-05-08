@@ -44,6 +44,49 @@
         background-color: var(--button-hover-bg, #2c5061);
         border-color: var(--button-hover-bg, #2c5061);
     }
+    
+    /* Analytics Dashboard Styles */
+    .analytics-dashboard {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 25px;
+        flex-wrap: wrap;
+    }
+    .analytics-card {
+        flex: 1;
+        min-width: 250px;
+        background: var(--darkened-bg, #f4f4f4);
+        border: 1px solid var(--border-color, #eee);
+        border-radius: 6px;
+        padding: 15px;
+        color: var(--body-fg, #333);
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .analytics-card h3 {
+        margin-top: 0;
+        font-size: 16px;
+        border-bottom: 1px solid var(--border-color, #eee);
+        padding-bottom: 10px;
+        margin-bottom: 15px;
+        color: var(--body-fg, #333);
+    }
+    .stat-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+        font-size: 14px;
+    }
+    .stat-row.total {
+        font-weight: bold;
+        font-size: 16px;
+        margin-top: 12px;
+        padding-top: 12px;
+        border-top: 1px dashed var(--border-color, #ccc);
+        color: var(--link-fg, #417690);
+    }
+    .stat-value {
+        font-family: monospace;
+    }
 </style>
 {% endblock %}
 
@@ -56,6 +99,44 @@
         {% endfor %}
     </ul>
     {% endif %}
+
+    <div class="analytics-dashboard">
+        <div class="analytics-card">
+            <h3>This Week Income (All Users)</h3>
+            <div class="stat-row">
+                <span>Binary Income:</span>
+                <span class="stat-value">Rs {{ this_week_binary_all|floatformat:2 }}</span>
+            </div>
+            <div class="stat-row">
+                <span>Level Income:</span>
+                <span class="stat-value">Rs {{ this_week_level_all|floatformat:2 }}</span>
+            </div>
+            <div class="stat-row total">
+                <span>Total Amount:</span>
+                <span class="stat-value">Rs {{ this_week_total_all|floatformat:2 }}</span>
+            </div>
+        </div>
+
+        <div class="analytics-card">
+            <h3>This Week Income (KYC Verified Only)</h3>
+            <div class="stat-row">
+                <span>Total KYC Verified Users:</span>
+                <span class="stat-value">{{ total_kyc_verified }}</span>
+            </div>
+            <div class="stat-row">
+                <span>Binary Income:</span>
+                <span class="stat-value">Rs {{ this_week_binary_kyc|floatformat:2 }}</span>
+            </div>
+            <div class="stat-row">
+                <span>Level Income:</span>
+                <span class="stat-value">Rs {{ this_week_level_kyc|floatformat:2 }}</span>
+            </div>
+            <div class="stat-row total">
+                <span>Total Amount:</span>
+                <span class="stat-value">Rs {{ this_week_total_kyc|floatformat:2 }}</span>
+            </div>
+        </div>
+    </div>
 
     <div class="module">
         <h2>Duplicate Accounts by Mobile Number (with KYC)</h2>
