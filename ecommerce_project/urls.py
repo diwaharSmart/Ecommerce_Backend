@@ -21,6 +21,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+    # Custom Admin Views
+    path('admin/payouts/weekly/', __import__('ecommerce_app.admin_views').admin_views.weekly_payouts_list, name='weekly_payouts_list'),
+    path('admin/payouts/weekly/<str:mobile>/', __import__('ecommerce_app.admin_views').admin_views.weekly_payouts_detail, name='weekly_payouts_detail'),
     path('admin/', admin.site.urls),
     path('', include('ecommerce_app.urls')),
     path('', include('website.urls')),
