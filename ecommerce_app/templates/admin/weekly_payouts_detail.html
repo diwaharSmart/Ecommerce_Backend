@@ -4,10 +4,10 @@
 {% block extrastyle %}
 {{ block.super }}
 <style>
-    .module-content { padding: 15px; }
+    .module-content { padding: 15px; color: var(--body-fg, #333); }
     .kyc-box {
-        background: #f9f9f9;
-        border: 1px solid #ddd;
+        background: var(--darkened-bg, #f9f9f9);
+        border: 1px solid var(--border-color, #ddd);
         padding: 15px;
         margin-bottom: 20px;
         border-radius: 4px;
@@ -17,9 +17,9 @@
     .kyc-details { flex: 1; }
     .kyc-image {
         width: 300px;
-        border: 1px solid #ccc;
+        border: 1px solid var(--border-color, #ccc);
         padding: 5px;
-        background: #fff;
+        background: var(--body-bg, #fff);
     }
     .kyc-image img { max-width: 100%; height: auto; }
     
@@ -27,20 +27,23 @@
         width: 100%;
         border-collapse: collapse;
         margin-bottom: 20px;
+        color: var(--body-fg, #333);
+        background: var(--body-bg, #fff);
     }
     .results th, .results td {
         padding: 8px;
         text-align: left;
-        border-bottom: 1px solid #ddd;
+        border-bottom: 1px solid var(--border-color, #ddd);
     }
-    .results th { background-color: #f4f4f4; }
+    .results th { background-color: var(--darkened-bg, #f4f4f4); color: var(--body-fg, #333); }
     
     .action-box {
-        background: #e1f0fa;
+        background: var(--button-hover-bg, #e1f0fa);
         padding: 15px;
-        border: 1px solid #b7d5ea;
+        border: 1px solid var(--border-color, #b7d5ea);
         border-radius: 4px;
         margin-top: 20px;
+        color: var(--button-fg, #fff);
     }
     .btn {
         display: inline-block;
@@ -94,7 +97,7 @@
                             <th>Name</th>
                             <th>Binary Income</th>
                             <th>Level Income</th>
-                            <th>Current Wallet Balance</th>
+                            <th>Total Income (Withdrawable)</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -104,12 +107,12 @@
                             <td>{{ item.user.first_name }} {{ item.user.last_name }}</td>
                             <td>Rs {{ item.binary_income|floatformat:2 }}</td>
                             <td>Rs {{ item.level_income|floatformat:2 }}</td>
-                            <td><strong>Rs {{ item.balance|floatformat:2 }}</strong></td>
+                            <td><strong>Rs {{ item.income|floatformat:2 }}</strong></td>
                         </tr>
                         {% endfor %}
-                        <tr style="background-color: #e9ecef; font-weight: bold;">
-                            <td colspan="4" style="text-align: right;">Total Wallet Balance to Withdraw:</td>
-                            <td>Rs {{ total_group_balance|floatformat:2 }}</td>
+                        <tr style="background-color: var(--darkened-bg, #e9ecef); font-weight: bold;">
+                            <td colspan="4" style="text-align: right;">Total Withdrawable Income:</td>
+                            <td>Rs {{ total_group_income|floatformat:2 }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -117,14 +120,14 @@
 
             <div class="action-box">
                 <h3>Process Payout</h3>
-                <p>Clicking the button below will automatically create 'Approved' Withdrawal Requests for the entire wallet balance of the accounts listed above. This will deduct the balance from their wallets.</p>
+                <p>Clicking the button below will automatically create 'Approved' Withdrawal Requests for the combined binary and level income of the accounts listed above.</p>
                 
-                <form method="POST" onsubmit="return confirm('Are you sure you want to mark this payment as completed? This will instantly deduct Rs {{ total_group_balance|floatformat:2 }} from these accounts.');">
+                <form method="POST" onsubmit="return confirm('Are you sure you want to mark this payment as completed? This will initiate a total withdrawal of Rs {{ total_group_income|floatformat:2 }}.');">
                     {% csrf_token %}
                     <button type="submit" name="initiate_withdrawal" class="btn btn-success">
                         Payment Completed (Yes)
                     </button>
-                    <a href="{% url 'weekly_payouts_list' %}" style="margin-left: 15px;">Cancel and go back</a>
+                    <a href="{% url 'weekly_payouts_list' %}" style="margin-left: 15px; color: var(--link-fg, #417690);">Cancel and go back</a>
                 </form>
             </div>
         </div>

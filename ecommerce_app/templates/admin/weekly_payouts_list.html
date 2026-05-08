@@ -7,14 +7,17 @@
     .results table {
         width: 100%;
         border-collapse: collapse;
+        color: var(--body-fg, #333);
+        background: var(--body-bg, #fff);
     }
     .results th, .results td {
         padding: 8px;
         text-align: left;
-        border-bottom: 1px solid #ddd;
+        border-bottom: 1px solid var(--border-color, #eee);
     }
     .results th {
-        background-color: #f4f4f4;
+        background-color: var(--darkened-bg, #f4f4f4);
+        color: var(--body-fg, #333);
     }
     .btn {
         display: inline-block;
@@ -33,13 +36,13 @@
         text-decoration: none;
     }
     .btn-primary {
-        color: #fff;
-        background-color: #417690;
-        border-color: #417690;
+        color: var(--button-fg, #fff);
+        background-color: var(--button-bg, #417690);
+        border-color: var(--button-bg, #417690);
     }
     .btn-primary:hover {
-        background-color: #2c5061;
-        border-color: #2c5061;
+        background-color: var(--button-hover-bg, #2c5061);
+        border-color: var(--button-hover-bg, #2c5061);
     }
 </style>
 {% endblock %}
@@ -67,7 +70,7 @@
                         <th>IFSC</th>
                         <th>Total Binary Income</th>
                         <th>Total Level Income</th>
-                        <th>Total Wallet Balance</th>
+                        <th>Total Income (Withdrawable)</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -81,7 +84,7 @@
                         <td>{{ group.ifsc_code }}</td>
                         <td>Rs {{ group.total_binary|floatformat:2 }}</td>
                         <td>Rs {{ group.total_level|floatformat:2 }}</td>
-                        <td><strong>Rs {{ group.total_balance|floatformat:2 }}</strong></td>
+                        <td><strong>Rs {{ group.total_income|floatformat:2 }}</strong></td>
                         <td>
                             <a href="{% url 'weekly_payouts_detail' group.mobile %}" class="btn btn-primary">Initiate Withdrawal</a>
                         </td>

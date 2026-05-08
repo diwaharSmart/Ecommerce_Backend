@@ -66,14 +66,11 @@ def weekly_payouts_list(request):
         if not has_kyc:
             continue
             
-        total_balance = Decimal('0.00')
+        total_income = Decimal('0.00')
         total_binary = Decimal('0.00')
         total_level = Decimal('0.00')
         
         for user in group:
-            wallet, _ = Wallet.objects.get_or_create(user=user)
-            total_balance += wallet.current_balance
-            
             binary_inc = Transaction.objects.filter(
                 user=user, type='binary_income', direction='credit'
             ).aggregate(Sum('amount'))['amount__sum'] or Decimal('0.00')
@@ -84,20 +81,22 @@ def weekly_payouts_list(request):
             ).aggregate(Sum('amount'))['amount__sum'] or Decimal('0.00')
             total_level += level_inc
             
-        if total_balance > 0:
+            total_income += (binary_inc + level_inc)
+            
+        if total_income > 0:
             payout_groups.append({
                 'mobile': phone,
                 'accounts_count': len(group),
                 'bank_name': shared_bank_name,
                 'account_number': shared_bank_acc,
                 'ifsc_code': shared_ifsc,
-                'total_balance': total_balance,
+                'total_income': total_income,
                 'total_binary': total_binary,
                 'total_level': total_level
             })
         
-    # Sort by total balance descending
-    payout_groups.sort(key=lambda x: x['total_balance'], reverse=True)
+    # Sort by total income descending
+    payout_groups.sort(key=lambda x: x['total_income'], reverse=True)
         
     context = {
         'payout_groups': payout_groups,
@@ -136,13 +135,9 @@ def weekly_payouts_detail(request, mobile):
         return redirect('admin:weekly_payouts_list')
         
     accounts_data = []
-    total_group_balance = Decimal('0.00')
+    total_group_income = Decimal('0.00')
     
     for user in group:
-        wallet, _ = Wallet.objects.get_or_create(user=user)
-        current_bal = wallet.current_balance
-        total_group_balance += current_bal
-        
         binary_inc = Transaction.objects.filter(
             user=user, type='binary_income', direction='credit'
         ).aggregate(Sum('amount'))['amount__sum'] or Decimal('0.00')
@@ -151,9 +146,12 @@ def weekly_payouts_detail(request, mobile):
             user=user, type='level_income', direction='credit'
         ).aggregate(Sum('amount'))['amount__sum'] or Decimal('0.00')
         
+        income = binary_inc + level_inc
+        total_group_income += income
+        
         accounts_data.append({
             'user': user,
-            'balance': current_bal,
+            'income': income,
             'binary_income': binary_inc,
             'level_income': level_inc,
         })
@@ -163,10 +161,10 @@ def weekly_payouts_detail(request, mobile):
             withdrawals_created = 0
             for data in accounts_data:
                 usr = data['user']
-                bal = data['balance']
-                if bal > 0:
-                    # Create withdrawal request for the entire balance
-                    total_amount = bal
+                inc = data['income']
+                if inc > 0:
+                    # Create withdrawal request for the combined binary and level income
+                    total_amount = inc
                     tds = total_amount * Decimal('0.10')
                     top_up = total_amount * Decimal('0.10')
                     net_amount = total_amount - tds - top_up
@@ -182,7 +180,7 @@ def weekly_payouts_detail(request, mobile):
                     )
                     withdrawals_created += 1
                     
-            messages.success(request, f"Successfully processed {withdrawals_created} withdrawal(s). Wallet balances have been updated.")
+            messages.success(request, f"Successfully processed {withdrawals_created} withdrawal(s). Wallets have been updated.")
             return redirect('admin:weekly_payouts_list')
 
     context = {
