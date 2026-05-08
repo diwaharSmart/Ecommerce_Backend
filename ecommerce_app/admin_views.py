@@ -187,7 +187,7 @@ def weekly_payouts_detail(request, mobile):
         'mobile': mobile,
         'group': accounts_data,
         'kyc': shared_kyc,
-        'total_group_balance': total_group_balance,
+        'total_group_income': total_group_income,
         'title': f'Payout Details for {mobile}',
     }
     return render(request, 'admin/weekly_payouts_detail.html', context)
