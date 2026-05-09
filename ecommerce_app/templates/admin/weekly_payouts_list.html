@@ -102,7 +102,31 @@
 
     <div class="analytics-dashboard">
         <div class="analytics-card">
-            <h3>This Week Income (All Users)</h3>
+            <h3>Today's Analytics</h3>
+            <div class="stat-row">
+                <span>Daily Turnover (Purchases):</span>
+                <span class="stat-value" style="color: #28a745; font-weight: bold;">Rs {{ today_turnover|floatformat:2 }}</span>
+            </div>
+            <div class="stat-row">
+                <span>Binary Income:</span>
+                <span class="stat-value">Rs {{ today_binary|floatformat:2 }}</span>
+            </div>
+            <div class="stat-row">
+                <span>Level Income:</span>
+                <span class="stat-value">Rs {{ today_level|floatformat:2 }}</span>
+            </div>
+            <div class="stat-row total">
+                <span>Total Income Today:</span>
+                <span class="stat-value">Rs {{ today_total_income|floatformat:2 }}</span>
+            </div>
+        </div>
+
+        <div class="analytics-card">
+            <h3>This Week's Analytics (All Users)</h3>
+            <div class="stat-row">
+                <span>Weekly Turnover (Purchases):</span>
+                <span class="stat-value" style="color: #28a745; font-weight: bold;">Rs {{ this_week_turnover|floatformat:2 }}</span>
+            </div>
             <div class="stat-row">
                 <span>Binary Income:</span>
                 <span class="stat-value">Rs {{ this_week_binary_all|floatformat:2 }}</span>
@@ -112,13 +136,13 @@
                 <span class="stat-value">Rs {{ this_week_level_all|floatformat:2 }}</span>
             </div>
             <div class="stat-row total">
-                <span>Total Amount:</span>
+                <span>Total Income This Week:</span>
                 <span class="stat-value">Rs {{ this_week_total_all|floatformat:2 }}</span>
             </div>
         </div>
 
         <div class="analytics-card">
-            <h3>This Week Income (KYC Verified Only)</h3>
+            <h3>This Week's Income (KYC Verified Only)</h3>
             <div class="stat-row">
                 <span>Total KYC Verified Users:</span>
                 <span class="stat-value">{{ total_kyc_verified }}</span>

@@ -103,7 +103,28 @@ def weekly_payouts_list(request):
     start_of_week = today - datetime.timedelta(days=today.weekday())
     start_of_week = start_of_week.replace(hour=0, minute=0, second=0, microsecond=0)
     
-    # --- 1. Analytics for ALL USERS (This week only) ---
+    start_of_today = today.replace(hour=0, minute=0, second=0, microsecond=0)
+    
+    # --- 1. Daily Analytics (Today) ---
+    today_turnover = Transaction.objects.filter(
+        type__in=['purchase', 'pin_purchase'], direction='debit', created_at__gte=start_of_today
+    ).aggregate(Sum('amount'))['amount__sum'] or Decimal('0.00')
+    
+    today_binary = Transaction.objects.filter(
+        type='binary_income', direction='credit', created_at__gte=start_of_today
+    ).aggregate(Sum('amount'))['amount__sum'] or Decimal('0.00')
+    
+    today_level = Transaction.objects.filter(
+        type='level_income', direction='credit', created_at__gte=start_of_today
+    ).aggregate(Sum('amount'))['amount__sum'] or Decimal('0.00')
+    
+    today_total_income = today_binary + today_level
+    
+    # --- 2. Weekly Analytics (This Week) ---
+    this_week_turnover = Transaction.objects.filter(
+        type__in=['purchase', 'pin_purchase'], direction='debit', created_at__gte=start_of_week
+    ).aggregate(Sum('amount'))['amount__sum'] or Decimal('0.00')
+    
     this_week_binary_all = Transaction.objects.filter(
         type='binary_income', direction='credit', created_at__gte=start_of_week
     ).aggregate(Sum('amount'))['amount__sum'] or Decimal('0.00')
@@ -114,7 +135,7 @@ def weekly_payouts_list(request):
     
     this_week_total_all = this_week_binary_all + this_week_level_all
     
-    # --- 2. Analytics for KYC VERIFIED USERS ONLY (This week only) ---
+    # --- 3. Analytics for KYC VERIFIED USERS ONLY (This week only) ---
     kyc_verified_users = User.objects.filter(kyc__bank_account_number__isnull=False).exclude(kyc__bank_account_number='')
     total_kyc_verified = kyc_verified_users.count()
     
@@ -131,6 +152,11 @@ def weekly_payouts_list(request):
     context = {
         'payout_groups': payout_groups,
         'title': 'Weekly Payouts',
+        'today_turnover': today_turnover,
+        'today_binary': today_binary,
+        'today_level': today_level,
+        'today_total_income': today_total_income,
+        'this_week_turnover': this_week_turnover,
         'this_week_binary_all': this_week_binary_all,
         'this_week_level_all': this_week_level_all,
         'this_week_total_all': this_week_total_all,
