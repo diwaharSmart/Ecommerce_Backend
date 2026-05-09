@@ -104,7 +104,7 @@
         <div class="analytics-card">
             <h3>Today's Analytics</h3>
             <div class="stat-row">
-                <span>Daily Turnover (Purchases):</span>
+                <span>Daily Turnover (Company):</span>
                 <span class="stat-value" style="color: #28a745; font-weight: bold;">Rs {{ today_turnover|floatformat:2 }}</span>
             </div>
             <div class="stat-row">
@@ -124,7 +124,7 @@
         <div class="analytics-card">
             <h3>This Week's Analytics (All Users)</h3>
             <div class="stat-row">
-                <span>Weekly Turnover (Purchases):</span>
+                <span>Weekly Turnover (Company):</span>
                 <span class="stat-value" style="color: #28a745; font-weight: bold;">Rs {{ this_week_turnover|floatformat:2 }}</span>
             </div>
             <div class="stat-row">
@@ -138,6 +138,18 @@
             <div class="stat-row total">
                 <span>Total Income This Week:</span>
                 <span class="stat-value">Rs {{ this_week_total_all|floatformat:2 }}</span>
+            </div>
+        </div>
+
+        <div class="analytics-card">
+            <h3>1 PV Product Activations</h3>
+            <div class="stat-row">
+                <span>Total Activated (All Time):</span>
+                <span class="stat-value" style="color: #417690; font-weight: bold;">{{ total_1pv_quantity_all_time }}</span>
+            </div>
+            <div class="stat-row">
+                <span>Total Activated (Today):</span>
+                <span class="stat-value">{{ total_1pv_quantity_today }}</span>
             </div>
         </div>
 

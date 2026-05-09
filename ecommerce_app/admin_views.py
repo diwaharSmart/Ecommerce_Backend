@@ -99,17 +99,15 @@ def weekly_payouts_list(request):
     payout_groups.sort(key=lambda x: x['total_income'], reverse=True)
         
     from django.utils import timezone
+    from django.db.models import F, ExpressionWrapper, DecimalField
+    from ecommerce_app.models import OrderItem
+
     today = timezone.now()
     start_of_week = today - datetime.timedelta(days=today.weekday())
     start_of_week = start_of_week.replace(hour=0, minute=0, second=0, microsecond=0)
-    
     start_of_today = today.replace(hour=0, minute=0, second=0, microsecond=0)
     
     # --- 1. Daily Analytics (Today) ---
-    today_turnover = Transaction.objects.filter(
-        type__in=['purchase', 'pin_purchase'], direction='debit', created_at__gte=start_of_today
-    ).aggregate(Sum('amount'))['amount__sum'] or Decimal('0.00')
-    
     today_binary = Transaction.objects.filter(
         type='binary_income', direction='credit', created_at__gte=start_of_today
     ).aggregate(Sum('amount'))['amount__sum'] or Decimal('0.00')
@@ -120,11 +118,20 @@ def weekly_payouts_list(request):
     
     today_total_income = today_binary + today_level
     
-    # --- 2. Weekly Analytics (This Week) ---
-    this_week_turnover = Transaction.objects.filter(
-        type__in=['purchase', 'pin_purchase'], direction='debit', created_at__gte=start_of_week
+    today_valid_orders = OrderItem.objects.filter(
+        order__status__in=['paid', 'completed'], product__pv__gt=1, order__created_at__gte=start_of_today
+    ).annotate(
+        total_cost=ExpressionWrapper(F('quantity') * F('price'), output_field=DecimalField())
+    ).aggregate(Sum('total_cost'))['total_cost__sum'] or Decimal('0.00')
+    
+    today_pin_purchases = Transaction.objects.filter(
+        type='pin_purchase', direction='debit', created_at__gte=start_of_today
     ).aggregate(Sum('amount'))['amount__sum'] or Decimal('0.00')
     
+    today_total_purchase = today_valid_orders + today_pin_purchases
+    today_turnover = today_total_purchase - today_total_income
+    
+    # --- 2. Weekly Analytics (This Week) ---
     this_week_binary_all = Transaction.objects.filter(
         type='binary_income', direction='credit', created_at__gte=start_of_week
     ).aggregate(Sum('amount'))['amount__sum'] or Decimal('0.00')
@@ -134,8 +141,30 @@ def weekly_payouts_list(request):
     ).aggregate(Sum('amount'))['amount__sum'] or Decimal('0.00')
     
     this_week_total_all = this_week_binary_all + this_week_level_all
+
+    this_week_valid_orders = OrderItem.objects.filter(
+        order__status__in=['paid', 'completed'], product__pv__gt=1, order__created_at__gte=start_of_week
+    ).annotate(
+        total_cost=ExpressionWrapper(F('quantity') * F('price'), output_field=DecimalField())
+    ).aggregate(Sum('total_cost'))['total_cost__sum'] or Decimal('0.00')
     
-    # --- 3. Analytics for KYC VERIFIED USERS ONLY (This week only) ---
+    this_week_pin_purchases = Transaction.objects.filter(
+        type='pin_purchase', direction='debit', created_at__gte=start_of_week
+    ).aggregate(Sum('amount'))['amount__sum'] or Decimal('0.00')
+    
+    this_week_total_purchase = this_week_valid_orders + this_week_pin_purchases
+    this_week_turnover = this_week_total_purchase - this_week_total_all
+    
+    # --- 3. 1 PV Product Activation Metrics ---
+    total_1pv_quantity_all_time = OrderItem.objects.filter(
+        order__status__in=['paid', 'completed'], product__pv=1
+    ).aggregate(Sum('quantity'))['quantity__sum'] or 0
+    
+    total_1pv_quantity_today = OrderItem.objects.filter(
+        order__status__in=['paid', 'completed'], product__pv=1, order__created_at__gte=start_of_today
+    ).aggregate(Sum('quantity'))['quantity__sum'] or 0
+    
+    # --- 4. Analytics for KYC VERIFIED USERS ONLY (This week only) ---
     kyc_verified_users = User.objects.filter(kyc__bank_account_number__isnull=False).exclude(kyc__bank_account_number='')
     total_kyc_verified = kyc_verified_users.count()
     
@@ -160,6 +189,8 @@ def weekly_payouts_list(request):
         'this_week_binary_all': this_week_binary_all,
         'this_week_level_all': this_week_level_all,
         'this_week_total_all': this_week_total_all,
+        'total_1pv_quantity_all_time': total_1pv_quantity_all_time,
+        'total_1pv_quantity_today': total_1pv_quantity_today,
         'this_week_binary_kyc': this_week_binary_kyc,
         'this_week_level_kyc': this_week_level_kyc,
         'this_week_total_kyc': this_week_total_kyc,
