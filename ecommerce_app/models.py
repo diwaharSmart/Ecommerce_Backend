@@ -165,6 +165,7 @@ class Transaction(models.Model):
         ('tds', 'TDS'),
         ('top_up', 'Top-Up'),
         ('pin_purchase', 'Pin Purchase'),
+        ('deposit_new', 'Deposit New'),
         ('account_closing', 'Account Closing (Negative Balance Clear)'),
 
     )

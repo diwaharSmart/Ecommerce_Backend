@@ -80,7 +80,7 @@ class ProfileSerializer(serializers.ModelSerializer):
         return Transaction.objects.filter(user=obj.user, type='top_up', direction='credit').aggregate(s=Sum('amount'))['s'] or 0.0
 
     def get_current_balance(self, obj):
-        # Formula: (Binary + Level) - (Withdrawals + TDS)
+        # Formula: (Binary + Level) - (Withdrawals + TDS + Top-up Deductions)
         credits = Transaction.objects.filter(
             user=obj.user, 
             type__in=['binary_income', 'level_income'], 
@@ -89,7 +89,7 @@ class ProfileSerializer(serializers.ModelSerializer):
         
         debits = Transaction.objects.filter(
             user=obj.user, 
-            type__in=['withdrawal', 'tds'], 
+            type__in=['withdrawal', 'tds', 'top_up'], 
             direction='debit'
         ).aggregate(sum_val=Sum('amount'))['sum_val'] or 0.0
         
@@ -137,7 +137,7 @@ class WalletSerializer(serializers.ModelSerializer):
         return Transaction.objects.filter(user=obj.user, type='top_up', direction='credit').aggregate(s=Sum('amount'))['s'] or 0.0
 
     def get_current_balance(self, obj):
-        # Formula: (Binary + Level) - (Withdrawals + TDS)
+        # Formula: (Binary + Level) - (Withdrawals + TDS + Top-up Deductions)
         credits = Transaction.objects.filter(
             user=obj.user, 
             type__in=['binary_income', 'level_income'], 
@@ -146,7 +146,7 @@ class WalletSerializer(serializers.ModelSerializer):
         
         debits = Transaction.objects.filter(
             user=obj.user, 
-            type__in=['withdrawal', 'tds'], 
+            type__in=['withdrawal', 'tds', 'top_up'], 
             direction='debit'
         ).aggregate(sum_val=Sum('amount'))['sum_val'] or 0.0
         
