@@ -90,8 +90,10 @@
                     <tr>
                         <th>Username</th>
                         <th>Name</th>
-                        <th>Binary Income</th>
-                        <th>Level Income</th>
+                        <th>Left PV</th>
+                        <th>Right PV</th>
+                        <th>Binary Inc</th>
+                        <th>Level Inc</th>
                         <th>Total Income</th>
                         <th>Already Withdrawn</th>
                         <th>Remaining to Pay</th>
@@ -102,6 +104,8 @@
                     <tr>
                         <td>{{ item.user.username }}</td>
                         <td>{{ item.user.first_name }} {{ item.user.last_name }}</td>
+                        <td>{{ item.left_pv_sum }} PV</td>
+                        <td>{{ item.right_pv_sum }} PV</td>
                         <td>Rs {{ item.binary_income|floatformat:2 }}</td>
                         <td>Rs {{ item.level_income|floatformat:2 }}</td>
                         <td>Rs {{ item.income|floatformat:2 }}</td>
@@ -112,7 +116,7 @@
                     </tr>
                     {% endfor %}
                     <tr style="background-color: #fff3cd; font-weight: bold; font-size: 16px;">
-                        <td colspan="6" style="text-align: right; color: #856404;">TOTAL REMAINING GROUP PAYOUT:</td>
+                        <td colspan="8" style="text-align: right; color: #856404;">TOTAL REMAINING GROUP PAYOUT:</td>
                         <td style="color: #856404;">Rs {{ total_group_remaining|floatformat:2 }}</td>
                     </tr>
                 </tbody>
@@ -168,6 +172,33 @@
                             <td style="padding: 8px; border: 1px solid #ddd;">{{ txn.created_at|date:"M d, Y H:i" }}</td>
                             <td style="padding: 8px; border: 1px solid #ddd;">{{ txn.description|default:"Level Income" }}</td>
                             <td style="padding: 8px; border: 1px solid #ddd; text-align: right; color: #28a745;">+ Rs {{ txn.amount|floatformat:2 }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% endif %}
+{% if item.order_history %}
+                <h4 style="color: #417690; margin-bottom: 10px; margin-top: 20px;">Team Purchase History (Selected Week)</h4>
+                <table style="width: 100%; border-collapse: collapse; margin-bottom: 15px; background: #fff;">
+                    <thead>
+                        <tr>
+                            <th style="padding: 8px; border: 1px solid #ddd; background: #f8f9fa;">Date & Time</th>
+                            <th style="padding: 8px; border: 1px solid #ddd; background: #f8f9fa;">Side</th>
+                            <th style="padding: 8px; border: 1px solid #ddd; background: #f8f9fa;">Username</th>
+                            <th style="padding: 8px; border: 1px solid #ddd; background: #f8f9fa;">Name</th>
+                            <th style="padding: 8px; border: 1px solid #ddd; background: #f8f9fa; text-align: right;">Amount</th>
+                            <th style="padding: 8px; border: 1px solid #ddd; background: #f8f9fa; text-align: right;">PV</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in item.order_history %}
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;">{{ order.date|date:"M d, Y H:i" }}</td>
+                            <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold; color: {% if order.side == 'Left' %}#007bff{% else %}#fd7e14{% endif %};">{{ order.side }}</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">{{ order.username }}</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">{{ order.first_name }}</td>
+                            <td style="padding: 8px; border: 1px solid #ddd; text-align: right;">Rs {{ order.amount|floatformat:2 }}</td>
+                            <td style="padding: 8px; border: 1px solid #ddd; text-align: right; color: #28a745; font-weight: bold;">{{ order.pv }} PV</td>
                         </tr>
                         {% endfor %}
                     </tbody>

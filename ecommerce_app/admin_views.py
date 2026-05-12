@@ -182,6 +182,15 @@ def weekly_payouts_list(request):
     }
     return render(request, 'admin/weekly_payouts_list.html', context)
 
+
+def get_descendants(profile):
+    descendants = []
+    children = profile.children.all().select_related('user')
+    for child in children:
+        descendants.append(child)
+        descendants.extend(get_descendants(child))
+    return descendants
+
 @staff_member_required
 def weekly_payouts_detail(request, mobile):
     start_date_str = request.GET.get('start_date')
@@ -247,7 +256,7 @@ def weekly_payouts_detail(request, mobile):
         remaining = income - withdrawals_sum
         total_group_remaining += remaining
         
-        binary_txns = Transaction.objects.filter(
+binary_txns = Transaction.objects.filter(
             user=user, type='binary_income', direction='credit',
             created_at__range=(start_datetime, end_datetime)
         ).order_by('-created_at')
@@ -256,6 +265,63 @@ def weekly_payouts_detail(request, mobile):
             user=user, type='level_income', direction='credit',
             created_at__range=(start_datetime, end_datetime)
         ).order_by('-created_at')
+        
+        # --- Team Purchase PV Calculation ---
+        try:
+            profile = user.profile
+            left_child = profile.children.filter(position='L').first()
+            right_child = profile.children.filter(position='R').first()
+            
+            left_descendants = [left_child] + get_descendants(left_child) if left_child else []
+            right_descendants = [right_child] + get_descendants(right_child) if right_child else []
+            
+            left_users = [p.user for p in left_descendants]
+            right_users = [p.user for p in right_descendants]
+            
+            from ecommerce_app.models import Order
+            
+            left_orders = Order.objects.filter(
+                user__in=left_users,
+                status__in=['paid', 'completed'],
+                created_at__range=(start_datetime, end_datetime)
+            ).order_by('-created_at')
+            
+            right_orders = Order.objects.filter(
+                user__in=right_users,
+                status__in=['paid', 'completed'],
+                created_at__range=(start_datetime, end_datetime)
+            ).order_by('-created_at')
+            
+            left_pv_sum = sum(o.total_pv for o in left_orders)
+            right_pv_sum = sum(o.total_pv for o in right_orders)
+            
+            order_history = []
+            for o in left_orders:
+                order_history.append({
+                    'date': o.created_at,
+                    'side': 'Left',
+                    'username': o.user.username,
+                    'first_name': o.user.first_name,
+                    'amount': o.total_amount,
+                    'pv': o.total_pv
+                })
+            for o in right_orders:
+                order_history.append({
+                    'date': o.created_at,
+                    'side': 'Right',
+                    'username': o.user.username,
+                    'first_name': o.user.first_name,
+                    'amount': o.total_amount,
+                    'pv': o.total_pv
+                })
+                
+            # Sort all combined orders by date descending
+            order_history.sort(key=lambda x: x['date'], reverse=True)
+            
+        except Exception as e:
+            left_pv_sum = 0
+            right_pv_sum = 0
+            order_history = []
         
         accounts_data.append({
             'user': user,
@@ -266,6 +332,9 @@ def weekly_payouts_detail(request, mobile):
             'remaining': remaining,
             'binary_txns': binary_txns,
             'level_txns': level_txns,
+            'left_pv_sum': left_pv_sum,
+            'right_pv_sum': right_pv_sum,
+            'order_history': order_history,
         })
         
     if request.method == 'POST':
