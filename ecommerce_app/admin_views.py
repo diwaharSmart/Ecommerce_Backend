@@ -2,34 +2,55 @@ from django.shortcuts import render, redirect
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
 from django.contrib.auth.models import User
-from ecommerce_app.models import KYC, Wallet, Transaction, WithdrawalRequest
-from django.db.models import Sum
+from ecommerce_app.models import KYC, Wallet, Transaction, WithdrawalRequest, OrderItem
+from django.db.models import Sum, F, ExpressionWrapper, DecimalField
 from decimal import Decimal
 import datetime
+from django.utils import timezone
+from django.utils.dateparse import parse_date
 
 def extract_mobile(user):
     username = user.username.lower()
     email = user.email.lower()
-    
     if '@' in username:
         username_part = username.split('@')[0]
     else:
         username_part = username
-        
     if '@' in email:
         email_part = email.split('@')[0]
     else:
         email_part = email
-        
     if username_part.isdigit() and len(username_part) >= 5:
         return username_part
     if email_part.isdigit() and len(email_part) >= 5:
         return email_part
-        
     return username_part
 
 @staff_member_required
 def weekly_payouts_list(request):
+    today = timezone.now()
+    default_start = today - datetime.timedelta(days=today.weekday())
+    default_start = default_start.replace(hour=0, minute=0, second=0, microsecond=0)
+    default_end = default_start + datetime.timedelta(days=6)
+    default_end = default_end.replace(hour=23, minute=59, second=59, microsecond=999999)
+
+    start_date_str = request.GET.get('start_date')
+    end_date_str = request.GET.get('end_date')
+
+    if start_date_str:
+        start_date = parse_date(start_date_str)
+        start_datetime = timezone.make_aware(datetime.datetime.combine(start_date, datetime.time.min))
+    else:
+        start_date = default_start.date()
+        start_datetime = default_start
+        
+    if end_date_str:
+        end_date = parse_date(end_date_str)
+        end_datetime = timezone.make_aware(datetime.datetime.combine(end_date, datetime.time.max))
+    else:
+        end_date = default_end.date()
+        end_datetime = default_end
+
     users = User.objects.all().prefetch_related('kyc')
     mobile_groups = {}
     
@@ -43,6 +64,10 @@ def weekly_payouts_list(request):
         mobile_groups[mobile].append(user)
         
     payout_groups = []
+    
+    global_total_income = Decimal('0.00')
+    global_total_withdrawals = Decimal('0.00')
+    global_remaining = Decimal('0.00')
     
     for phone, group in mobile_groups.items():
         shared_bank_acc = "N/A"
@@ -63,27 +88,39 @@ def weekly_payouts_list(request):
             except Exception:
                 pass
                 
-        if not has_kyc:
-            continue
-            
         total_income = Decimal('0.00')
         total_binary = Decimal('0.00')
         total_level = Decimal('0.00')
+        total_withdrawals = Decimal('0.00')
         
         for user in group:
             binary_inc = Transaction.objects.filter(
-                user=user, type='binary_income', direction='credit'
+                user=user, type='binary_income', direction='credit',
+                created_at__range=(start_datetime, end_datetime)
             ).aggregate(Sum('amount'))['amount__sum'] or Decimal('0.00')
             total_binary += binary_inc
             
             level_inc = Transaction.objects.filter(
-                user=user, type='level_income', direction='credit'
+                user=user, type='level_income', direction='credit',
+                created_at__range=(start_datetime, end_datetime)
             ).aggregate(Sum('amount'))['amount__sum'] or Decimal('0.00')
             total_level += level_inc
             
+            withdrawals_sum = WithdrawalRequest.objects.filter(
+                user=user, status='approved',
+                created_at__range=(start_datetime, end_datetime)
+            ).aggregate(Sum('total_amount'))['total_amount__sum'] or Decimal('0.00')
+            total_withdrawals += withdrawals_sum
+            
             total_income += (binary_inc + level_inc)
             
+        remaining_balance = total_income - total_withdrawals
+        
         if total_income > 0:
+            global_total_income += total_income
+            global_total_withdrawals += total_withdrawals
+            global_remaining += remaining_balance
+            
             payout_groups.append({
                 'mobile': phone,
                 'accounts_count': len(group),
@@ -92,114 +129,39 @@ def weekly_payouts_list(request):
                 'ifsc_code': shared_ifsc,
                 'total_income': total_income,
                 'total_binary': total_binary,
-                'total_level': total_level
+                'total_level': total_level,
+                'total_withdrawals': total_withdrawals,
+                'remaining_balance': remaining_balance,
+                'has_kyc': has_kyc
             })
         
-    # Sort by total income descending
     payout_groups.sort(key=lambda x: x['total_income'], reverse=True)
-        
-    from django.utils import timezone
-    from django.db.models import F, ExpressionWrapper, DecimalField
-    from ecommerce_app.models import OrderItem
-
-    today = timezone.now()
-    start_of_week = today - datetime.timedelta(days=today.weekday())
-    start_of_week = start_of_week.replace(hour=0, minute=0, second=0, microsecond=0)
-    start_of_today = today.replace(hour=0, minute=0, second=0, microsecond=0)
     
-    # --- 1. Daily Analytics (Today) ---
-    today_binary = Transaction.objects.filter(
-        type='binary_income', direction='credit', created_at__gte=start_of_today
-    ).aggregate(Sum('amount'))['amount__sum'] or Decimal('0.00')
-    
-    today_level = Transaction.objects.filter(
-        type='level_income', direction='credit', created_at__gte=start_of_today
-    ).aggregate(Sum('amount'))['amount__sum'] or Decimal('0.00')
-    
-    today_total_income = today_binary + today_level
-    
-    today_valid_orders = OrderItem.objects.filter(
-        order__status__in=['paid', 'completed'], product__pv__gt=1, order__created_at__gte=start_of_today
-    ).annotate(
-        total_cost=ExpressionWrapper(F('quantity') * F('price'), output_field=DecimalField())
-    ).aggregate(Sum('total_cost'))['total_cost__sum'] or Decimal('0.00')
-    
-    today_pin_purchases = Transaction.objects.filter(
-        type='pin_purchase', direction='debit', created_at__gte=start_of_today
-    ).aggregate(Sum('amount'))['amount__sum'] or Decimal('0.00')
-    
-    today_total_purchase = today_valid_orders + today_pin_purchases
-    today_turnover = today_total_purchase - today_total_income
-    
-    # --- 2. Weekly Analytics (This Week) ---
-    this_week_binary_all = Transaction.objects.filter(
-        type='binary_income', direction='credit', created_at__gte=start_of_week
-    ).aggregate(Sum('amount'))['amount__sum'] or Decimal('0.00')
-    
-    this_week_level_all = Transaction.objects.filter(
-        type='level_income', direction='credit', created_at__gte=start_of_week
-    ).aggregate(Sum('amount'))['amount__sum'] or Decimal('0.00')
-    
-    this_week_total_all = this_week_binary_all + this_week_level_all
-
-    this_week_valid_orders = OrderItem.objects.filter(
-        order__status__in=['paid', 'completed'], product__pv__gt=1, order__created_at__gte=start_of_week
-    ).annotate(
-        total_cost=ExpressionWrapper(F('quantity') * F('price'), output_field=DecimalField())
-    ).aggregate(Sum('total_cost'))['total_cost__sum'] or Decimal('0.00')
-    
-    this_week_pin_purchases = Transaction.objects.filter(
-        type='pin_purchase', direction='debit', created_at__gte=start_of_week
-    ).aggregate(Sum('amount'))['amount__sum'] or Decimal('0.00')
-    
-    this_week_total_purchase = this_week_valid_orders + this_week_pin_purchases
-    this_week_turnover = this_week_total_purchase - this_week_total_all
-    
-    # --- 3. 1 PV Product Activation Metrics ---
-    total_1pv_quantity_all_time = OrderItem.objects.filter(
-        order__status__in=['paid', 'completed'], product__pv=1
-    ).aggregate(Sum('quantity'))['quantity__sum'] or 0
-    
-    total_1pv_quantity_today = OrderItem.objects.filter(
-        order__status__in=['paid', 'completed'], product__pv=1, order__created_at__gte=start_of_today
-    ).aggregate(Sum('quantity'))['quantity__sum'] or 0
-    
-    # --- 4. Analytics for KYC VERIFIED USERS ONLY (This week only) ---
-    kyc_verified_users = User.objects.filter(kyc__bank_account_number__isnull=False).exclude(kyc__bank_account_number='')
-    total_kyc_verified = kyc_verified_users.count()
-    
-    this_week_binary_kyc = Transaction.objects.filter(
-        type='binary_income', direction='credit', created_at__gte=start_of_week, user__in=kyc_verified_users
-    ).aggregate(Sum('amount'))['amount__sum'] or Decimal('0.00')
-    
-    this_week_level_kyc = Transaction.objects.filter(
-        type='level_income', direction='credit', created_at__gte=start_of_week, user__in=kyc_verified_users
-    ).aggregate(Sum('amount'))['amount__sum'] or Decimal('0.00')
-    
-    this_week_total_kyc = this_week_binary_kyc + this_week_level_kyc
-        
     context = {
         'payout_groups': payout_groups,
         'title': 'Weekly Payouts',
-        'today_turnover': today_turnover,
-        'today_binary': today_binary,
-        'today_level': today_level,
-        'today_total_income': today_total_income,
-        'this_week_turnover': this_week_turnover,
-        'this_week_binary_all': this_week_binary_all,
-        'this_week_level_all': this_week_level_all,
-        'this_week_total_all': this_week_total_all,
-        'total_1pv_quantity_all_time': total_1pv_quantity_all_time,
-        'total_1pv_quantity_today': total_1pv_quantity_today,
-        'this_week_binary_kyc': this_week_binary_kyc,
-        'this_week_level_kyc': this_week_level_kyc,
-        'this_week_total_kyc': this_week_total_kyc,
-        'total_kyc_verified': total_kyc_verified,
+        'start_date': start_date.strftime('%Y-%m-%d'),
+        'end_date': end_date.strftime('%Y-%m-%d'),
+        'global_total_income': global_total_income,
+        'global_total_withdrawals': global_total_withdrawals,
+        'global_remaining': global_remaining,
     }
     return render(request, 'admin/weekly_payouts_list.html', context)
 
 @staff_member_required
 def weekly_payouts_detail(request, mobile):
+    start_date_str = request.GET.get('start_date')
+    end_date_str = request.GET.get('end_date')
+    
+    if not start_date_str or not end_date_str:
+        messages.error(request, "Date range is required to view details.")
+        return redirect('weekly_payouts_list')
+        
+    start_date = parse_date(start_date_str)
+    end_date = parse_date(end_date_str)
+    start_datetime = timezone.make_aware(datetime.datetime.combine(start_date, datetime.time.min))
+    end_datetime = timezone.make_aware(datetime.datetime.combine(end_date, datetime.time.max))
+
     users = User.objects.all().prefetch_related('kyc')
     group = []
     
@@ -210,7 +172,7 @@ def weekly_payouts_detail(request, mobile):
             
     if not group:
         messages.error(request, "No users found for this mobile number.")
-        return redirect('admin:weekly_payouts_list')
+        return redirect('weekly_payouts_list')
         
     shared_kyc = None
     
@@ -226,28 +188,38 @@ def weekly_payouts_detail(request, mobile):
             
     if not shared_kyc:
         messages.error(request, "No KYC found for this group.")
-        return redirect('admin:weekly_payouts_list')
+        return redirect('weekly_payouts_list')
         
     accounts_data = []
-    total_group_income = Decimal('0.00')
+    total_group_remaining = Decimal('0.00')
     
     for user in group:
         binary_inc = Transaction.objects.filter(
-            user=user, type='binary_income', direction='credit'
+            user=user, type='binary_income', direction='credit',
+            created_at__range=(start_datetime, end_datetime)
         ).aggregate(Sum('amount'))['amount__sum'] or Decimal('0.00')
         
         level_inc = Transaction.objects.filter(
-            user=user, type='level_income', direction='credit'
+            user=user, type='level_income', direction='credit',
+            created_at__range=(start_datetime, end_datetime)
         ).aggregate(Sum('amount'))['amount__sum'] or Decimal('0.00')
         
+        withdrawals_sum = WithdrawalRequest.objects.filter(
+            user=user, status='approved',
+            created_at__range=(start_datetime, end_datetime)
+        ).aggregate(Sum('total_amount'))['total_amount__sum'] or Decimal('0.00')
+        
         income = binary_inc + level_inc
-        total_group_income += income
+        remaining = income - withdrawals_sum
+        total_group_remaining += remaining
         
         accounts_data.append({
             'user': user,
             'income': income,
             'binary_income': binary_inc,
             'level_income': level_inc,
+            'withdrawals': withdrawals_sum,
+            'remaining': remaining,
         })
         
     if request.method == 'POST':
@@ -255,10 +227,9 @@ def weekly_payouts_detail(request, mobile):
             withdrawals_created = 0
             for data in accounts_data:
                 usr = data['user']
-                inc = data['income']
-                if inc > 0:
-                    # Create withdrawal request for the combined binary and level income
-                    total_amount = inc
+                rem = data['remaining']
+                if rem > 0:
+                    total_amount = rem
                     tds = total_amount * Decimal('0.10')
                     top_up = total_amount * Decimal('0.10')
                     net_amount = total_amount - tds - top_up
@@ -270,18 +241,20 @@ def weekly_payouts_detail(request, mobile):
                         top_up_amount=top_up,
                         amount=net_amount,
                         status='approved',
-                        admin_remark='Bulk admin withdrawal (Weekly Payouts)'
+                        admin_remark=f'Weekly Payout ({start_date_str} to {end_date_str})'
                     )
                     withdrawals_created += 1
                     
             messages.success(request, f"Successfully processed {withdrawals_created} withdrawal(s). Wallets have been updated.")
-            return redirect('admin:weekly_payouts_list')
+            return redirect(f"/admin/payouts/weekly/?start_date={start_date_str}&end_date={end_date_str}")
 
     context = {
         'mobile': mobile,
         'group': accounts_data,
         'kyc': shared_kyc,
-        'total_group_income': total_group_income,
+        'total_group_remaining': total_group_remaining,
+        'start_date': start_date_str,
+        'end_date': end_date_str,
         'title': f'Payout Details for {mobile}',
     }
     return render(request, 'admin/weekly_payouts_detail.html', context)

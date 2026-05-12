@@ -4,54 +4,47 @@
 {% block extrastyle %}
 {{ block.super }}
 <style>
-    .module-content { padding: 15px; color: var(--body-fg, #333); }
-    .kyc-box {
-        background: var(--darkened-bg, #f9f9f9);
-        border: 1px solid var(--border-color, #ddd);
-        padding: 15px;
-        margin-bottom: 20px;
-        border-radius: 4px;
-        display: flex;
-        gap: 20px;
-    }
-    .kyc-details { flex: 1; }
-    .kyc-image {
-        width: 300px;
-        border: 1px solid var(--border-color, #ccc);
-        padding: 5px;
-        background: var(--body-bg, #fff);
-    }
-    .kyc-image img { max-width: 100%; height: auto; }
-    
     .results table {
         width: 100%;
         border-collapse: collapse;
-        margin-bottom: 20px;
         color: var(--body-fg, #333);
         background: var(--body-bg, #fff);
     }
     .results th, .results td {
         padding: 8px;
         text-align: left;
-        border-bottom: 1px solid var(--border-color, #ddd);
+        border-bottom: 1px solid var(--border-color, #eee);
     }
-    .results th { background-color: var(--darkened-bg, #f4f4f4); color: var(--body-fg, #333); }
-    
-    .action-box {
-        background: var(--button-hover-bg, #e1f0fa);
+    .results th {
+        background-color: var(--darkened-bg, #f4f4f4);
+        color: var(--body-fg, #333);
+    }
+    .kyc-card {
+        background: var(--darkened-bg, #f4f4f4);
+        border: 1px solid var(--border-color, #eee);
+        border-radius: 6px;
         padding: 15px;
-        border: 1px solid var(--border-color, #b7d5ea);
-        border-radius: 4px;
-        margin-top: 20px;
-        color: var(--button-fg, #fff);
+        margin-bottom: 20px;
+        color: var(--body-fg, #333);
+    }
+    .kyc-card h3 {
+        margin-top: 0;
+        border-bottom: 1px solid var(--border-color, #eee);
+        padding-bottom: 10px;
+        color: var(--body-fg, #333);
     }
     .btn {
         display: inline-block;
         padding: 10px 20px;
+        margin-bottom: 0;
         font-size: 16px;
         font-weight: bold;
+        line-height: 1.42857143;
         text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
         cursor: pointer;
+        background-image: none;
         border: 1px solid transparent;
         border-radius: 4px;
         text-decoration: none;
@@ -61,76 +54,92 @@
         background-color: #28a745;
         border-color: #28a745;
     }
-    .btn-success:hover { background-color: #218838; }
+    .btn-success:hover {
+        background-color: #218838;
+        border-color: #1e7e34;
+    }
+    .info-bar {
+        background: #e9ecef;
+        padding: 10px 15px;
+        border-radius: 4px;
+        margin-bottom: 20px;
+        color: #333;
+        font-size: 15px;
+    }
 </style>
 {% endblock %}
 
 {% block content %}
 <div id="content-main">
+    <div class="info-bar">
+        <strong>Date Range:</strong> {{ start_date }} to {{ end_date }}
+    </div>
+
+    <div class="kyc-card">
+        <h3>Shared KYC / Bank Details for Group {{ mobile }}</h3>
+        <p><strong>Bank Name:</strong> {{ kyc.bank_name }}</p>
+        <p><strong>Account Number:</strong> <span style="font-family: monospace; font-size: 16px; color: #d9534f; font-weight: bold;">{{ kyc.bank_account_number }}</span></p>
+        <p><strong>IFSC Code:</strong> {{ kyc.ifsc_code }}</p>
+    </div>
+
     <div class="module">
-        <h2>Payout Details for Mobile: {{ mobile }}</h2>
-        
-        <div class="module-content">
-            <h3>Shared KYC Details</h3>
-            <div class="kyc-box">
-                <div class="kyc-details">
-                    <p><strong>Bank Name:</strong> {{ kyc.bank_name }}</p>
-                    <p><strong>Account Holder:</strong> {{ kyc.account_holder_name|default:"N/A" }}</p>
-                    <p><strong>Account Number:</strong> {{ kyc.bank_account_number }}</p>
-                    <p><strong>IFSC Code:</strong> {{ kyc.ifsc_code }}</p>
-                </div>
-                <div class="kyc-image">
-                    {% if kyc.passbook_image %}
-                    <img src="{{ kyc.passbook_image.url }}" alt="Passbook Image">
-                    {% else %}
-                    <p>No Passbook Image Available</p>
-                    {% endif %}
-                </div>
-            </div>
-
-            <h3>Accounts to Process</h3>
-            <div class="results">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Username</th>
-                            <th>Name</th>
-                            <th>Binary Income</th>
-                            <th>Level Income</th>
-                            <th>Total Income (Withdrawable)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for item in group %}
-                        <tr>
-                            <td>{{ item.user.username }}</td>
-                            <td>{{ item.user.first_name }} {{ item.user.last_name }}</td>
-                            <td>Rs {{ item.binary_income|floatformat:2 }}</td>
-                            <td>Rs {{ item.level_income|floatformat:2 }}</td>
-                            <td><strong>Rs {{ item.income|floatformat:2 }}</strong></td>
-                        </tr>
-                        {% endfor %}
-                        <tr style="background-color: var(--darkened-bg, #e9ecef); font-weight: bold;">
-                            <td colspan="4" style="text-align: right;">Total Withdrawable Income:</td>
-                            <td>Rs {{ total_group_income|floatformat:2 }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="action-box">
-                <h3>Process Payout</h3>
-                <p>Clicking the button below will automatically create 'Approved' Withdrawal Requests for the combined binary and level income of the accounts listed above.</p>
-                
-                <form method="POST" onsubmit="return confirm('Are you sure you want to mark this payment as completed? This will initiate a total withdrawal of Rs {{ total_group_income|floatformat:2 }}.');">
-                    {% csrf_token %}
-                    <button type="submit" name="initiate_withdrawal" class="btn btn-success">
-                        Payment Completed (Yes)
-                    </button>
-                    <a href="{% url 'weekly_payouts_list' %}" style="margin-left: 15px; color: var(--link-fg, #417690);">Cancel and go back</a>
-                </form>
-            </div>
+        <h2>Group Accounts & Income (Selected Period)</h2>
+        <div class="results">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Name</th>
+                        <th>Binary Income</th>
+                        <th>Level Income</th>
+                        <th>Total Income</th>
+                        <th>Already Withdrawn</th>
+                        <th>Remaining to Pay</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in group %}
+                    <tr>
+                        <td>{{ item.user.username }}</td>
+                        <td>{{ item.user.first_name }} {{ item.user.last_name }}</td>
+                        <td>Rs {{ item.binary_income|floatformat:2 }}</td>
+                        <td>Rs {{ item.level_income|floatformat:2 }}</td>
+                        <td>Rs {{ item.income|floatformat:2 }}</td>
+                        <td style="color: #28a745;">Rs {{ item.withdrawals|floatformat:2 }}</td>
+                        <td style="font-weight: bold; color: {% if item.remaining > 0 %}#dc3545{% else %}#28a745{% endif %};">
+                            Rs {{ item.remaining|floatformat:2 }}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    <tr style="background-color: #fff3cd; font-weight: bold; font-size: 16px;">
+                        <td colspan="6" style="text-align: right; color: #856404;">TOTAL REMAINING GROUP PAYOUT:</td>
+                        <td style="color: #856404;">Rs {{ total_group_remaining|floatformat:2 }}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
+    </div>
+
+    {% if total_group_remaining > 0 %}
+    <div style="margin-top: 30px;">
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit" name="initiate_withdrawal" class="btn btn-success" onclick="return confirm('Are you sure you want to process Rs {{ total_group_remaining|floatformat:2 }} for this group?');">
+                Process Bulk Withdrawal (Rs {{ total_group_remaining|floatformat:2 }})
+            </button>
+            <p style="margin-top: 10px; color: #666; font-style: italic;">
+                This will create withdrawal requests for all accounts in this group that have a positive remaining balance for this date range. 10% TDS and 10% Top-Up will be automatically deducted from the remaining balances.
+            </p>
+        </form>
+    </div>
+    {% else %}
+    <div style="margin-top: 30px; padding: 15px; background: #d4edda; color: #155724; border: 1px solid #c3e6cb; border-radius: 4px;">
+        <strong>Fully Paid!</strong> This group has no remaining pending income to withdraw for the selected date range.
+    </div>
+    {% endif %}
+
+    <div style="margin-top: 20px;">
+        <a href="{% url 'weekly_payouts_list' %}?start_date={{ start_date }}&end_date={{ end_date }}">Back to Weekly Payouts List</a>
     </div>
 </div>
 {% endblock %}

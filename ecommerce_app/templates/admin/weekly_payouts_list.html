@@ -45,7 +45,6 @@
         border-color: var(--button-hover-bg, #2c5061);
     }
     
-    /* Analytics Dashboard Styles */
     .analytics-dashboard {
         display: flex;
         gap: 20px;
@@ -87,6 +86,29 @@
     .stat-value {
         font-family: monospace;
     }
+    
+    .filter-form {
+        margin-bottom: 20px;
+        padding: 15px;
+        background: var(--darkened-bg, #f4f4f4);
+        border: 1px solid var(--border-color, #eee);
+        border-radius: 6px;
+        display: flex;
+        gap: 15px;
+        align-items: flex-end;
+    }
+    .filter-form label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    .filter-form input[type="date"] {
+        padding: 6px;
+        border: 1px solid var(--border-color, #ccc);
+        border-radius: 4px;
+        background: var(--body-bg, #fff);
+        color: var(--body-fg, #333);
+    }
 </style>
 {% endblock %}
 
@@ -100,82 +122,40 @@
     </ul>
     {% endif %}
 
+    <form method="GET" class="filter-form">
+        <div>
+            <label for="start_date">Start Date:</label>
+            <input type="date" id="start_date" name="start_date" value="{{ start_date }}" required>
+        </div>
+        <div>
+            <label for="end_date">End Date:</label>
+            <input type="date" id="end_date" name="end_date" value="{{ end_date }}" required>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">Filter Payouts</button>
+        </div>
+    </form>
+
     <div class="analytics-dashboard">
         <div class="analytics-card">
-            <h3>Today's Analytics</h3>
+            <h3>System Overview ({{ start_date }} to {{ end_date }})</h3>
             <div class="stat-row">
-                <span>Daily Turnover (Company):</span>
-                <span class="stat-value" style="color: #28a745; font-weight: bold;">Rs {{ today_turnover|floatformat:2 }}</span>
+                <span>Total Income Generated:</span>
+                <span class="stat-value" style="color: #417690; font-weight: bold;">Rs {{ global_total_income|floatformat:2 }}</span>
             </div>
             <div class="stat-row">
-                <span>Binary Income:</span>
-                <span class="stat-value">Rs {{ today_binary|floatformat:2 }}</span>
-            </div>
-            <div class="stat-row">
-                <span>Level Income:</span>
-                <span class="stat-value">Rs {{ today_level|floatformat:2 }}</span>
+                <span>Total Withdrawals Paid:</span>
+                <span class="stat-value" style="color: #28a745;">Rs {{ global_total_withdrawals|floatformat:2 }}</span>
             </div>
             <div class="stat-row total">
-                <span>Total Income Today:</span>
-                <span class="stat-value">Rs {{ today_total_income|floatformat:2 }}</span>
-            </div>
-        </div>
-
-        <div class="analytics-card">
-            <h3>This Week's Analytics (All Users)</h3>
-            <div class="stat-row">
-                <span>Weekly Turnover (Company):</span>
-                <span class="stat-value" style="color: #28a745; font-weight: bold;">Rs {{ this_week_turnover|floatformat:2 }}</span>
-            </div>
-            <div class="stat-row">
-                <span>Binary Income:</span>
-                <span class="stat-value">Rs {{ this_week_binary_all|floatformat:2 }}</span>
-            </div>
-            <div class="stat-row">
-                <span>Level Income:</span>
-                <span class="stat-value">Rs {{ this_week_level_all|floatformat:2 }}</span>
-            </div>
-            <div class="stat-row total">
-                <span>Total Income This Week:</span>
-                <span class="stat-value">Rs {{ this_week_total_all|floatformat:2 }}</span>
-            </div>
-        </div>
-
-        <div class="analytics-card">
-            <h3>1 PV Product Activations</h3>
-            <div class="stat-row">
-                <span>Total Activated (All Time):</span>
-                <span class="stat-value" style="color: #417690; font-weight: bold;">{{ total_1pv_quantity_all_time }}</span>
-            </div>
-            <div class="stat-row">
-                <span>Total Activated (Today):</span>
-                <span class="stat-value">{{ total_1pv_quantity_today }}</span>
-            </div>
-        </div>
-
-        <div class="analytics-card">
-            <h3>This Week's Income (KYC Verified Only)</h3>
-            <div class="stat-row">
-                <span>Total KYC Verified Users:</span>
-                <span class="stat-value">{{ total_kyc_verified }}</span>
-            </div>
-            <div class="stat-row">
-                <span>Binary Income:</span>
-                <span class="stat-value">Rs {{ this_week_binary_kyc|floatformat:2 }}</span>
-            </div>
-            <div class="stat-row">
-                <span>Level Income:</span>
-                <span class="stat-value">Rs {{ this_week_level_kyc|floatformat:2 }}</span>
-            </div>
-            <div class="stat-row total">
-                <span>Total Amount:</span>
-                <span class="stat-value">Rs {{ this_week_total_kyc|floatformat:2 }}</span>
+                <span>Total Remaining Owed:</span>
+                <span class="stat-value" style="color: #dc3545;">Rs {{ global_remaining|floatformat:2 }}</span>
             </div>
         </div>
     </div>
 
     <div class="module">
-        <h2>Duplicate Accounts by Mobile Number (with KYC)</h2>
+        <h2>Weekly Payouts by Mobile Number</h2>
         <div class="results">
             <table>
                 <thead>
@@ -185,9 +165,9 @@
                         <th>Bank Name</th>
                         <th>Account Number</th>
                         <th>IFSC</th>
-                        <th>Total Binary Income</th>
-                        <th>Total Level Income</th>
-                        <th>Total Income (Withdrawable)</th>
+                        <th>Total Income</th>
+                        <th>Withdrawn</th>
+                        <th>Remaining Balance</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -199,16 +179,24 @@
                         <td>{{ group.bank_name }}</td>
                         <td>{{ group.account_number }}</td>
                         <td>{{ group.ifsc_code }}</td>
-                        <td>Rs {{ group.total_binary|floatformat:2 }}</td>
-                        <td>Rs {{ group.total_level|floatformat:2 }}</td>
-                        <td><strong>Rs {{ group.total_income|floatformat:2 }}</strong></td>
+                        <td>Rs {{ group.total_income|floatformat:2 }}</td>
+                        <td style="color: #28a745;">Rs {{ group.total_withdrawals|floatformat:2 }}</td>
+                        <td style="font-weight: bold; color: {% if group.remaining_balance > 0 %}#dc3545{% else %}#28a745{% endif %};">
+                            Rs {{ group.remaining_balance|floatformat:2 }}
+                        </td>
                         <td>
-                            <a href="{% url 'weekly_payouts_detail' group.mobile %}" class="btn btn-primary">Initiate Withdrawal</a>
+                            {% if not group.has_kyc %}
+                                <span style="color: #888; font-style: italic;">No KYC</span>
+                            {% elif group.remaining_balance <= 0 %}
+                                <span style="color: #28a745; font-weight: bold;">Fully Paid</span>
+                            {% else %}
+                                <a href="{% url 'weekly_payouts_detail' group.mobile %}?start_date={{ start_date }}&end_date={{ end_date }}" class="btn btn-primary">Initiate Withdrawal</a>
+                            {% endif %}
                         </td>
                     </tr>
                     {% empty %}
                     <tr>
-                        <td colspan="9" style="text-align: center;">No weekly payouts pending.</td>
+                        <td colspan="9" style="text-align: center;">No payouts found for the selected date range.</td>
                     </tr>
                     {% endfor %}
                 </tbody>
