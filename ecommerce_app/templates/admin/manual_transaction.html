@@ -1,0 +1,121 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+
+{% block extrastyle %}
+{{ block.super }}
+<style>
+    .manual-txn-container {
+        max-width: 800px;
+        margin: 20px 0;
+        background: var(--body-bg, #fff);
+        padding: 20px;
+        border: 1px solid var(--border-color, #eee);
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    .form-group label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 8px;
+        color: var(--body-fg, #333);
+    }
+    .form-group input[type="text"], 
+    .form-group input[type="number"],
+    .form-group select,
+    .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid var(--border-color, #ccc);
+        border-radius: 4px;
+        font-size: 14px;
+        background: var(--body-bg, #fff);
+        color: var(--body-fg, #333);
+    }
+    .btn-row {
+        margin-top: 25px;
+    }
+    .user-info-box {
+        background: var(--darkened-bg, #f9f9f9);
+        padding: 15px;
+        border-radius: 4px;
+        margin-bottom: 20px;
+        border-left: 4px solid #417690;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div id="content-main">
+    <h1>Manual Transaction Management</h1>
+    
+    <div class="manual-txn-container">
+        <!-- User Search -->
+        <form method="get" class="form-group" style="display: flex; gap: 10px; align-items: flex-end;">
+            <div style="flex-grow: 1;">
+                <label>Search User by ID (Username)</label>
+                <input type="text" name="search_query" value="{{ search_query }}" placeholder="e.g. VN0851849" required>
+            </div>
+            <button type="submit" class="button">Search User</button>
+        </form>
+
+        <hr style="margin: 30px 0;">
+
+        {% if target_user %}
+            <div class="user-info-box">
+                <strong>Found User:</strong> {{ target_user.first_name }} {{ target_user.last_name }} ({{ target_user.username }})<br>
+                <strong>Current Balance:</strong> Rs {{ target_user.wallet.current_balance }} | 
+                <strong>Top-Up Balance:</strong> Rs {{ target_user.wallet.top_up_balance }}
+            </div>
+
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="user_id" value="{{ target_user.id }}">
+                
+                <div class="form-group">
+                    <label>Transaction Type</label>
+                    <select name="type" required>
+                        <option value="deposit">Deposit (Inward)</option>
+                        <option value="withdrawal">Withdrawal (Outward)</option>
+                        <option value="top_up">Top-Up (Special)</option>
+                        <option value="binary_income">Binary Income (Manual Credit)</option>
+                        <option value="level_income">Level Income (Manual Credit)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Direction</label>
+                    <select name="direction" required>
+                        <option value="credit">Credit (+ Add Money)</option>
+                        <option value="debit">Debit (- Deduct Money)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Amount (Rs)</label>
+                    <input type="number" step="0.01" name="amount" required placeholder="0.00">
+                </div>
+
+                <div class="form-group">
+                    <label>Comment / Description</label>
+                    <textarea name="description" rows="3" placeholder="Enter reason for this manual transaction..."></textarea>
+                </div>
+
+                <div class="btn-row">
+                    <button type="submit" name="create_transaction" class="button default" style="width: 100%; height: 45px; font-size: 16px;">Create Transaction</button>
+                </div>
+            </form>
+        {% elif search_query %}
+            <p style="color: #ba2121;">No user found for that ID. Please try again.</p>
+        {% else %}
+            <p>Please enter a User ID above to initiate a manual transaction.</p>
+        {% endif %}
+    </div>
+
+    <div style="margin-top: 20px;">
+        <a href="{% url 'weekly_payouts_list' %}" class="button" style="background: #666;">&laquo; Back to Payouts Dashboard</a>
+    </div>
+</div>
+{% endblock %}

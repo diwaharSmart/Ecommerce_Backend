@@ -380,3 +380,41 @@ def weekly_payouts_detail(request, mobile):
         'title': f'Payout Details for {mobile}',
     }
     return render(request, 'admin/weekly_payouts_detail.html', context)
+
+
+@staff_member_required
+def admin_manual_transaction(request):
+    search_query = request.GET.get('search_query', '')
+    target_user = None
+    if search_query:
+        target_user = User.objects.filter(username=search_query).first()
+        if not target_user:
+            messages.error(request, f"User '{search_query}' not found.")
+
+    if request.method == 'POST' and 'create_transaction' in request.POST:
+        user_id = request.POST.get('user_id')
+        t_type = request.POST.get('type')
+        t_dir = request.POST.get('direction')
+        amount = request.POST.get('amount')
+        desc = request.POST.get('description', 'Manual Admin Transaction')
+
+        try:
+            usr = User.objects.get(id=user_id)
+            Transaction.objects.create(
+                user=usr,
+                amount=Decimal(amount),
+                type=t_type,
+                direction=t_dir,
+                description=desc
+            )
+            messages.success(request, f"Successfully created {t_dir} transaction for {usr.username}.")
+            return redirect(f"/admin/payouts/manual-transaction/?search_query={usr.username}")
+        except Exception as e:
+            messages.error(request, f"Error creating transaction: {str(e)}")
+
+    context = {
+        'title': 'Manual Transaction Management',
+        'target_user': target_user,
+        'search_query': search_query,
+    }
+    return render(request, 'admin/manual_transaction.html', context)
