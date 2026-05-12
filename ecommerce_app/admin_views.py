@@ -389,10 +389,38 @@ def weekly_payouts_detail(request, mobile):
 def admin_manual_transaction(request):
     search_query = request.GET.get('search_query', '')
     target_user = None
+    transactions = []
+    type_summaries = {}
+    
     if search_query:
         target_user = User.objects.filter(username=search_query).first()
         if not target_user:
             messages.error(request, f"User '{search_query}' not found.")
+        else:
+            # Fetch all transactions for this user
+            transactions = Transaction.objects.filter(user=target_user).order_by('-created_at')
+            
+            # Calculate summaries by type and direction
+            from django.db.models import Sum
+            sums = Transaction.objects.filter(user=target_user).values('type', 'direction').annotate(total=Sum('amount'))
+            
+            # Initialize summaries for common types to ensure they appear
+            common_types = ['deposit', 'withdrawal', 'binary_income', 'level_income', 'top_up', 'tds', 'purchase']
+            for ct in common_types:
+                type_summaries[ct] = {'credit': Decimal('0.00'), 'debit': Decimal('0.00')}
+                
+            for s in sums:
+                t_type = s['type']
+                t_dir = s['direction']
+                t_total = s['total'] or Decimal('0.00')
+                
+                if t_type not in type_summaries:
+                    type_summaries[t_type] = {'credit': Decimal('0.00'), 'debit': Decimal('0.00')}
+                
+                if t_dir == 'credit':
+                    type_summaries[t_type]['credit'] = t_total
+                else:
+                    type_summaries[t_type]['debit'] = t_total
 
     if request.method == 'POST' and 'create_transaction' in request.POST:
         user_id = request.POST.get('user_id')
@@ -419,6 +447,8 @@ def admin_manual_transaction(request):
         'title': 'Manual Transaction Management',
         'target_user': target_user,
         'search_query': search_query,
+        'transactions': transactions[:100], # Show last 100
+        'type_summaries': type_summaries,
     }
     return render(request, 'admin/manual_transaction.html', context)
 
