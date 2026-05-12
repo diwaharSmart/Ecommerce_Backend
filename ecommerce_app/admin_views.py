@@ -358,6 +358,11 @@ binary_txns = Transaction.objects.filter(
                         status='approved',
                         admin_remark=f'Weekly Payout ({start_date_str} to {end_date_str})'
                     )
+                    
+                    # Backdate to the end of the selected week
+                    WithdrawalRequest.objects.filter(id=req.id).update(created_at=end_datetime, updated_at=end_datetime)
+                    Transaction.objects.filter(related_withdrawal=req).update(created_at=end_datetime)
+                    
                     withdrawals_created += 1
                     
             messages.success(request, f"Successfully processed {withdrawals_created} withdrawal(s). Wallets have been updated.")
