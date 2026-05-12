@@ -1,214 +1,130 @@
 import os
+import sys
 import django
 
-# Setup Django environment
+sys.path.append("d:\\Ecommerce_Backend")
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ecommerce_project.settings')
 django.setup()
 
 from website.models import Api
 
-key_dashboard = "91b1f76e-f709-499f-9e78-831ec42581e5"
-
-dashboard_content = """
-from ecommerce_app.models import Profile, Transaction, Order
-from django.contrib.auth.models import User
+def update_dashboard_api():
+    try:
+        api = Api.objects.get(id=219)
+        
+        # New code for API 219
+        new_content = """from ecommerce_app.models import Transaction, Order, Profile, Wallet, User
+from ecommerce_app.serializers import TransactionSerializer
 from django.db.models import Sum, Q
 from django.utils import timezone
 from datetime import timedelta
-from django.db import connection
 
 if request.user.is_authenticated:
-    target_username = request.data.get('username')
-    user = request.user
-    
-    if target_username:
+    try:
         try:
-             user = User.objects.get(username=target_username)
-        except Exception:
-             # Fallback to self or error? User requested "pass username"
-             # If not found, create error or default to self? 
-             # Let's return error if specific username requested but not found.
-             response_data['status_code'] = 404
-             response_data['message'] = "User not found"
-             # We need to stop further execution here.
-             # In this exec() context, 'user' variable is used below.
-             # We can't easy 'return', so we wrap logic in else or use flag.
-             user = None 
+            user = User.objects.get(username=request.data["username"])
+        except:
+            user = request.user
+        
+        profile = user.profile
+        wallet, _ = Wallet.objects.get_or_create(user=user)
 
-    if user:
-        try:
-            profile = user.profile
-            sponsor = profile.sponsor
-            
-            # --- 1. Basic Counts ---
-            left_count = profile.total_left_count
-            right_count = profile.total_right_count
-            
-            # --- 2. Pair Match Count ---
-            transactions = Transaction.objects.filter(user=user)
-            # Calculate total pairs by inspecting the amount (500 Rs = 1 pair)
-            binary_income_total = transactions.filter(type='binary_income').aggregate(Sum('amount'))['amount__sum'] or 0.0
-            pair_match_count = int(float(binary_income_total) / 500.0)
-            
-            # --- 3. Active Directs ---
-            active_directs = Profile.objects.filter(sponsor=profile, is_active=True).count()
-            total_directs = Profile.objects.filter(sponsor=profile).count()
-            
-            # --- 4. Level Stats (1-5) ---
-            level_stats = []
-            
-            # ... (Existing Level Logic omitted for brevity? No, must include full content)
-            # Re-implementing existing logic + enhancements
-            
-            current_level_members = [profile]
-            for i in range(1, 6):
-                next_level_members = []
-                count = 0
-                for parent in current_level_members:
-                    children = Profile.objects.filter(sponsor=parent)
-                    count += children.count()
-                    next_level_members.extend(children)
-                current_level_members = next_level_members
-                
-                # Earnings (Now 'Matching Level Income' based on new logic, but type is still 'level_income')
-                # We filter by description or type.
-                level_income = transactions.filter(type='level_income', description__icontains=f"Level {i}").aggregate(Sum('amount'))['amount__sum'] or 0.0
-                
-                level_stats.append({
-                    "level": i,
-                    "member_count": count,
-                    "earnings": float(level_income)
-                })
-
-            # --- 5. & 6. Sales Report (PV) & Team Member Counts ---
-            left_child = Profile.objects.filter(parent=profile, position='L').first()
-            right_child = Profile.objects.filter(parent=profile, position='R').first()
-            
-            def get_tree_stats(root_child):
-                if not root_child:
-                    return {"total": 0, "active": 0, "inactive": 0, "user_ids": []}
-                
-                # Highly efficient PostgreSQL Recursive CTE to grab the entire sub-tree
-                with connection.cursor() as cursor:
-                    cursor.execute('''
-                        WITH RECURSIVE descendants AS (
-                            SELECT id, user_id, is_active FROM ecommerce_app_profile WHERE id = %s
-                            UNION ALL
-                            SELECT p.id, p.user_id, p.is_active FROM ecommerce_app_profile p
-                            INNER JOIN descendants d ON p.parent_id = d.id
-                        )
-                        SELECT user_id, is_active FROM descendants;
-                    ''', [root_child.id])
-                    rows = cursor.fetchall()
-                
-                user_ids = [row[0] for row in rows]
-                active_count = sum(1 for row in rows if row[1])
-                total_count = len(rows)
-                
-                return {
-                    "total": total_count,
-                    "active": active_count,
-                    "inactive": total_count - active_count,
-                    "user_ids": user_ids
-                }
-
-            left_stats = get_tree_stats(left_child)
-            right_stats = get_tree_stats(right_child)
-
-            # Date Ranges for Time-filtered PV
-            now = timezone.now()
-            start_of_today = now.replace(hour=0, minute=0, second=0, microsecond=0)
-            start_of_week = start_of_today - timedelta(days=now.weekday())
-
-            def get_pv_sum(user_ids, date_filter=None):
-                if not user_ids: return 0.0
-                qs = Order.objects.filter(user_id__in=user_ids, status='paid')
-                if date_filter == 'today':
-                    qs = qs.filter(created_at__gte=start_of_today)
-                elif date_filter == 'week':
-                    qs = qs.filter(created_at__gte=start_of_week)
-                return float(qs.aggregate(Sum('total_pv'))['total_pv__sum'] or 0.0)
-
-            sales_report = {
-                "today": {
-                    "left_pv": get_pv_sum(left_stats["user_ids"], 'today'),
-                    "right_pv": get_pv_sum(right_stats["user_ids"], 'today')
-                },
-                "weekly": {
-                    "left_pv": get_pv_sum(left_stats["user_ids"], 'week'),
-                    "right_pv": get_pv_sum(right_stats["user_ids"], 'week')
-                },
-                "total": {
-                    "left_pv": profile.total_left_pv,
-                    "right_pv": profile.total_right_pv
-                }
+        # --- 1. User & Sponsor Info ---
+        sponsor_data = {"username": "N/A", "first_name": "N/A"}
+        if profile.sponsor:
+            sponsor_data = {
+                "username": profile.sponsor.user.username,
+                "first_name": profile.sponsor.user.first_name
             }
 
-            team_stats = {
-                "left": {
-                    "total_members": left_stats["total"],
-                    "active_members": left_stats["active"],
-                    "pending_members": left_stats["inactive"]
-                },
-                "right": {
-                    "total_members": right_stats["total"],
-                    "active_members": right_stats["active"],
-                    "pending_members": right_stats["inactive"]
-                }
-            }
+        # --- 2. Income Stats & Weekly Balance ---
+        # Current week logic (Starting Monday)
+        today = timezone.now()
+        start_of_week = today - timedelta(days=today.weekday())
+        start_of_week = start_of_week.replace(hour=0, minute=0, second=0, microsecond=0)
 
-            # --- 7. Sponsor Info ---
-            sponsor_data = None
-            if sponsor:
-                sponsor_data = {
-                    "id": sponsor.user.id,
-                    "name": sponsor.user.first_name,
-                    "username": sponsor.user.username
-                }
+        weekly_binary = Transaction.objects.filter(
+            user=user, type='binary_income', direction='credit', 
+            created_at__gte=start_of_week
+        ).aggregate(Sum('amount'))['amount__sum'] or 0.00
+        
+        weekly_level = Transaction.objects.filter(
+            user=user, type='level_income', direction='credit', 
+            created_at__gte=start_of_week
+        ).aggregate(Sum('amount'))['amount__sum'] or 0.00
+        
+        current_balance = float(weekly_binary) + float(weekly_level)
 
-            response_data['status_code'] = 200
-            response_data['message'] = "Dashboard data fetched"
-            response_data['data'] = {
-                 "user_info": { "username": user.username, "name": user.first_name },
-                 "sponsor_info": sponsor_data,
-                 "left_count": left_count,
-                 "right_count": right_count,
-                 "pair_match_count": pair_match_count,
-                 "active_directs": active_directs,
-                 "total_directs": total_directs,
-                 "level_stats": level_stats,
-                 "sales_report": sales_report,
-                 "team_stats": team_stats,
-                 "business_stats": {
-                    "total_left_pv": profile.total_left_pv,
-                    "total_right_pv": profile.total_right_pv,
-                    "current_left_pv": profile.current_left_pv,
-                    "current_right_pv": profile.current_right_pv,
-                 }
-            }
+        # All-time Income
+        sum_binary_income = Transaction.objects.filter(user=user, type='binary_income').aggregate(Sum('amount'))['amount__sum'] or 0.00
+        sum_level_income = Transaction.objects.filter(user=user, type='level_income').aggregate(Sum('amount'))['amount__sum'] or 0.00
+        total_income_credit = float(sum_binary_income) + float(sum_level_income)
 
-        except Exception as e:
-            response_data['status_code'] = 500
-            response_data['message'] = str(e)
-            import traceback
-            # Optional: response_data['trace'] = traceback.format_exc()
+        # --- 3. Transaction History ---
+        all_txns = Transaction.objects.filter(user=user).order_by('-created_at')
+        transactions_data = TransactionSerializer(all_txns, many=True).data
+
+        # --- 4. Team Stats ---
+        total_binary_tree_count = profile.total_left_count + profile.total_right_count
+        
+        # Level Team Count (5 Levels)
+        level_team_count = 0
+        current_level_members = [profile]
+        for i in range(1, 6):
+            if not current_level_members: break
+            children = Profile.objects.filter(sponsor__in=current_level_members)
+            level_team_count += children.count()
+            current_level_members = list(children)
+
+        # --- 5. Response Construction ---
+        data = {
+            "user_info": {
+                "profile_pic": request.build_absolute_uri(profile.profile_image.url) if profile.profile_image else None,
+                "username": user.username,
+                "first_name": user.first_name,
+            },
+            "sponsor_info": sponsor_data,
+            "wallet": {
+                "current_balance": current_balance,
+                "topup_balance": float(wallet.top_up_balance)
+            },
+            "overall_income": {
+                "total_credit": float(total_income_credit),
+                "binary_income_sum": float(sum_binary_income),
+                "level_income_sum": float(sum_level_income),
+                "weekly_balance": current_balance
+            },
+            "team_stats": {
+                "total_binary_tree_count": total_binary_tree_count,
+                "level_team_count": level_team_count,
+                "total_left_count": profile.total_left_count,
+                "total_right_count": profile.total_right_count
+            },
+            "binary_pv_overview": {
+                "all_time": {"left": profile.total_left_pv, "right": profile.total_right_pv},
+                "current_carry_forward": {"left": profile.current_left_pv, "right": profile.current_right_pv}
+            },
+            "transactions": transactions_data,
+            "recent_orders": [] # Simplified for now
+        }
+
+        response_data['status_code'] = 200
+        response_data['data'] = data
+        response_data['message'] = "Dashboard data fetched successfully"
+
+    except Exception as e:
+        response_data['status_code'] = 500
+        response_data['message'] = str(e)
 else:
     response_data['status_code'] = 401
-    response_data['message'] = "Unauthorized"
-"""
-
-try:
-    api = Api.objects.get(key=key_dashboard)
-    api.content = dashboard_content
-    api.save()
-    print(f"Successfully updated Dashboard API (Key: {key_dashboard})")
-except Api.DoesNotExist:
-    print(f"Error: API with key {key_dashboard} not found. Trying to find by name...")
-    try:
-         api = Api.objects.get(name="Get MLM Dashboard")
-         api.key = key_dashboard
-         api.content = dashboard_content
-         api.save()
-         print(f"Successfully updated Dashboard API by Name and restored Key: {key_dashboard}")
+    response_data['message'] = "Unauthorized\"""
+        
+        api.content = new_content
+        api.save()
+        print("API 219 updated successfully.")
+        
     except Api.DoesNotExist:
-         print("Error: API 'Get MLM Dashboard' not found.")
+        print("API 219 not found.")
+
+if __name__ == '__main__':
+    update_dashboard_api()

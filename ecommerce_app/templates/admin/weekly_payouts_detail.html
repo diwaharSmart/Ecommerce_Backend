@@ -4,6 +4,9 @@
 {% block extrastyle %}
 {{ block.super }}
 <style>
+    /* Theme-aware styles using Django Admin CSS variables */
+    #content-main { color: var(--body-fg, #333); }
+
     .results table {
         width: 100%;
         border-collapse: collapse;
@@ -59,12 +62,36 @@
         border-color: #1e7e34;
     }
     .info-bar {
-        background: #e9ecef;
+        background: var(--darkened-bg, #e9ecef);
         padding: 10px 15px;
         border-radius: 4px;
         margin-bottom: 20px;
-        color: #333;
+        color: var(--body-fg, #333);
         font-size: 15px;
+        border: 1px solid var(--border-color, #ddd);
+    }
+    
+    /* Transaction Table Specifics */
+    .txn-table {
+        width: 100%; 
+        border-collapse: collapse; 
+        margin-bottom: 15px; 
+        background: var(--body-bg, #fff);
+        color: var(--body-fg, #333);
+    }
+    .txn-table th {
+        padding: 8px; 
+        border: 1px solid var(--border-color, #ddd); 
+        background: var(--darkened-bg, #f8f9fa);
+    }
+    .txn-table td {
+        padding: 8px; 
+        border: 1px solid var(--border-color, #ddd);
+    }
+
+    .module h2 {
+        background: var(--header-bg, #79aec8);
+        color: var(--header-color, #fff);
     }
 </style>
 {% endblock %}
@@ -77,9 +104,16 @@
 
     <div class="kyc-card">
         <h3>Shared KYC / Bank Details for Group {{ mobile }}</h3>
-        <p><strong>Bank Name:</strong> {{ kyc.bank_name }}</p>
-        <p><strong>Account Number:</strong> <span style="font-family: monospace; font-size: 16px; color: #d9534f; font-weight: bold;">{{ kyc.bank_account_number }}</span></p>
-        <p><strong>IFSC Code:</strong> {{ kyc.ifsc_code }}</p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <div>
+                <p><strong>Bank Name:</strong> {{ kyc.bank_name }}</p>
+                <p><strong>Account Number:</strong> <span style="font-family: monospace; font-size: 16px; color: var(--error-fg, #d9534f); font-weight: bold;">{{ kyc.bank_account_number }}</span></p>
+            </div>
+            <div>
+                <p><strong>IFSC Code:</strong> {{ kyc.ifsc_code }}</p>
+                <p><strong>Holder:</strong> {{ kyc.account_holder_name }}</p>
+            </div>
+        </div>
     </div>
 
     <div class="module">
@@ -115,13 +149,13 @@
                         </td>
                     </tr>
                     {% endfor %}
-                    <tr style="background-color: #fff3cd; font-weight: bold; font-size: 16px;">
-                        <td colspan="8" style="text-align: right; color: #856404;">TOTAL REMAINING GROUP PAYOUT:</td>
-                        <td style="color: #856404;">Rs {{ total_group_remaining|floatformat:2 }}</td>
+                    <tr style="background-color: rgba(255, 243, 205, 0.15); font-weight: bold; font-size: 16px;">
+                        <td colspan="8" style="text-align: right; color: var(--body-fg);">TOTAL REMAINING GROUP PAYOUT:</td>
+                        <td style="color: var(--warning-fg, #856404);">Rs {{ total_group_remaining|floatformat:2 }}</td>
                     </tr>
-                    <tr style="background-color: #d4edda; font-weight: bold; font-size: 18px; border-top: 2px solid #28a745;">
-                        <td colspan="8" style="text-align: right; color: #155724;">AMOUNT TO BE PAID (After 20% Deductions):</td>
-                        <td style="color: #155724; text-decoration: underline;">Rs {{ total_after_deduction|floatformat:2 }}</td>
+                    <tr style="background-color: rgba(212, 237, 218, 0.15); font-weight: bold; font-size: 18px; border-top: 2px solid #28a745;">
+                        <td colspan="8" style="text-align: right; color: var(--body-fg);">AMOUNT TO BE PAID (After 20% Deductions):</td>
+                        <td style="color: #28a745; text-decoration: underline;">Rs {{ total_after_deduction|floatformat:2 }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -133,107 +167,109 @@
         <h2>Detailed Transaction Breakdown (Selected Period)</h2>
         {% for item in group %}
             {% if item.binary_txns or item.level_txns %}
-            <div class="kyc-card" style="margin-bottom: 20px;">
-                <h3 style="background: #e9ecef; padding: 10px; border-radius: 4px; margin: -15px -15px 15px -15px; border-bottom: 1px solid #ddd;">
+            <div class="kyc-card" style="margin-bottom: 20px; padding: 0;">
+                <h3 style="background: var(--darkened-bg); padding: 12px; border-radius: 4px 4px 0 0; margin: 0; border-bottom: 1px solid var(--border-color);">
                     Transactions for {{ item.user.username }} ({{ item.user.first_name }} {{ item.user.last_name }})
                 </h3>
                 
-                {% if item.binary_txns %}
-                <h4 style="color: #417690; margin-bottom: 10px;">Binary Income Matches</h4>
-                <table style="width: 100%; border-collapse: collapse; margin-bottom: 15px; background: #fff;">
-                    <thead>
-                        <tr>
-                            <th style="padding: 8px; border: 1px solid #ddd; background: #f8f9fa;">Date & Time</th>
-                            <th style="padding: 8px; border: 1px solid #ddd; background: #f8f9fa;">Details</th>
-                            <th style="padding: 8px; border: 1px solid #ddd; background: #f8f9fa; text-align: right;">Amount</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for txn in item.binary_txns %}
-                        <tr>
-                            <td style="padding: 8px; border: 1px solid #ddd;">{{ txn.created_at|date:"M d, Y H:i" }}</td>
-                            <td style="padding: 8px; border: 1px solid #ddd;">{{ txn.description|default:"Binary Match" }}</td>
-                            <td style="padding: 8px; border: 1px solid #ddd; text-align: right; color: #28a745;">+ Rs {{ txn.amount|floatformat:2 }}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-                {% endif %}
+                <div style="padding: 15px;">
+                    {% if item.binary_txns %}
+                    <h4 style="color: var(--link-fg, #417690); margin-bottom: 10px;">Binary Income Matches</h4>
+                    <table class="txn-table">
+                        <thead>
+                            <tr>
+                                <th>Date & Time</th>
+                                <th>Details</th>
+                                <th style="text-align: right;">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for txn in item.binary_txns %}
+                            <tr>
+                                <td>{{ txn.created_at|date:"M d, Y H:i" }}</td>
+                                <td>{{ txn.description|default:"Binary Match" }}</td>
+                                <td style="text-align: right; color: #28a745;">+ Rs {{ txn.amount|floatformat:2 }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% endif %}
 
-                {% if item.level_txns %}
-                <h4 style="color: #417690; margin-bottom: 10px;">Level Income Matches</h4>
-                <table style="width: 100%; border-collapse: collapse; margin-bottom: 10px; background: #fff;">
-                    <thead>
-                        <tr>
-                            <th style="padding: 8px; border: 1px solid #ddd; background: #f8f9fa;">Date & Time</th>
-                            <th style="padding: 8px; border: 1px solid #ddd; background: #f8f9fa;">Details</th>
-                            <th style="padding: 8px; border: 1px solid #ddd; background: #f8f9fa; text-align: right;">Amount</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for txn in item.level_txns %}
-                        <tr>
-                            <td style="padding: 8px; border: 1px solid #ddd;">{{ txn.created_at|date:"M d, Y H:i" }}</td>
-                            <td style="padding: 8px; border: 1px solid #ddd;">{{ txn.description|default:"Level Income" }}</td>
-                            <td style="padding: 8px; border: 1px solid #ddd; text-align: right; color: #28a745;">+ Rs {{ txn.amount|floatformat:2 }}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-                {% endif %}
-{% if item.order_history %}
-                <h4 style="color: #417690; margin-bottom: 10px; margin-top: 20px;">Team Purchase History (Selected Week)</h4>
-                <table style="width: 100%; border-collapse: collapse; margin-bottom: 15px; background: #fff;">
-                    <thead>
-                        <tr>
-                            <th style="padding: 8px; border: 1px solid #ddd; background: #f8f9fa;">Date & Time</th>
-                            <th style="padding: 8px; border: 1px solid #ddd; background: #f8f9fa;">Side</th>
-                            <th style="padding: 8px; border: 1px solid #ddd; background: #f8f9fa;">Username</th>
-                            <th style="padding: 8px; border: 1px solid #ddd; background: #f8f9fa;">Name</th>
-                            <th style="padding: 8px; border: 1px solid #ddd; background: #f8f9fa; text-align: right;">Amount</th>
-                            <th style="padding: 8px; border: 1px solid #ddd; background: #f8f9fa; text-align: right;">PV</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for order in item.order_history %}
-                        <tr>
-                            <td style="padding: 8px; border: 1px solid #ddd;">{{ order.date|date:"M d, Y H:i" }}</td>
-                            <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold; color: {% if order.side == 'Left' %}#007bff{% else %}#fd7e14{% endif %};">{{ order.side }}</td>
-                            <td style="padding: 8px; border: 1px solid #ddd;">{{ order.username }}</td>
-                            <td style="padding: 8px; border: 1px solid #ddd;">{{ order.first_name }}</td>
-                            <td style="padding: 8px; border: 1px solid #ddd; text-align: right;">Rs {{ order.amount|floatformat:2 }}</td>
-                            <td style="padding: 8px; border: 1px solid #ddd; text-align: right; color: #28a745; font-weight: bold;">{{ order.pv }} PV</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-                {% endif %}
+                    {% if item.level_txns %}
+                    <h4 style="color: var(--link-fg, #417690); margin-bottom: 10px; margin-top: 20px;">Level Income Matches</h4>
+                    <table class="txn-table">
+                        <thead>
+                            <tr>
+                                <th>Date & Time</th>
+                                <th>Details</th>
+                                <th style="text-align: right;">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for txn in item.level_txns %}
+                            <tr>
+                                <td>{{ txn.created_at|date:"M d, Y H:i" }}</td>
+                                <td>{{ txn.description|default:"Level Income" }}</td>
+                                <td style="text-align: right; color: #28a745;">+ Rs {{ txn.amount|floatformat:2 }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% endif %}
+
+                    {% if item.order_history %}
+                    <h4 style="color: var(--link-fg, #417690); margin-bottom: 10px; margin-top: 20px;">Team Purchase History (Selected Week)</h4>
+                    <table class="txn-table">
+                        <thead>
+                            <tr>
+                                <th>Date & Time</th>
+                                <th>Side</th>
+                                <th>Username</th>
+                                <th>Name</th>
+                                <th style="text-align: right;">Amount</th>
+                                <th style="text-align: right;">PV</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for order in item.order_history %}
+                            <tr>
+                                <td>{{ order.date|date:"M d, Y H:i" }}</td>
+                                <td style="font-weight: bold; color: {% if order.side == 'Left' %}#007bff{% else %}#fd7e14{% endif %};">{{ order.side }}</td>
+                                <td>{{ order.username }}</td>
+                                <td>{{ order.first_name }}</td>
+                                <td style="text-align: right;">Rs {{ order.amount|floatformat:2 }}</td>
+                                <td style="text-align: right; color: #28a745; font-weight: bold;">{{ order.pv }} PV</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% endif %}
+                </div>
             </div>
             {% endif %}
         {% endfor %}
     </div>
 
     {% if total_group_remaining > 0 %}
-
     <div style="margin-top: 30px;">
         <form method="POST">
             {% csrf_token %}
             <button type="submit" name="initiate_withdrawal" class="btn btn-success" onclick="return confirm('Are you sure you want to process Rs {{ total_group_remaining|floatformat:2 }} for this group?');">
                 Process Bulk Withdrawal (Rs {{ total_group_remaining|floatformat:2 }})
             </button>
-            <p style="margin-top: 10px; color: #666; font-style: italic;">
+            <p style="margin-top: 10px; color: var(--body-fg); opacity: 0.7; font-style: italic;">
                 This will create withdrawal requests for all accounts in this group that have a positive remaining balance for this date range. 10% TDS and 10% Top-Up will be automatically deducted from the remaining balances.
             </p>
         </form>
     </div>
     {% else %}
-    <div style="margin-top: 30px; padding: 15px; background: #d4edda; color: #155724; border: 1px solid #c3e6cb; border-radius: 4px;">
+    <div style="margin-top: 30px; padding: 15px; background: rgba(212, 237, 218, 0.2); color: #28a745; border: 1px solid #28a745; border-radius: 4px;">
         <strong>Fully Paid!</strong> This group has no remaining pending income to withdraw for the selected date range.
     </div>
     {% endif %}
 
     <div style="margin-top: 20px;">
-        <a href="{% url 'weekly_payouts_list' %}?start_date={{ start_date }}&end_date={{ end_date }}">Back to Weekly Payouts List</a>
+        <a href="{% url 'weekly_payouts_list' %}?start_date={{ start_date }}&end_date={{ end_date }}" class="button" style="background: var(--darkened-bg); color: var(--body-fg);">Back to Weekly Payouts List</a>
     </div>
 </div>
 {% endblock %}

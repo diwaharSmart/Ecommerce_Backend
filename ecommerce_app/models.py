@@ -213,7 +213,7 @@ def approve_payin_request(sender, instance, created, **kwargs):
                 user=instance.user,
                 amount=instance.amount,
                 direction='credit',
-                type='deposit',
+                type='deposit_new',
                 description=f"Auto-deposit from Payin {instance.reference_number}",
                 related_payin=instance
             )

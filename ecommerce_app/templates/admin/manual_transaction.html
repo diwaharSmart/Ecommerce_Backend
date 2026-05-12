@@ -4,28 +4,78 @@
 {% block extrastyle %}
 {{ block.super }}
 <style>
-    /* Django Admin inspired styles */
-    .module h2 { background: #79aec8; color: #fff; padding: 8px 12px; margin: 0; font-size: 14px; font-weight: 600; border-radius: 4px 4px 0 0; }
-    .module { border: 1px solid #ccc; border-radius: 4px; margin-bottom: 20px; background: #fff; }
-    .form-row { padding: 12px; border-bottom: 1px solid #eee; display: flex; align-items: center; }
+    /* Theme-aware styles using Django Admin CSS variables */
+    #content-main { color: var(--body-fg, #333); }
+    
+    .module h2 { 
+        background: var(--header-bg, #79aec8); 
+        color: var(--header-color, #fff); 
+        padding: 8px 12px; margin: 0; font-size: 14px; font-weight: 600; border-radius: 4px 4px 0 0; 
+    }
+    .module { 
+        border: 1px solid var(--border-color, #ccc); 
+        border-radius: 4px; margin-bottom: 20px; 
+        background: var(--body-bg, #fff); 
+        color: var(--body-fg, #333);
+    }
+    .form-row { 
+        padding: 12px; 
+        border-bottom: 1px solid var(--border-color, #eee); 
+        display: flex; align-items: center; 
+    }
     .form-row:last-child { border-bottom: none; }
-    .form-row label { width: 160px; font-weight: bold; color: #666; font-size: 13px; }
-    .form-row input, .form-row select, .form-row textarea { flex-grow: 1; padding: 6px; border: 1px solid #ccc; border-radius: 4px; }
+    .form-row label { 
+        width: 160px; font-weight: bold; 
+        color: var(--body-fg, #666); 
+        font-size: 13px; 
+    }
+    .form-row input, .form-row select, .form-row textarea { 
+        flex-grow: 1; padding: 6px; 
+        border: 1px solid var(--border-color, #ccc); 
+        border-radius: 4px;
+        background: var(--body-bg, #fff);
+        color: var(--body-fg, #333);
+    }
     
     table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-    th { background: #f8f8f8; text-align: left; padding: 8px; border-bottom: 1px solid #ddd; font-size: 12px; color: #666; text-transform: uppercase; }
-    td { padding: 8px; border-bottom: 1px solid #eee; font-size: 13px; }
-    tr:hover { background-color: #fcfcfc; }
+    th { 
+        background: var(--darkened-bg, #f8f8f8); 
+        text-align: left; padding: 8px; 
+        border-bottom: 1px solid var(--border-color, #ddd); 
+        font-size: 12px; color: var(--body-fg, #666); 
+        text-transform: uppercase; 
+    }
+    td { 
+        padding: 8px; 
+        border-bottom: 1px solid var(--border-color, #eee); 
+        font-size: 13px; 
+        color: var(--body-fg, #333);
+    }
+    tr:hover { background-color: var(--darkened-bg, #fcfcfc); }
     
     .summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    @media (max-width: 1024px) {
+        .summary-grid { grid-template-columns: 1fr; }
+    }
+
     .badge { padding: 2px 6px; border-radius: 3px; font-size: 11px; font-weight: bold; text-transform: uppercase; }
     .badge-credit { background: #d4edda; color: #155724; }
     .badge-debit { background: #f8d7da; color: #721c24; }
     
-    .btn-submit { background: #417690; color: #fff; border: none; padding: 10px 20px; border-radius: 4px; font-weight: bold; cursor: pointer; width: 100%; }
-    .btn-submit:hover { background: #2c5061; }
+    .btn-submit { 
+        background: var(--button-bg, #417690); 
+        color: var(--button-fg, #fff); 
+        border: none; padding: 10px 20px; border-radius: 4px; font-weight: bold; cursor: pointer; width: 100%; 
+    }
+    .btn-submit:hover { background: var(--button-hover-bg, #2c5061); }
     
-    .search-box { background: #f4f4f4; padding: 15px; border-radius: 4px; margin-bottom: 20px; display: flex; gap: 10px; align-items: center; border: 1px solid #ddd; }
+    .search-box { 
+        background: var(--darkened-bg, #f4f4f4); 
+        padding: 15px; border-radius: 4px; margin-bottom: 20px; 
+        display: flex; gap: 10px; align-items: center; 
+        border: 1px solid var(--border-color, #ddd); 
+        color: var(--body-fg, #333);
+    }
 </style>
 {% endblock %}
 
@@ -37,7 +87,8 @@
     <div class="search-box">
         <form method="get" style="display: flex; flex-grow: 1; gap: 10px;">
             <label style="font-weight: bold; align-self: center;">Search User ID:</label>
-            <input type="text" name="search_query" value="{{ search_query }}" placeholder="e.g. VN0851849" style="flex-grow: 1; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" required>
+            <input type="text" name="search_query" value="{{ search_query }}" placeholder="e.g. VN0851849" 
+                   style="flex-grow: 1; padding: 8px; border: 1px solid var(--border-color, #ccc); border-radius: 4px; background: var(--body-bg); color: var(--body-fg);" required>
             <button type="submit" class="button">Search & Analyze</button>
         </form>
     </div>
@@ -103,7 +154,6 @@
                                 <th>Type</th>
                                 <th>Total Credit</th>
                                 <th>Total Debit</th>
-                                <th>Net</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -113,20 +163,12 @@
                                     <td><strong>{{ type_name|title }}</strong></td>
                                     <td style="color: #28a745;">Rs {{ sums.credit|floatformat:2 }}</td>
                                     <td style="color: #dc3545;">Rs {{ sums.debit|floatformat:2 }}</td>
-                                    <td style="font-weight: bold;">
-                                        {% with net=sums.credit|add:sums.debit %}
-                                            {# Note: Since debit is stored as positive amount in DB but we want to subtract it #}
-                                            {# Actually the sums dict has both positive. Let's do simple math. #}
-                                        {% endwith %}
-                                        Rs {{ sums.credit|dictsort:"sums.debit" }} 
-                                        {# Math in template is hard, let's just show credit/debit for now #}
-                                    </td>
                                 </tr>
                                 {% endif %}
                             {% endfor %}
-                            <tr style="background: #eee; font-weight: bold;">
+                            <tr style="background: var(--darkened-bg); font-weight: bold;">
                                 <td>TOTAL MAIN BALANCE</td>
-                                <td colspan="3" style="text-align: right; font-size: 16px;">
+                                <td colspan="2" style="text-align: right; font-size: 16px;">
                                     Rs {{ target_user.wallet.current_balance|floatformat:2 }}
                                 </td>
                             </tr>
@@ -134,7 +176,7 @@
                     </table>
                     
                     {% if target_user.wallet.current_balance < 0 %}
-                    <div style="margin-top: 15px; background: #fff3cd; padding: 10px; border: 1px solid #ffeeba; border-radius: 4px; display: flex; justify-content: space-between; align-items: center;">
+                    <div style="margin-top: 15px; background: #fff3cd; padding: 10px; border: 1px solid #ffeeba; border-radius: 4px; display: flex; justify-content: space-between; align-items: center; color: #856404;">
                         <span>Account is in Negative!</span>
                         <button type="button" onclick="clearToZero()" style="background: #856404; color: #fff; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer;">Clear to Zero</button>
                     </div>
@@ -170,7 +212,7 @@
                         {% for t in transactions %}
                         <tr>
                             <td style="white-space: nowrap;">{{ t.created_at|date:"Y-m-d H:i" }}</td>
-                            <td><span class="badge" style="background: #eee; color: #333;">{{ t.type }}</span></td>
+                            <td><span class="badge" style="background: var(--darkened-bg); color: var(--body-fg);">{{ t.type }}</span></td>
                             <td>
                                 <span class="badge badge-{{ t.direction }}">
                                     {{ t.direction }}
@@ -194,13 +236,13 @@
             <strong>User not found!</strong> Please check the User ID and search again.
         </div>
     {% else %}
-        <div class="module" style="padding: 20px; text-align: center; color: #666;">
+        <div class="module" style="padding: 20px; text-align: center; color: var(--body-fg); opacity: 0.7;">
             Search for a User ID to start manual adjustments and view transaction analytics.
         </div>
     {% endif %}
 
     <div style="margin-top: 20px;">
-        <a href="{% url 'weekly_payouts_list' %}" class="button" style="background: #666;">&laquo; Back to Payouts Dashboard</a>
+        <a href="{% url 'weekly_payouts_list' %}" class="button" style="background: var(--darkened-bg); color: var(--body-fg);">&laquo; Back to Payouts Dashboard</a>
     </div>
 </div>
 {% endblock %}
