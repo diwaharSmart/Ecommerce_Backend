@@ -3,232 +3,334 @@
 
 {% block extrastyle %}
 {{ block.super }}
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-    .manual-txn-container {
-        max-width: 800px;
-        margin: 20px 0;
-        background: var(--body-bg, #fff);
-        padding: 20px;
-        border: 1px solid var(--border-color, #eee);
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    :root {
+        --primary-blue: #2563eb;
+        --primary-hover: #1d4ed8;
+        --success-green: #10b981;
+        --warning-amber: #f59e0b;
+        --danger-red: #ef4444;
+        --bg-slate: #f8fafc;
+        --border-slate: #e2e8f0;
+        --text-slate: #1e293b;
+        --text-muted: #64748b;
     }
-    .form-group {
-        margin-bottom: 20px;
+
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+        background-color: var(--bg-slate);
     }
-    .form-group label {
+
+    #content-main {
+        max-width: 900px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+    }
+
+    .glass-card {
+        background: #ffffff;
+        border: 1px solid var(--border-slate);
+        border-radius: 12px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        padding: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .header-section {
+        margin-bottom: 2rem;
+        border-bottom: 2px solid var(--border-slate);
+        padding-bottom: 1rem;
+    }
+
+    .header-section h1 {
+        font-size: 1.875rem;
+        font-weight: 700;
+        color: var(--text-slate);
+        margin: 0;
+    }
+
+    .search-container {
+        display: flex;
+        gap: 0.75rem;
+        margin-bottom: 2rem;
+    }
+
+    .input-group {
+        flex-grow: 1;
+    }
+
+    .label-premium {
         display: block;
-        font-weight: bold;
-        margin-bottom: 8px;
-        color: var(--body-fg, #333);
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--text-slate);
+        margin-bottom: 0.5rem;
     }
-    .form-group input[type="text"], 
-    .form-group input[type="number"],
-    .form-group select,
-    .form-group textarea {
+
+    .input-premium {
         width: 100%;
-        padding: 10px;
-        border: 1px solid var(--border-color, #ccc);
-        border-radius: 4px;
-        font-size: 14px;
-        background: var(--body-bg, #fff);
-        color: var(--body-fg, #333);
+        padding: 0.75rem 1rem;
+        border: 1px solid var(--border-slate);
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: border-color 0.2s, box-shadow 0.2s;
     }
-    .btn-row {
-        margin-top: 25px;
+
+    .input-premium:focus {
+        outline: none;
+        border-color: var(--primary-blue);
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
     }
-    .user-info-box {
-        background: var(--darkened-bg, #f9f9f9);
-        padding: 15px;
-        border-radius: 4px;
-        margin-bottom: 20px;
-        border-left: 4px solid #417690;
+
+    .btn-premium {
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 0.875rem;
+        cursor: pointer;
+        transition: all 0.2s;
+        border: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        text-decoration: none !important;
+    }
+
+    .btn-primary-glow {
+        background-color: var(--primary-blue);
+        color: white !important;
+    }
+
+    .btn-primary-glow:hover {
+        background-color: var(--primary-hover);
+        box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+    }
+
+    .btn-outline {
+        background-color: transparent;
+        border: 1px solid var(--border-slate);
+        color: var(--text-slate) !important;
+    }
+
+    .btn-outline:hover {
+        background-color: var(--bg-slate);
+    }
+
+    .user-profile-summary {
+        background: linear-gradient(135deg, #eff6ff 0%, #f8fafc 100%);
+        border: 1px solid #dbeafe;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .stat-box .label {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--text-muted);
+        font-weight: 700;
+        display: block;
+        margin-bottom: 0.25rem;
+    }
+
+    .stat-box .value {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--text-slate);
+    }
+
+    .stat-box.negative .value {
+        color: var(--danger-red);
+    }
+
+    .alert-banner {
+        padding: 1rem;
+        border-radius: 8px;
+        margin-bottom: 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.875rem;
+    }
+
+    .alert-warning {
+        background-color: #fffbeb;
+        border: 1px solid #fde68a;
+        color: #92400e;
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 640px) {
+        .form-grid { grid-template-columns: 1fr; }
+    }
+
+    .full-width { grid-column: span 2; }
+    @media (max-width: 640px) { .full-width { grid-column: span 1; } }
+
+    textarea.input-premium {
+        resize: vertical;
+        min-height: 100px;
+    }
+
+    .submit-container {
+        margin-top: 2rem;
+    }
+
+    .empty-state {
+        text-align: center;
+        padding: 3rem 0;
+        color: var(--text-muted);
+    }
+
+    .empty-state i {
+        font-size: 3rem;
+        display: block;
+        margin-bottom: 1rem;
     }
 </style>
 {% endblock %}
 
 {% block content %}
 <div id="content-main">
-    <h1>Manual Transaction Management</h1>
-    
-    <div class="manual-txn-container">
-        <!-- User Search -->
-        <form method="get" class="form-group" style="display: flex; gap: 10px; align-items: flex-end;">
-            <div style="flex-grow: 1;">
-                <label>Search User by ID (Username)</label>
-                <input type="text" name="search_query" value="{{ search_query }}" placeholder="e.g. VN0851849" required>
+    <div class="header-section">
+        <h1>Manual Transaction Management</h1>
+        <p style="color: var(--text-muted); margin-top: 0.5rem;">Adjust user balances manually for credits, debits, or account closing.</p>
+    </div>
 
-                {% if target_user.wallet.current_balance < 0 %}
-                    <div style="background: #fff3cd; padding: 10px; border: 1px solid #ffeeba; border-radius: 4px; margin-top: 10px; display: flex; justify-content: space-between; align-items: center;">
-                        <span>This user has a negative balance of <strong>Rs {{ target_user.wallet.current_balance }}</strong>.</span>
-                        <button type="button" onclick="clearToZero()" class="button" style="background: #856404; color: #fff;">Set Amount to Clear</button>
-                    </div>
-                    <script>
-                        function clearToZero() {
-                            const negBal = Math.abs(parseFloat("{{ target_user.wallet.current_balance }}"));
-                            document.getElementsByName('amount')[0].value = negBal.toFixed(2);
-                            document.getElementsByName('direction')[0].value = 'credit';
-                            document.getElementsByName('type')[0].value = 'account_closing';
-                            document.getElementsByName('description')[0].value = 'Clearing negative balance for account adjustment.';
-                        }
-                    </script>
-                {% endif %}
+    <div class="glass-card">
+        <!-- User Search Section -->
+        <form method="get">
+            <div class="search-container">
+                <div class="input-group">
+                    <label class="label-premium">User ID or Username</label>
+                    <input type="text" name="search_query" value="{{ search_query }}" 
+                           class="input-premium" placeholder="Enter User ID (e.g. VN0851849)" required>
+                </div>
+                <div style="margin-top: 1.75rem;">
+                    <button type="submit" class="btn-premium btn-primary-glow">
+                        🔍 Search Account
+                    </button>
+                </div>
             </div>
-            <button type="submit" class="button">Search User</button>
         </form>
 
-        <hr style="margin: 30px 0;">
-
         {% if target_user %}
-            <div class="user-info-box">
-                <strong>Found User:</strong> {{ target_user.first_name }} {{ target_user.last_name }} ({{ target_user.username }})<br>
-                <strong>Current Balance:</strong> Rs {{ target_user.wallet.current_balance }} | 
-                <strong>Top-Up Balance:</strong> Rs {{ target_user.wallet.top_up_balance }}
-
-                {% if target_user.wallet.current_balance < 0 %}
-                    <div style="background: #fff3cd; padding: 10px; border: 1px solid #ffeeba; border-radius: 4px; margin-top: 10px; display: flex; justify-content: space-between; align-items: center;">
-                        <span>This user has a negative balance of <strong>Rs {{ target_user.wallet.current_balance }}</strong>.</span>
-                        <button type="button" onclick="clearToZero()" class="button" style="background: #856404; color: #fff;">Set Amount to Clear</button>
-                    </div>
-                    <script>
-                        function clearToZero() {
-                            const negBal = Math.abs(parseFloat("{{ target_user.wallet.current_balance }}"));
-                            document.getElementsByName('amount')[0].value = negBal.toFixed(2);
-                            document.getElementsByName('direction')[0].value = 'credit';
-                            document.getElementsByName('type')[0].value = 'account_closing';
-                            document.getElementsByName('description')[0].value = 'Clearing negative balance for account adjustment.';
-                        }
-                    </script>
-                {% endif %}
+            <!-- User Summary -->
+            <div class="user-profile-summary">
+                <div class="stat-box">
+                    <span class="label">Member Name</span>
+                    <span class="value">{{ target_user.first_name }} {{ target_user.last_name }}</span>
+                    <span style="font-size: 0.875rem; color: var(--text-muted);">@{{ target_user.username }}</span>
+                </div>
+                <div class="stat-box {% if target_user.wallet.current_balance < 0 %}negative{% endif %}">
+                    <span class="label">Main Wallet Balance</span>
+                    <span class="value">Rs {{ target_user.wallet.current_balance|floatformat:2 }}</span>
+                </div>
+                <div class="stat-box">
+                    <span class="label">Top-Up Wallet</span>
+                    <span class="value">Rs {{ target_user.wallet.top_up_balance|floatformat:2 }}</span>
+                </div>
             </div>
 
+            <!-- Negative Balance Helper -->
+            {% if target_user.wallet.current_balance < 0 %}
+            <div class="alert-banner alert-warning">
+                <div>
+                    <strong>Negative Balance Detected:</strong> This user owes Rs {{ target_user.wallet.current_balance|slice:"1:" }} to the system.
+                </div>
+                <button type="button" onclick="clearToZero()" class="btn-premium btn-outline" style="padding: 0.5rem 1rem; background: white;">
+                    ✨ Auto-Fill Clear Transaction
+                </button>
+            </div>
+            <script>
+                function clearToZero() {
+                    const negBal = Math.abs(parseFloat("{{ target_user.wallet.current_balance }}"));
+                    document.getElementById('id_amount').value = negBal.toFixed(2);
+                    document.getElementById('id_direction').value = 'credit';
+                    document.getElementById('id_type').value = 'account_closing';
+                    document.getElementById('id_description').value = 'Clearing negative balance for account adjustment.';
+                    
+                    // Visual feedback
+                    document.getElementById('id_amount').style.borderColor = 'var(--success-green)';
+                    setTimeout(() => { document.getElementById('id_amount').style.borderColor = ''; }, 2000);
+                }
+            </script>
+            {% endif %}
+
+            <!-- Transaction Form -->
             <form method="post">
                 {% csrf_token %}
                 <input type="hidden" name="user_id" value="{{ target_user.id }}">
                 
-                <div class="form-group">
-                    <label>Transaction Type</label>
-                    <select name="type" required>
-                        <option value="deposit">Deposit (Inward)</option>
-                        <option value="withdrawal">Withdrawal (Outward)</option>
-                        <option value="top_up">Top-Up (Special)</option>
-                        <option value="binary_income">Binary Income (Manual Credit)</option>
-                        <option value="level_income">Level Income (Manual Credit)</option>
-                        <option value="account_closing">Account Closing (Negative Balance Clear)</option>
-                    </select>
-    
-                {% if target_user.wallet.current_balance < 0 %}
-                    <div style="background: #fff3cd; padding: 10px; border: 1px solid #ffeeba; border-radius: 4px; margin-top: 10px; display: flex; justify-content: space-between; align-items: center;">
-                        <span>This user has a negative balance of <strong>Rs {{ target_user.wallet.current_balance }}</strong>.</span>
-                        <button type="button" onclick="clearToZero()" class="button" style="background: #856404; color: #fff;">Set Amount to Clear</button>
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label class="label-premium">Transaction Type</label>
+                        <select name="type" id="id_type" class="input-premium" required>
+                            <option value="deposit">Deposit (General Inward)</option>
+                            <option value="withdrawal">Withdrawal (General Outward)</option>
+                            <option value="top_up">Top-Up (10% Special Wallet)</option>
+                            <option value="binary_income">Binary Income (Manual Credit)</option>
+                            <option value="level_income">Level Income (Manual Credit)</option>
+                            <option value="account_closing">Account Closing (Clearance)</option>
+                        </select>
                     </div>
-                    <script>
-                        function clearToZero() {
-                            const negBal = Math.abs(parseFloat("{{ target_user.wallet.current_balance }}"));
-                            document.getElementsByName('amount')[0].value = negBal.toFixed(2);
-                            document.getElementsByName('direction')[0].value = 'credit';
-                            document.getElementsByName('type')[0].value = 'account_closing';
-                            document.getElementsByName('description')[0].value = 'Clearing negative balance for account adjustment.';
-                        }
-                    </script>
-                {% endif %}
-            </div>
 
-                <div class="form-group">
-                    <label>Direction</label>
-                    <select name="direction" required>
-                        <option value="credit">Credit (+ Add Money)</option>
-                        <option value="debit">Debit (- Deduct Money)</option>
-                    </select>
-    
-                {% if target_user.wallet.current_balance < 0 %}
-                    <div style="background: #fff3cd; padding: 10px; border: 1px solid #ffeeba; border-radius: 4px; margin-top: 10px; display: flex; justify-content: space-between; align-items: center;">
-                        <span>This user has a negative balance of <strong>Rs {{ target_user.wallet.current_balance }}</strong>.</span>
-                        <button type="button" onclick="clearToZero()" class="button" style="background: #856404; color: #fff;">Set Amount to Clear</button>
+                    <div class="input-group">
+                        <label class="label-premium">Direction</label>
+                        <select name="direction" id="id_direction" class="input-premium" required>
+                            <option value="credit">Credit (+) Add to Wallet</option>
+                            <option value="debit">Debit (-) Deduct from Wallet</option>
+                        </select>
                     </div>
-                    <script>
-                        function clearToZero() {
-                            const negBal = Math.abs(parseFloat("{{ target_user.wallet.current_balance }}"));
-                            document.getElementsByName('amount')[0].value = negBal.toFixed(2);
-                            document.getElementsByName('direction')[0].value = 'credit';
-                            document.getElementsByName('type')[0].value = 'account_closing';
-                            document.getElementsByName('description')[0].value = 'Clearing negative balance for account adjustment.';
-                        }
-                    </script>
-                {% endif %}
-            </div>
 
-                <div class="form-group">
-                    <label>Amount (Rs)</label>
-                    <input type="number" step="0.01" name="amount" required placeholder="0.00">
-    
-                {% if target_user.wallet.current_balance < 0 %}
-                    <div style="background: #fff3cd; padding: 10px; border: 1px solid #ffeeba; border-radius: 4px; margin-top: 10px; display: flex; justify-content: space-between; align-items: center;">
-                        <span>This user has a negative balance of <strong>Rs {{ target_user.wallet.current_balance }}</strong>.</span>
-                        <button type="button" onclick="clearToZero()" class="button" style="background: #856404; color: #fff;">Set Amount to Clear</button>
+                    <div class="input-group full-width">
+                        <label class="label-premium">Amount (Indian Rupees)</label>
+                        <input type="number" step="0.01" name="amount" id="id_amount" 
+                               class="input-premium" required placeholder="0.00">
                     </div>
-                    <script>
-                        function clearToZero() {
-                            const negBal = Math.abs(parseFloat("{{ target_user.wallet.current_balance }}"));
-                            document.getElementsByName('amount')[0].value = negBal.toFixed(2);
-                            document.getElementsByName('direction')[0].value = 'credit';
-                            document.getElementsByName('type')[0].value = 'account_closing';
-                            document.getElementsByName('description')[0].value = 'Clearing negative balance for account adjustment.';
-                        }
-                    </script>
-                {% endif %}
-            </div>
 
-                <div class="form-group">
-                    <label>Comment / Description</label>
-                    <textarea name="description" rows="3" placeholder="Enter reason for this manual transaction..."></textarea>
-    
-                {% if target_user.wallet.current_balance < 0 %}
-                    <div style="background: #fff3cd; padding: 10px; border: 1px solid #ffeeba; border-radius: 4px; margin-top: 10px; display: flex; justify-content: space-between; align-items: center;">
-                        <span>This user has a negative balance of <strong>Rs {{ target_user.wallet.current_balance }}</strong>.</span>
-                        <button type="button" onclick="clearToZero()" class="button" style="background: #856404; color: #fff;">Set Amount to Clear</button>
+                    <div class="input-group full-width">
+                        <label class="label-premium">Internal Admin Comment</label>
+                        <textarea name="description" id="id_description" class="input-premium" 
+                                  placeholder="Enter the reason for this adjustment (e.g. Refund, Correction, Closing)..."></textarea>
                     </div>
-                    <script>
-                        function clearToZero() {
-                            const negBal = Math.abs(parseFloat("{{ target_user.wallet.current_balance }}"));
-                            document.getElementsByName('amount')[0].value = negBal.toFixed(2);
-                            document.getElementsByName('direction')[0].value = 'credit';
-                            document.getElementsByName('type')[0].value = 'account_closing';
-                            document.getElementsByName('description')[0].value = 'Clearing negative balance for account adjustment.';
-                        }
-                    </script>
-                {% endif %}
-            </div>
+                </div>
 
-                <div class="btn-row">
-                    <button type="submit" name="create_transaction" class="button default" style="width: 100%; height: 45px; font-size: 16px;">Create Transaction</button>
-    
-                {% if target_user.wallet.current_balance < 0 %}
-                    <div style="background: #fff3cd; padding: 10px; border: 1px solid #ffeeba; border-radius: 4px; margin-top: 10px; display: flex; justify-content: space-between; align-items: center;">
-                        <span>This user has a negative balance of <strong>Rs {{ target_user.wallet.current_balance }}</strong>.</span>
-                        <button type="button" onclick="clearToZero()" class="button" style="background: #856404; color: #fff;">Set Amount to Clear</button>
-                    </div>
-                    <script>
-                        function clearToZero() {
-                            const negBal = Math.abs(parseFloat("{{ target_user.wallet.current_balance }}"));
-                            document.getElementsByName('amount')[0].value = negBal.toFixed(2);
-                            document.getElementsByName('direction')[0].value = 'credit';
-                            document.getElementsByName('type')[0].value = 'account_closing';
-                            document.getElementsByName('description')[0].value = 'Clearing negative balance for account adjustment.';
-                        }
-                    </script>
-                {% endif %}
-            </div>
+                <div class="submit-container">
+                    <button type="submit" name="create_transaction" class="btn-premium btn-primary-glow" style="width: 100%;">
+                        🚀 Confirm & Execute Transaction
+                    </button>
+                </div>
             </form>
+
         {% elif search_query %}
-            <p style="color: #ba2121;">No user found for that ID. Please try again.</p>
+            <div class="empty-state">
+                <div style="color: var(--danger-red); font-size: 1.5rem; font-weight: 600;">User Not Found</div>
+                <p>We couldn't find any account matching "{{ search_query }}". Please check the User ID and try again.</p>
+            </div>
         {% else %}
-            <p>Please enter a User ID above to initiate a manual transaction.</p>
+            <div class="empty-state">
+                <p>Search for a user above to get started with a manual transaction.</p>
+            </div>
         {% endif %}
     </div>
 
-    <div style="margin-top: 20px;">
-        <a href="{% url 'weekly_payouts_list' %}" class="button" style="background: #666;">&laquo; Back to Payouts Dashboard</a>
+    <div style="text-align: center;">
+        <a href="{% url 'weekly_payouts_list' %}" class="btn-premium btn-outline">
+            ← Back to Payouts Dashboard
+        </a>
     </div>
 </div>
 {% endblock %}

@@ -3,7 +3,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
 from django.contrib.auth.models import User
 from ecommerce_app.models import KYC, Wallet, Transaction, WithdrawalRequest, OrderItem
-from django.db.models import Sum, F, ExpressionWrapper, DecimalField
+from django.db.models import Sum, Q, F, ExpressionWrapper, DecimalField
 from decimal import Decimal
 import datetime
 from django.utils import timezone
@@ -128,6 +128,8 @@ def weekly_payouts_list(request):
             payout_groups.append({
                 'mobile': phone,
                 'accounts_count': len(group),
+                'names': ", ".join(sorted(list(set([f"{u.first_name} {u.last_name}".strip() for u in group if u.first_name])))),
+                'usernames': ", ".join(sorted([u.username for u in group])),
                 'bank_name': shared_bank_name,
                 'account_number': shared_bank_acc,
                 'ifsc_code': shared_ifsc,
@@ -368,15 +370,16 @@ def weekly_payouts_detail(request, mobile):
             messages.success(request, f"Successfully processed {withdrawals_created} withdrawal(s). Wallets have been updated.")
             return redirect(f"/admin/payouts/weekly/?start_date={start_date_str}&end_date={end_date_str}")
 
-
-
+    total_after_deduction = total_group_remaining * Decimal('0.80')
+    
     context = {
-        'mobile': mobile,
         'group': accounts_data,
+        'mobile': mobile,
         'kyc': shared_kyc,
         'total_group_remaining': total_group_remaining,
-        'start_date': start_date_str,
-        'end_date': end_date_str,
+        'total_after_deduction': total_after_deduction,
+        'start_date': start_date.strftime('%Y-%m-%d'),
+        'end_date': end_date.strftime('%Y-%m-%d'),
         'title': f'Payout Details for {mobile}',
     }
     return render(request, 'admin/weekly_payouts_detail.html', context)
@@ -418,3 +421,30 @@ def admin_manual_transaction(request):
         'search_query': search_query,
     }
     return render(request, 'admin/manual_transaction.html', context)
+
+
+@staff_member_required
+def admin_manual_transaction_history(request):
+    # Filter for transactions that are likely manual or specifically 'account_closing'
+    manual_types = ['account_closing', 'deposit', 'withdrawal', 'top_up', 'binary_income', 'level_income']
+    # We'll show all but allow filtering by type
+    selected_type = request.GET.get('type', '')
+    
+    txns = Transaction.objects.all().order_by('-created_at')
+    
+    if selected_type:
+        txns = txns.filter(type=selected_type)
+    
+    # Simple search by username or description
+    q = request.GET.get('q', '')
+    if q:
+        txns = txns.filter(Q(user__username__icontains=q) | Q(description__icontains=q))
+
+    context = {
+        'title': 'System Transaction History',
+        'transactions': txns[:200], # Limit to last 200 for performance
+        'selected_type': selected_type,
+        'types': Transaction.TRANSACTION_TYPES,
+        'q': q,
+    }
+    return render(request, 'admin/manual_transaction_history.html', context)

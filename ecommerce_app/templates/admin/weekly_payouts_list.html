@@ -204,6 +204,8 @@
                 <thead>
                     <tr>
                         <th>Mobile Number</th>
+                        <th>Names</th>
+                        <th>Usernames</th>
                         <th>Accounts Count</th>
                         <th>Bank Name</th>
                         <th>Account Number</th>
@@ -218,6 +220,8 @@
                     {% for group in payout_groups %}
                     <tr>
                         <td>{{ group.mobile }}</td>
+                        <td><small>{{ group.names }}</small></td>
+                        <td><small>{{ group.usernames }}</small></td>
                         <td>{{ group.accounts_count }}</td>
                         <td>{{ group.bank_name }}</td>
                         <td>{{ group.account_number }}</td>

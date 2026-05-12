@@ -20,8 +20,10 @@ class PayinRequestAdmin(admin.ModelAdmin):
     search_fields = ['user__username', 'reference_number']
 
 class TransactionAdmin(admin.ModelAdmin):
-    list_display = ['user', 'type', 'amount', 'direction', 'created_at']
-    list_filter = ['type', 'direction']
+    list_display = ['user', 'type', 'amount', 'direction', 'description', 'created_at']
+    list_filter = ['type', 'direction', 'created_at']
+    search_fields = ['user__username', 'description']
+    ordering = ['-created_at']
 
 class OrderItemInline(admin.TabularInline):
     model = OrderItem

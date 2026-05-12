@@ -24,6 +24,7 @@ urlpatterns = [
     # Custom Admin Views
     path('admin/payouts/weekly/', __import__('ecommerce_app.admin_views').admin_views.weekly_payouts_list, name='weekly_payouts_list'),
     path('admin/payouts/weekly/<str:mobile>/', __import__('ecommerce_app.admin_views').admin_views.weekly_payouts_detail, name='weekly_payouts_detail'),
+        path('admin/payouts/manual-transaction/history/', __import__('ecommerce_app.admin_views').admin_views.admin_manual_transaction_history, name='admin_manual_transaction_history'),
     path('admin/payouts/manual-transaction/', __import__('ecommerce_app.admin_views').admin_views.admin_manual_transaction, name='admin_manual_transaction'),
     path('admin/', admin.site.urls),
     path('', include('ecommerce_app.urls')),

@@ -1,0 +1,80 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static %}
+
+{% block extrastyle %}
+{{ block.super }}
+<style>
+    .results table { width: 100%; border-collapse: collapse; }
+    .results th, .results td { padding: 10px; border-bottom: 1px solid #eee; text-align: left; }
+    .results th { background: #f4f4f4; }
+    .filter-bar { background: #f9f9f9; padding: 15px; border-radius: 4px; margin-bottom: 20px; display: flex; gap: 15px; align-items: flex-end; }
+    .tag { padding: 2px 6px; border-radius: 3px; font-size: 11px; text-transform: uppercase; font-weight: bold; }
+    .tag-credit { background: #d4edda; color: #155724; }
+    .tag-debit { background: #f8d7da; color: #721c24; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div id="content-main">
+    <h1>System Transaction History</h1>
+    
+    <div class="filter-bar">
+        <form method="get" style="display: flex; gap: 15px; flex-grow: 1;">
+            <div style="flex-grow: 1;">
+                <label>Search (User or Description)</label>
+                <input type="text" name="q" value="{{ q }}" style="width: 100%;" placeholder="Search...">
+            </div>
+            <div>
+                <label>Filter by Type</label>
+                <select name="type">
+                    <option value="">All Types</option>
+                    {% for t_val, t_label in types %}
+                        <option value="{{ t_val }}" {% if selected_type == t_val %}selected{% endif %}>{{ t_label }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="button">Apply Filter</button>
+            <a href="?" class="button" style="background: #ccc;">Clear</a>
+        </form>
+    </div>
+
+    <div class="results">
+        <table>
+            <thead>
+                <tr>
+                    <th>Date & Time</th>
+                    <th>User</th>
+                    <th>Type</th>
+                    <th>Direction</th>
+                    <th>Amount</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for t in transactions %}
+                <tr>
+                    <td>{{ t.created_at|date:"Y-m-d H:i" }}</td>
+                    <td><strong>{{ t.user.username }}</strong></td>
+                    <td>{{ t.get_type_display }}</td>
+                    <td>
+                        <span class="tag tag-{{ t.direction }}">
+                            {{ t.direction }}
+                        </span>
+                    </td>
+                    <td style="font-family: monospace;">Rs {{ t.amount }}</td>
+                    <td><small>{{ t.description }}</small></td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6">No transactions found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div style="margin-top: 20px;">
+        <a href="{% url 'admin_manual_transaction' %}" class="button">&laquo; Back to Manual Tool</a>
+    </div>
+</div>
+{% endblock %}

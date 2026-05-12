@@ -119,6 +119,10 @@
                         <td colspan="8" style="text-align: right; color: #856404;">TOTAL REMAINING GROUP PAYOUT:</td>
                         <td style="color: #856404;">Rs {{ total_group_remaining|floatformat:2 }}</td>
                     </tr>
+                    <tr style="background-color: #d4edda; font-weight: bold; font-size: 18px; border-top: 2px solid #28a745;">
+                        <td colspan="8" style="text-align: right; color: #155724;">AMOUNT TO BE PAID (After 20% Deductions):</td>
+                        <td style="color: #155724; text-decoration: underline;">Rs {{ total_after_deduction|floatformat:2 }}</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
