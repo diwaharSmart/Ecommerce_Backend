@@ -120,7 +120,66 @@
         </div>
     </div>
 
+    
+    <div class="module" style="margin-top: 30px;">
+        <h2>Detailed Transaction Breakdown (Selected Period)</h2>
+        {% for item in group %}
+            {% if item.binary_txns or item.level_txns %}
+            <div class="kyc-card" style="margin-bottom: 20px;">
+                <h3 style="background: #e9ecef; padding: 10px; border-radius: 4px; margin: -15px -15px 15px -15px; border-bottom: 1px solid #ddd;">
+                    Transactions for {{ item.user.username }} ({{ item.user.first_name }} {{ item.user.last_name }})
+                </h3>
+                
+                {% if item.binary_txns %}
+                <h4 style="color: #417690; margin-bottom: 10px;">Binary Income Matches</h4>
+                <table style="width: 100%; border-collapse: collapse; margin-bottom: 15px; background: #fff;">
+                    <thead>
+                        <tr>
+                            <th style="padding: 8px; border: 1px solid #ddd; background: #f8f9fa;">Date & Time</th>
+                            <th style="padding: 8px; border: 1px solid #ddd; background: #f8f9fa;">Details</th>
+                            <th style="padding: 8px; border: 1px solid #ddd; background: #f8f9fa; text-align: right;">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for txn in item.binary_txns %}
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;">{{ txn.created_at|date:"M d, Y H:i" }}</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">{{ txn.remark|default:"Binary Match" }}</td>
+                            <td style="padding: 8px; border: 1px solid #ddd; text-align: right; color: #28a745;">+ Rs {{ txn.amount|floatformat:2 }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% endif %}
+
+                {% if item.level_txns %}
+                <h4 style="color: #417690; margin-bottom: 10px;">Level Income Matches</h4>
+                <table style="width: 100%; border-collapse: collapse; margin-bottom: 10px; background: #fff;">
+                    <thead>
+                        <tr>
+                            <th style="padding: 8px; border: 1px solid #ddd; background: #f8f9fa;">Date & Time</th>
+                            <th style="padding: 8px; border: 1px solid #ddd; background: #f8f9fa;">Details</th>
+                            <th style="padding: 8px; border: 1px solid #ddd; background: #f8f9fa; text-align: right;">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for txn in item.level_txns %}
+                        <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd;">{{ txn.created_at|date:"M d, Y H:i" }}</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">{{ txn.remark|default:"Level Income" }}</td>
+                            <td style="padding: 8px; border: 1px solid #ddd; text-align: right; color: #28a745;">+ Rs {{ txn.amount|floatformat:2 }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% endif %}
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
     {% if total_group_remaining > 0 %}
+
     <div style="margin-top: 30px;">
         <form method="POST">
             {% csrf_token %}

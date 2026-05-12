@@ -247,6 +247,16 @@ def weekly_payouts_detail(request, mobile):
         remaining = income - withdrawals_sum
         total_group_remaining += remaining
         
+        binary_txns = Transaction.objects.filter(
+            user=user, type='binary_income', direction='credit',
+            created_at__range=(start_datetime, end_datetime)
+        ).order_by('-created_at')
+        
+        level_txns = Transaction.objects.filter(
+            user=user, type='level_income', direction='credit',
+            created_at__range=(start_datetime, end_datetime)
+        ).order_by('-created_at')
+        
         accounts_data.append({
             'user': user,
             'income': income,
@@ -254,6 +264,8 @@ def weekly_payouts_detail(request, mobile):
             'level_income': level_inc,
             'withdrawals': withdrawals_sum,
             'remaining': remaining,
+            'binary_txns': binary_txns,
+            'level_txns': level_txns,
         })
         
     if request.method == 'POST':
