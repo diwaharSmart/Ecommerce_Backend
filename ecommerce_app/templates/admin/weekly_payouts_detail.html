@@ -144,7 +144,7 @@
                         {% for txn in item.binary_txns %}
                         <tr>
                             <td style="padding: 8px; border: 1px solid #ddd;">{{ txn.created_at|date:"M d, Y H:i" }}</td>
-                            <td style="padding: 8px; border: 1px solid #ddd;">{{ txn.remark|default:"Binary Match" }}</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">{{ txn.description|default:"Binary Match" }}</td>
                             <td style="padding: 8px; border: 1px solid #ddd; text-align: right; color: #28a745;">+ Rs {{ txn.amount|floatformat:2 }}</td>
                         </tr>
                         {% endfor %}
@@ -166,7 +166,7 @@
                         {% for txn in item.level_txns %}
                         <tr>
                             <td style="padding: 8px; border: 1px solid #ddd;">{{ txn.created_at|date:"M d, Y H:i" }}</td>
-                            <td style="padding: 8px; border: 1px solid #ddd;">{{ txn.remark|default:"Level Income" }}</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">{{ txn.description|default:"Level Income" }}</td>
                             <td style="padding: 8px; border: 1px solid #ddd; text-align: right; color: #28a745;">+ Rs {{ txn.amount|floatformat:2 }}</td>
                         </tr>
                         {% endfor %}
