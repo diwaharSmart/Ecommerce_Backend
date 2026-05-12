@@ -19,6 +19,11 @@ class ProfileSerializer(serializers.ModelSerializer):
     kyc_status = serializers.SerializerMethodField()
     total_earning_by_type = serializers.SerializerMethodField()
     current_balance = serializers.SerializerMethodField()
+    total_binary_income = serializers.SerializerMethodField()
+    total_level_income = serializers.SerializerMethodField()
+    total_withdrawal = serializers.SerializerMethodField()
+    total_tds = serializers.SerializerMethodField()
+    total_top_up = serializers.SerializerMethodField()
 
     class Meta:
         model = Profile
@@ -57,6 +62,23 @@ class ProfileSerializer(serializers.ModelSerializer):
              breakdown[t] = val
         return breakdown
 
+    def get_total_binary_income(self, obj):
+        return Transaction.objects.filter(user=obj.user, type='binary_income', direction='credit').aggregate(s=Sum('amount'))['s'] or 0.0
+
+    def get_total_level_income(self, obj):
+        return Transaction.objects.filter(user=obj.user, type='level_income', direction='credit').aggregate(s=Sum('amount'))['s'] or 0.0
+
+    def get_total_withdrawal(self, obj):
+        # Only debits of type 'withdrawal' (includes net pay and top-up deductions from main)
+        return Transaction.objects.filter(user=obj.user, type='withdrawal', direction='debit').aggregate(s=Sum('amount'))['s'] or 0.0
+
+    def get_total_tds(self, obj):
+        return Transaction.objects.filter(user=obj.user, type='tds', direction='debit').aggregate(s=Sum('amount'))['s'] or 0.0
+
+    def get_total_top_up(self, obj):
+        # This is the credit to the top-up wallet
+        return Transaction.objects.filter(user=obj.user, type='top_up', direction='credit').aggregate(s=Sum('amount'))['s'] or 0.0
+
     def get_current_balance(self, obj):
         # Formula: (Binary + Level) - (Withdrawals + TDS)
         credits = Transaction.objects.filter(
@@ -89,10 +111,30 @@ class WalletSerializer(serializers.ModelSerializer):
     calculated_balance = serializers.SerializerMethodField()
     current_balance = serializers.SerializerMethodField()
     transaction_sums = serializers.SerializerMethodField()
+    total_binary_income = serializers.SerializerMethodField()
+    total_level_income = serializers.SerializerMethodField()
+    total_withdrawal = serializers.SerializerMethodField()
+    total_tds = serializers.SerializerMethodField()
+    total_top_up = serializers.SerializerMethodField()
 
     class Meta:
         model = Wallet
         fields = '__all__'
+
+    def get_total_binary_income(self, obj):
+        return Transaction.objects.filter(user=obj.user, type='binary_income', direction='credit').aggregate(s=Sum('amount'))['s'] or 0.0
+
+    def get_total_level_income(self, obj):
+        return Transaction.objects.filter(user=obj.user, type='level_income', direction='credit').aggregate(s=Sum('amount'))['s'] or 0.0
+
+    def get_total_withdrawal(self, obj):
+        return Transaction.objects.filter(user=obj.user, type='withdrawal', direction='debit').aggregate(s=Sum('amount'))['s'] or 0.0
+
+    def get_total_tds(self, obj):
+        return Transaction.objects.filter(user=obj.user, type='tds', direction='debit').aggregate(s=Sum('amount'))['s'] or 0.0
+
+    def get_total_top_up(self, obj):
+        return Transaction.objects.filter(user=obj.user, type='top_up', direction='credit').aggregate(s=Sum('amount'))['s'] or 0.0
 
     def get_current_balance(self, obj):
         # Formula: (Binary + Level) - (Withdrawals + TDS)
@@ -111,18 +153,8 @@ class WalletSerializer(serializers.ModelSerializer):
         return float(credits) - float(debits)
 
     def get_calculated_balance(self, obj):
-        # Credits: Exclude 'top_up' credits as they go to top_up_balance
-        credits = Transaction.objects.filter(
-            user=obj.user, 
-            direction='credit'
-        ).exclude(type='top_up').aggregate(s=Sum('amount'))['s'] or 0
-        
-        debits = Transaction.objects.filter(
-            user=obj.user, 
-            direction='debit'
-        ).aggregate(s=Sum('amount'))['s'] or 0
-        
-        return credits - debits
+        # Align calculated_balance with the new current_balance formula
+        return self.get_current_balance(obj)
 
     def get_transaction_sums(self, obj):
         types = [
@@ -133,7 +165,7 @@ class WalletSerializer(serializers.ModelSerializer):
         sums = {}
         for t in types:
             val = Transaction.objects.filter(user=obj.user, type=t).aggregate(s=Sum('amount'))['s'] or 0
-            sums[f"total_{t}"] = val
+            sums["total_" + t] = val
         return sums
 
 class PayinRequestSerializer(serializers.ModelSerializer):

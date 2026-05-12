@@ -165,6 +165,7 @@ class Transaction(models.Model):
         ('tds', 'TDS'),
         ('top_up', 'Top-Up'),
         ('pin_purchase', 'Pin Purchase'),
+        ('account_closing', 'Account Closing (Negative Balance Clear)'),
 
     )
     DIRECTION_CHOICES = (
