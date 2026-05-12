@@ -256,7 +256,7 @@ def weekly_payouts_detail(request, mobile):
         remaining = income - withdrawals_sum
         total_group_remaining += remaining
         
-binary_txns = Transaction.objects.filter(
+        binary_txns = Transaction.objects.filter(
             user=user, type='binary_income', direction='credit',
             created_at__range=(start_datetime, end_datetime)
         ).order_by('-created_at')
