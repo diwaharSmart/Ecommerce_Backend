@@ -132,23 +132,66 @@
             <input type="date" id="end_date" name="end_date" value="{{ end_date }}" required>
         </div>
         <div>
-            <button type="submit" class="btn btn-primary">Filter Payouts</button>
+            <button type="submit" class="btn btn-primary">Filter Analytics</button>
         </div>
     </form>
 
     <div class="analytics-dashboard">
+        <!-- Card 1: System & KYC Overview (All-Time) -->
         <div class="analytics-card">
-            <h3>System Overview ({{ start_date }} to {{ end_date }})</h3>
+            <h3>System & KYC Overview (All-Time)</h3>
             <div class="stat-row">
-                <span>Total Income Generated:</span>
-                <span class="stat-value" style="color: #417690; font-weight: bold;">Rs {{ global_total_income|floatformat:2 }}</span>
+                <span>Total KYC Verified Users:</span>
+                <span class="stat-value" style="color: #28a745; font-weight: bold;">{{ total_kyc_verified }}</span>
+            </div>
+            <div class="stat-row">
+                <span>Total KYC Unverified:</span>
+                <span class="stat-value" style="color: #dc3545;">{{ total_kyc_unverified }}</span>
+            </div>
+            <div class="stat-row total">
+                <span>Total Valid Users:</span>
+                <span class="stat-value">{{ total_kyc_verified|add:total_kyc_unverified }}</span>
+            </div>
+        </div>
+
+        <!-- Card 2: Company Revenue & Turnover (Date Range) -->
+        <div class="analytics-card">
+            <h3>Company Revenue & Turnover</h3>
+            <div class="stat-row">
+                <span>Sales Revenue (Valid Orders):</span>
+                <span class="stat-value">Rs {{ total_sales_revenue|floatformat:2 }}</span>
+            </div>
+            <div class="stat-row">
+                <span>Total Payouts (Binary+Level):</span>
+                <span class="stat-value" style="color: #dc3545;">- Rs {{ global_total_income|floatformat:2 }}</span>
+            </div>
+            <div class="stat-row total">
+                <span>Net Company Turnover:</span>
+                <span class="stat-value" style="color: #28a745;">Rs {{ company_turnover|floatformat:2 }}</span>
+            </div>
+        </div>
+
+        <!-- Card 3: Payouts & Withdrawals (Date Range) -->
+        <div class="analytics-card">
+            <h3>Payouts & Withdrawals</h3>
+            <div class="stat-row">
+                <span>Total Binary Income:</span>
+                <span class="stat-value">Rs {{ global_total_binary|floatformat:2 }}</span>
+            </div>
+            <div class="stat-row">
+                <span>Total Level Income:</span>
+                <span class="stat-value">Rs {{ global_total_level|floatformat:2 }}</span>
+            </div>
+            <div class="stat-row" style="border-top: 1px dotted #ccc; margin-top: 5px; padding-top: 5px;">
+                <span>Total Combined Income:</span>
+                <span class="stat-value" style="font-weight: bold;">Rs {{ global_total_income|floatformat:2 }}</span>
             </div>
             <div class="stat-row">
                 <span>Total Withdrawals Paid:</span>
-                <span class="stat-value" style="color: #28a745;">Rs {{ global_total_withdrawals|floatformat:2 }}</span>
+                <span class="stat-value" style="color: #28a745;">- Rs {{ global_total_withdrawals|floatformat:2 }}</span>
             </div>
             <div class="stat-row total">
-                <span>Total Remaining Owed:</span>
+                <span>Total Remaining Pending:</span>
                 <span class="stat-value" style="color: #dc3545;">Rs {{ global_remaining|floatformat:2 }}</span>
             </div>
         </div>
