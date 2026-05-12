@@ -283,29 +283,7 @@ def weekly_payouts_detail(request, mobile):
             return redirect(f"/admin/payouts/weekly/?start_date={start_date_str}&end_date={end_date_str}")
 
 
-    # --- Analytics Calculations ---
-    # KYC Stats
-    all_valid_users = User.objects.exclude(is_superuser=True).exclude(username='admin')
-    kyc_verified_users = all_valid_users.filter(kyc__bank_account_number__isnull=False).exclude(kyc__bank_account_number='')
-    total_kyc_verified = kyc_verified_users.count()
-    total_kyc_unverified = all_valid_users.count() - total_kyc_verified
-    
-    # Turnover Stats for selected Date Range
-    valid_orders = OrderItem.objects.filter(
-        order__status__in=['paid', 'completed'], product__pv__gt=1, 
-        order__created_at__range=(start_datetime, end_datetime)
-    ).annotate(
-        total_cost=ExpressionWrapper(F('quantity') * F('price'), output_field=DecimalField())
-    ).aggregate(Sum('total_cost'))['total_cost__sum'] or Decimal('0.00')
-    
-    pin_purchases = Transaction.objects.filter(
-        type='pin_purchase', direction='debit', 
-        created_at__range=(start_datetime, end_datetime)
-    ).aggregate(Sum('amount'))['amount__sum'] or Decimal('0.00')
-    
-    total_sales_revenue = valid_orders + pin_purchases
-    company_turnover = total_sales_revenue - global_total_income
-    
+
     context = {
         'mobile': mobile,
         'group': accounts_data,
