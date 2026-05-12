@@ -18,6 +18,7 @@ class ProfileSerializer(serializers.ModelSerializer):
     total_earning = serializers.SerializerMethodField()
     kyc_status = serializers.SerializerMethodField()
     total_earning_by_type = serializers.SerializerMethodField()
+    current_balance = serializers.SerializerMethodField()
 
     class Meta:
         model = Profile
@@ -56,6 +57,22 @@ class ProfileSerializer(serializers.ModelSerializer):
              breakdown[t] = val
         return breakdown
 
+    def get_current_balance(self, obj):
+        # Formula: (Binary + Level) - (Withdrawals + TDS)
+        credits = Transaction.objects.filter(
+            user=obj.user, 
+            type__in=['binary_income', 'level_income'], 
+            direction='credit'
+        ).aggregate(sum_val=Sum('amount'))['sum_val'] or 0.0
+        
+        debits = Transaction.objects.filter(
+            user=obj.user, 
+            type__in=['withdrawal', 'tds'], 
+            direction='debit'
+        ).aggregate(sum_val=Sum('amount'))['sum_val'] or 0.0
+        
+        return float(credits) - float(debits)
+
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
@@ -70,11 +87,28 @@ class ProductSerializer(serializers.ModelSerializer):
 
 class WalletSerializer(serializers.ModelSerializer):
     calculated_balance = serializers.SerializerMethodField()
+    current_balance = serializers.SerializerMethodField()
     transaction_sums = serializers.SerializerMethodField()
 
     class Meta:
         model = Wallet
         fields = '__all__'
+
+    def get_current_balance(self, obj):
+        # Formula: (Binary + Level) - (Withdrawals + TDS)
+        credits = Transaction.objects.filter(
+            user=obj.user, 
+            type__in=['binary_income', 'level_income'], 
+            direction='credit'
+        ).aggregate(sum_val=Sum('amount'))['sum_val'] or 0.0
+        
+        debits = Transaction.objects.filter(
+            user=obj.user, 
+            type__in=['withdrawal', 'tds'], 
+            direction='debit'
+        ).aggregate(sum_val=Sum('amount'))['sum_val'] or 0.0
+        
+        return float(credits) - float(debits)
 
     def get_calculated_balance(self, obj):
         # Credits: Exclude 'top_up' credits as they go to top_up_balance
