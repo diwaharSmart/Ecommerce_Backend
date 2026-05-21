@@ -25,7 +25,7 @@ def distribute_matching_level_income(source_profile, binary_payout_amount):
     Level 4: 10%
     Level 5: 10%
     """
-    percentages = [0.50, 0.30, 0.20, 0.10, 0.10]
+    percentages = [0.50, 0.03, 0.02, 0.01, 0.01]
     current_sponsor = source_profile.sponsor
     
     # We use a set to prevent circular loops
